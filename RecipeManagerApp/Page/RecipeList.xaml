@@ -135,7 +135,7 @@
                 </StackPanel>
 
                 <StackPanel  VerticalAlignment="Bottom" Margin="500 0 0 50" HorizontalAlignment="Center">
-                    <Button x:Name="deleteRecipeBtn" Content="Delete" Foreground="White" Background="Red" MinWidth="100" MinHeight="50" />
+                    <Button x:Name="btn_deleteRecipe" Content="Delete" Foreground="White" Background="Red" MinWidth="100" MinHeight="50" Click="btn_deleteRecipe_Click" />
                 </StackPanel>
 
             </Grid>

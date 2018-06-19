@@ -47,5 +47,10 @@ namespace RecipeManagerApp.Page
         {
             Frame.Navigate(typeof(ShoppingList));
         }
+
+        private void btn_deleteRecipe_Click(object sender, RoutedEventArgs e)
+        {
+            controller.Delete(listBox_recipes.SelectedIndex);
+        }
     }
 }

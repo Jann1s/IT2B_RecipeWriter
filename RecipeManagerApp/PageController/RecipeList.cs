@@ -17,13 +17,17 @@ namespace RecipeManagerApp.PageController
         {
             recipe = new ObservableCollection<Recipe>(recipeManager.GetCurrentUser().recipes);
         }
-
-        public void Add()
+        
+        public void Delete(int index)
         {
-
+            if (index >= 0 && index < recipe.Count)
+            {
+                recipe.RemoveAt(index);
+            }
         }
 
-        public void Delete()
+        /*
+        public void Add()
         {
 
         }
@@ -37,5 +41,6 @@ namespace RecipeManagerApp.PageController
         {
 
         }
+        */
     }
 }
