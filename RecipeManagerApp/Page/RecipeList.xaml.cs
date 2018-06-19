@@ -22,9 +22,15 @@ namespace RecipeManagerApp.Page
     /// </summary>
     public sealed partial class RecipeList// : Page
     {
+        PageController.RecipeList controller = new PageController.RecipeList();
+
         public RecipeList()
         {
             this.InitializeComponent();
+
+            //init listbox
+            listBox_recipes.ItemsSource = controller.recipe;
+            listBox_recipes.DisplayMemberPath = "title";
         }
 
         private void addRecipeBtn_Click(object sender, RoutedEventArgs e)

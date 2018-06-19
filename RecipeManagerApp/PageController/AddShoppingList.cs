@@ -8,7 +8,7 @@ namespace RecipeManagerApp.PageController
 {
     class AddShoppingList
     {
-        //private RecipeManager recipeManager;
+        private RecipeManager recipeManager = RecipeManager.instance;
 
         public void Add()
         {

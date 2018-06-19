@@ -8,16 +8,16 @@ namespace RecipeManagerApp.PageController
 {
     class WelcomeScreen
     {
-        //private RecipeManager recipeManager;
+        private RecipeManager recipeManager = RecipeManager.instance;
 
         public void Login(string name, string password)
         {
-            RecipeManager.Login(name, password);
+            //RecipeManager.Login(name, password);
         }
 
         public void Register(string name, string password)
         {
-            RecipeManager.Register(name, password);
+            //RecipeManager.Register(name, password);
         }
     }
 }

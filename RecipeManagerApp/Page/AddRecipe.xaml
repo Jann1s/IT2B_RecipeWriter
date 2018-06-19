@@ -125,25 +125,28 @@
                 <!--Centre big grid-->
             </Grid>
             <Grid Grid.Row="1" Grid.Column="1" Background="LightGray" BorderBrush="SteelBlue" BorderThickness="1">
-               
+
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                    
-                    <Button Height="100" Width="100" Background="SteelBlue" Content="Add photo" Margin="0,24" Foreground="White" />
-                    <TextBox x:Name="nameTxtBox" Header= "Name" Margin="0,24,0,0" MaxLength="32" Width="400" HorizontalAlignment="Left" InputScope="PersonalFullName"/>
-                    <TextBox x:Name="ingredientsTxtBox" Header="Ingredients" Margin="0,24,0,0" MaxLength="15" Width="400" HorizontalAlignment="Left" InputScope="PersonalFullName" />
-                    <!--to be changed to a list view -->
-                    <TextBox x:Name="currentIngredientsTxtBox" Header="Current Ingredients" Margin="0,24,0,0" MaxLength="15" Width="400" HorizontalAlignment="Left" InputScope="PersonalFullName" />
-              
+
+                    <Button x:Name="btn_addPhoto" Height="100" Width="100" Background="SteelBlue" Content="Add photo" Margin="0,24" Foreground="White" Click="btn_addPhoto_Click" />
+                    <TextBox x:Name="textBox_name" Header= "Name" Margin="0,24,0,0" MaxLength="32" Width="400" HorizontalAlignment="Left" InputScope="PersonalFullName"/>
+                    <TextBox x:Name="textBox_description" Header="Description" Margin="0,24,0,0" Width="400" Height="150" HorizontalAlignment="Left" TextWrapping="NoWrap" InputScope="PersonalFullName" />
+
 
                     <StackPanel Orientation="Horizontal">
-            
-                            <Button x:Name="saveRecipeBtn" Content="Save" Foreground="White" Background="SteelBlue" MinWidth="100" MinHeight="50"  />
+
+                        <Button x:Name="saveRecipeBtn" Content="Save" Foreground="White" Background="SteelBlue" MinWidth="100" MinHeight="50" Click="saveRecipeBtn_Click"  />
                         <Button x:Name="cancelRecipeBtn" Content="Cancel" Foreground="White" Background="Red" MinWidth="100" MinHeight="50" Margin="24" Click="cancelRecipeBtn_Click"  />
 
                     </StackPanel>
                 </StackPanel>
 
-
+                <ListBox x:Name="listBox_Ingredients" HorizontalAlignment="Left" Width="400" Height="400" Margin="1012,342,0,0" VerticalAlignment="Top"/>
+                <ComboBox x:Name="comboBox_Unit" HorizontalAlignment="Left" Margin="1011,207,0,0" VerticalAlignment="Top" Height="40" Width="372"/>
+                <TextBox x:Name="textBox_ingredientName" HorizontalAlignment="Left" Margin="1013,115,0,0" Text="Name" VerticalAlignment="Top" Width="371"/>
+                <TextBox x:Name="textBox_amount" HorizontalAlignment="Left" Margin="1013,154,0,0" Text="Amount" VerticalAlignment="Top" Width="371"/>
+                <Button x:Name="btn_AddIngredient" Content="Add" HorizontalAlignment="Left" Margin="1014,282,0,0" VerticalAlignment="Top" Click="btn_AddIngredient_Click"/>
+                <Button x:Name="btn_DeleteIngredient" Content="Delete" HorizontalAlignment="Left" Margin="1085,283,0,0" VerticalAlignment="Top" Click="btn_DeleteIngredient_Click"/>
 
             </Grid>
         </Grid>

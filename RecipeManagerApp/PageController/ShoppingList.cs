@@ -8,7 +8,7 @@ namespace RecipeManagerApp.PageController
 {
     class ShoppingList
     {
-        //private RecipeManager recipeManager;
+        private RecipeManager recipeManager = RecipeManager.instance;
         //private PDFProcessor pdfProcessor;    //@TODO: !
 
         public void Add()

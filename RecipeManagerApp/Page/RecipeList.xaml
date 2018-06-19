@@ -125,17 +125,18 @@
                 <!--Centre big grid-->
             </Grid>
             <Grid Grid.Row="1" Grid.Column="1" Background="Black" BorderBrush="SteelBlue" BorderThickness="1">
-                <StackPanel  VerticalAlignment="Bottom" Margin="0 0 0 50" HorizontalAlignment="Center">
 
+                <StackPanel  VerticalAlignment="Top" Margin="50" HorizontalAlignment="Center">
+                    <ListBox x:Name="listBox_recipes" Margin="0" MinHeight="600"/>
+                </StackPanel>
+
+                <StackPanel  VerticalAlignment="Bottom" Margin="0 0 0 50" HorizontalAlignment="Center">
                     <Button x:Name="addRecipeBtn" Content="Add" Foreground="White" Background="SteelBlue" MinWidth="100" MinHeight="50" Click="addRecipeBtn_Click" />
-                  
                 </StackPanel>
 
                 <StackPanel  VerticalAlignment="Bottom" Margin="500 0 0 50" HorizontalAlignment="Center">
                     <Button x:Name="deleteRecipeBtn" Content="Delete" Foreground="White" Background="Red" MinWidth="100" MinHeight="50" />
                 </StackPanel>
-
-
 
             </Grid>
         </Grid>
