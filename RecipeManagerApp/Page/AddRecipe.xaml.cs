@@ -36,5 +36,10 @@ namespace RecipeManagerApp.Page
         {
             Frame.Navigate(typeof(ShoppingList));
         }
+
+        private void cancelRecipeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(RecipeList));
+        }
     }
 }

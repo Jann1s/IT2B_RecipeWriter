@@ -92,7 +92,7 @@
                     </Button>
 
                     <!--Shopping Button-->
-                    <Button x:Name="shoppingListBtn" HorizontalAlignment="Stretch" Height="80" Margin="0 0 0 5" Background="SteelBlue">
+                    <Button x:Name="shoppingListBtn" HorizontalAlignment="Stretch" Height="80" Margin="0 0 0 5" Background="SteelBlue" Click="shoppingListBtn_Click">
                         <StackPanel Orientation="Horizontal">
                             <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE7BF;" FontSize="25" Margin="0 0 10 0" Foreground="White"/>
                             <TextBlock  Text="Shopping List"
