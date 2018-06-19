@@ -8,7 +8,138 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
 
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="12*"/>
+        </Grid.RowDefinitions>
+        <Grid Background="Black" Grid.Row="0">
+
+            <!--Add the top most Menu bar-->
+            <StackPanel Orientation="Horizontal">
+
+                <CommandBar DefaultLabelPosition="Right" Background="Black">
+                    <AppBarButton x:Name="fileBtn" Icon="OpenFile" Label="File" HorizontalAlignment="Center" Foreground="SteelBlue">
+                        <Button.Flyout>
+                            <MenuFlyout>
+                                <MenuFlyoutItem Text="Action 1" Width="140" Height="50"/>
+                                <MenuFlyoutItem Text="Action 2" Width="140" Height="50"/>
+                                <MenuFlyoutItem Text="Action 3" Width="140" Height="50"/>
+                            </MenuFlyout>
+                        </Button.Flyout>
+                    </AppBarButton>
+                    <AppBarSeparator Foreground="SteelBlue"/>
+                    <AppBarButton x:Name="settingsBtn" Icon="Setting" Label="settings" HorizontalAlignment="Center" Foreground="SteelBlue"/>
+                    <AppBarSeparator Foreground="SteelBlue"/>
+                    <AppBarButton x:Name="exitBtn" Icon="Cancel" Label="Exit" HorizontalAlignment="Center" Foreground="SteelBlue" />
+                </CommandBar>
+            </StackPanel>
+        </Grid>
+
+        <!--Second row of the GUI-->
+        <!--define some dimesions for the grid-->
+        <Grid  Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="4*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="4*"/>
+            </Grid.RowDefinitions>
+
+            <!--Logo grid-->
+            <Grid Grid.Row="0" Grid.Column="0" Background="LightGray" >
+                <StackPanel>
+                    <Image Width="300" Source="ms-appx:///../Assets/food.png"/>
+
+
+                </StackPanel>
+
+            </Grid>
+
+            <!-- Welcome grid -->
+
+
+            <Grid Grid.Row="0" Grid.Column="1" Background="Black" >
+                <TextBlock Text="Shopping List" 
+               Style="{StaticResource HeaderTextBlockStyle}"
+               IsTextSelectionEnabled="True" 
+               Foreground="SteelBlue" 
+               FontSize="80"
+               TextAlignment="Center"
+               FontFamily="Segoe UI" 
+               FontStyle="Normal"/>
+
+            </Grid>
+
+            <!--Vertical Buttons grid-->
+            <Grid Grid.Row="1" Grid.Column="0" Background="Black">
+                <StackPanel Orientation="Vertical" >
+                    <!--Recipes Button-->
+                    <Button x:Name="recipesBtn" HorizontalAlignment="Stretch" Height="80" Margin="0 5 0 5" Background="SteelBlue" Click="recipesBtn_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEADF;" FontSize="25" Margin="0 0 10 0" Foreground="White"/>
+                            <TextBlock  Text="Recipes"
+                               Foreground="White" 
+                               FontSize="20"
+                               TextAlignment="Right"
+                               FontFamily="Segoe UI" 
+                               FontStyle="Normal"
+                                 />
+                        </StackPanel>
+
+                    </Button>
+
+                    <!--Shopping Button-->
+                    <Button x:Name="shoppingListBtn" HorizontalAlignment="Stretch" Height="80" Margin="0 0 0 5" Background="SteelBlue">
+                        <StackPanel Orientation="Horizontal">
+                            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE7BF;" FontSize="25" Margin="0 0 10 0" Foreground="White"/>
+                            <TextBlock  Text="Shopping List"
+                               Foreground="white" 
+                               FontSize="20"
+                               TextAlignment="Right"
+                               FontFamily="Segoe UI" 
+                               FontStyle="Normal"
+                                 />
+                        </StackPanel>
+
+                    </Button>
+
+                    <!--Options Button-->
+                    <Button x:Name="optionsBtn" HorizontalAlignment="Center" Height="80" Background="SteelBlue" VerticalAlignment="Center" Width="300" Click="optionsBtn_Click" Margin="0,0,0,0">
+                        <StackPanel Orientation="Horizontal">
+                            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8F1;" FontSize="25" Margin="0 0 10 0" Foreground="White"/>
+                            <TextBlock  Text="Options"
+                               Foreground="White" 
+                               FontSize="20"
+                               TextAlignment="Right"
+                               FontFamily="Segoe UI" 
+                               FontStyle="Normal"
+                                 />
+                        </StackPanel>
+
+                    </Button>
+                </StackPanel>
+
+                <!--Centre big grid-->
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="1" Background="Black" BorderBrush="SteelBlue" BorderThickness="1">
+                <StackPanel  VerticalAlignment="Bottom" Margin="0 0 0 50" HorizontalAlignment="Center">
+
+                    <Button x:Name="addShoppingListBtn" Content="Add" Foreground="White" Background="SteelBlue" MinWidth="100" MinHeight="50" Click="addShoppingListBtn_Click" />
+
+                </StackPanel>
+
+                <StackPanel  VerticalAlignment="Bottom" Margin="500 0 0 50" HorizontalAlignment="Center">
+                    <Button x:Name="deleteShoppingListBtn" Content="Delete" Foreground="White" Background="Red" MinWidth="100" MinHeight="50" />
+                </StackPanel>
+
+
+
+            </Grid>
+        </Grid>
     </Grid>
+
 </Page>

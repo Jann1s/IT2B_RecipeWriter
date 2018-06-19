@@ -26,5 +26,20 @@ namespace RecipeManagerApp.Page
         {
             this.InitializeComponent();
         }
+
+        private void addRecipeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(AddRecipe));
+        }
+
+        private void optionsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Options));
+        }
+
+        private void shoppingListBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(ShoppingList));
+        }
     }
 }
