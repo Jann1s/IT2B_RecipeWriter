@@ -24,14 +24,24 @@ namespace RecipeManagerApp.Helper
             this.username = username;
         }
 
-        public void AddShoppingList()
+        public void AddShoppingList(ShoppingList shoppingList)
         {
+            shoppingLists.Add(shoppingList);
+        }
 
+        public void RemoveShoppingList(int index)
+        {
+            shoppingLists.RemoveAt(index);
         }
 
         public void AddRecipe(Recipe recipe)
         {
             recipes.Add(recipe);
+        }
+
+        public void RemoveRecipe(int index)
+        {
+            recipes.RemoveAt(index);
         }
 
         public void AddFavRecipe()

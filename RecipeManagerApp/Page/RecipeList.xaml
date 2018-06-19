@@ -109,7 +109,7 @@
                     <Button x:Name="optionsBtn" HorizontalAlignment="Stretch" Height="80" Margin="0 0 0 5" Background="SteelBlue" Click="optionsBtn_Click">
                         <StackPanel Orientation="Horizontal">
                             <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8F1;" FontSize="25" Margin="0 0 10 0" Foreground="White"/>
-                            <TextBlock  Text="Options"
+                            <TextBlock  Text="Export / Print"
                                Foreground="White" 
                                FontSize="20"
                                TextAlignment="Right"

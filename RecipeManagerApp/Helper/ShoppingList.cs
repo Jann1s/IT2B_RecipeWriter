@@ -8,18 +8,24 @@ namespace RecipeManagerApp.Helper
 {
     public class ShoppingList
     {
-        public List<Recipe> recipes { get; set; }
+        public List<Recipe> recipes { get; }
         public int id { get; }
         public DateTime date { get; set; }
 
         public ShoppingList(int id)
         {
             this.id = id;
+            recipes = new List<Recipe>();
         }
 
         public void AddRecipe(Recipe recipe)
         {
             recipes.Add(recipe);
+        }
+
+        public void RemoveRecipe(Recipe recipe)
+        {
+            recipes.Remove(recipe);
         }
     }
 }

@@ -23,6 +23,7 @@ namespace RecipeManagerApp.PageController
             if (index >= 0 && index < recipe.Count)
             {
                 recipe.RemoveAt(index);
+                recipeManager.GetCurrentUser().RemoveRecipe(index);
             }
         }
 

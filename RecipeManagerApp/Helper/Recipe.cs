@@ -16,6 +16,7 @@ namespace RecipeManagerApp.Helper
         {
             this.description = description;
             this.title = title;
+            ingredients = new List<Ingredient>();
         }
 
         public void AddIngredient(Ingredient ingredient)

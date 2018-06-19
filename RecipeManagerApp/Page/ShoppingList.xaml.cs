@@ -22,14 +22,15 @@ namespace RecipeManagerApp.Page
     /// </summary>
     public sealed partial class ShoppingList// : Page
     {
+        PageController.ShoppingList controller = new PageController.ShoppingList();
+
         public ShoppingList()
         {
             this.InitializeComponent();
-        }
 
-        private void addShoppingListBtn_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(AddShoppingList));
+            //init listbox
+            listBox_recipeList.ItemsSource = controller.shoppingList;
+            listBox_recipeList.DisplayMemberPath = "id";
         }
 
         private void optionsBtn_Click(object sender, RoutedEventArgs e)
@@ -40,6 +41,16 @@ namespace RecipeManagerApp.Page
         private void recipesBtn_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(RecipeList));
+        }
+
+        private void btn_deleteShoppingList_Click(object sender, RoutedEventArgs e)
+        {
+            controller.Delete(listBox_recipeList.SelectedIndex);
+        }
+
+        private void btn_addShoppingList_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(AddShoppingList));
         }
     }
 }

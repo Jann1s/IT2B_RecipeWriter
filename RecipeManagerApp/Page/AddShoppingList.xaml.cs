@@ -22,9 +22,18 @@ namespace RecipeManagerApp.Page
     /// </summary>
     public sealed partial class AddShoppingList// : Page
     {
+        PageController.AddShoppingList controller = new PageController.AddShoppingList();
+
         public AddShoppingList()
         {
             this.InitializeComponent();
+
+            //init listbox
+            listBox_recipeList.ItemsSource = controller.recipe;
+            listBox_recipeList.DisplayMemberPath = "title";
+
+            listBox_addedList.ItemsSource = controller.addedRecipes;
+            listBox_addedList.DisplayMemberPath = "title";
         }
 
         private void recipesBtn_Click(object sender, RoutedEventArgs e)
@@ -42,6 +51,21 @@ namespace RecipeManagerApp.Page
             Frame.Navigate(typeof(Options));
         }
 
-       
+        private void btn_saveShoppingList_Click(object sender, RoutedEventArgs e)
+        {
+            controller.Save();
+            Frame.Navigate(typeof(ShoppingList));
+        }
+
+        private void btn_addShoppingList_Click(object sender, RoutedEventArgs e)
+        {
+            controller.Add(listBox_recipeList.SelectedIndex);
+            
+        }
+
+        private void btn_deleteShoppingList_Click(object sender, RoutedEventArgs e)
+        {
+            controller.Delete(listBox_addedList.SelectedIndex);
+        }
     }
 }

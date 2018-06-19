@@ -22,9 +22,15 @@ namespace RecipeManagerApp.Page
     /// </summary>
     public sealed partial class Options //: Page
     {
+        PageController.ExportPrint controller = new PageController.ExportPrint();
+
         public Options()
         {
             this.InitializeComponent();
+
+            //init listbox
+            listBox_shoppingList.ItemsSource = controller.shoppingList;
+            listBox_shoppingList.DisplayMemberPath = "date";
         }
 
         private void recipesBtn_Click(object sender, RoutedEventArgs e)

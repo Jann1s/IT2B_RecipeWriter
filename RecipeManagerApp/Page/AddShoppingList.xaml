@@ -111,7 +111,7 @@
                     <Button x:Name="optionsBtn" HorizontalAlignment="Stretch" Height="80" Margin="0 0 0 5" Background="SteelBlue" Click="optionsBtn_Click">
                         <StackPanel Orientation="Horizontal">
                             <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8F1;" FontSize="25" Margin="0 0 10 0" Foreground="White"/>
-                            <TextBlock  Text="Options"
+                            <TextBlock  Text="Export / Print"
                                Foreground="White" 
                                FontSize="20"
                                TextAlignment="Right"
@@ -127,18 +127,19 @@
             </Grid>
             <Grid Grid.Row="1" Grid.Column="1" Background="LightGray" BorderBrush="SteelBlue" BorderThickness="1">
 
-                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" MinHeight="800" Margin="0,0,0,0" Width="1530">
+                    <ListBox x:Name="listBox_recipeList" HorizontalAlignment="Left" Height="529" VerticalAlignment="Center" Margin="0,50,0,0" Width="680"/>
+                    <ListBox x:Name="listBox_addedList" HorizontalAlignment="Right" Height="529" VerticalAlignment="Center" Margin="0,-550,0,0" Width="650"/>
 
-                 <!-- Add table -->
+                    <StackPanel Orientation="Horizontal" Margin="50, 50, 50, 50">
 
-
-                    <StackPanel Orientation="Horizontal">
-
-                        <Button x:Name="saveShoppingListBtn" Content="+" FontSize="30" Foreground="White" Background="SteelBlue" MinWidth="100" MinHeight="50"  />
-                        <Button x:Name="cancelShoppingListBtn" Content="-"  FontSize="30" Foreground="White" Background="Red" MinWidth="100" MinHeight="50" Margin="24"  />
+                        <Button x:Name="btn_saveShoppingList" Content="Save" FontSize="30" Foreground="Black" Background="LightSteelBlue" MinWidth="100" MinHeight="50"  Click="btn_saveShoppingList_Click" />
+                        <Button x:Name="btn_addShoppingList" Content="+" FontSize="30" Foreground="White" Background="SteelBlue" MinWidth="100" MinHeight="50" Margin="50, 0, 0, 0" Click="btn_addShoppingList_Click"  />
+                        <Button x:Name="btn_deleteShoppingList" Content="-"  FontSize="30" Foreground="White" Background="Red" MinWidth="100" MinHeight="50" Margin="50, 0, 0, 0" Click="btn_deleteShoppingList_Click"  />
 
                     </StackPanel>
                 </StackPanel>
+
 
 
 
