@@ -13,16 +13,16 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// Die Elementvorlage "Leere Seite" wird unter https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x407 dokumentiert.
+// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace RecipeManagerApp.Page
 {
     /// <summary>
-    /// Eine leere Seite, die eigenständig verwendet oder zu der innerhalb eines Rahmens navigiert werden kann.
+    /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class WelcomeScreen// : Page
+    public sealed partial class Options //: Page
     {
-        public WelcomeScreen()
+        public Options()
         {
             this.InitializeComponent();
         }
@@ -35,11 +35,6 @@ namespace RecipeManagerApp.Page
         private void shoppingListBtn_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(ShoppingList));
-        }
-
-        private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(Options));
         }
     }
 }

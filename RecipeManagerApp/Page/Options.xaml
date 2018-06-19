@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="RecipeManagerApp.Page.AddShoppingList"
+    x:Class="RecipeManagerApp.Page.Options"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:RecipeManagerApp.Page"
@@ -62,8 +62,8 @@
             <!-- Welcome grid -->
 
 
-            <Grid Grid.Row="0" Grid.Column="1" Background="LightGray" >
-                <TextBlock Text="Add Shopping list" 
+            <Grid Grid.Row="0" Grid.Column="1" Background="Black" >
+                <TextBlock Text="Options" 
                Style="{StaticResource HeaderTextBlockStyle}"
                IsTextSelectionEnabled="True" 
                Foreground="SteelBlue" 
@@ -75,7 +75,7 @@
             </Grid>
 
             <!--Vertical Buttons grid-->
-            <Grid Grid.Row="1" Grid.Column="0" Background="LightGray">
+            <Grid Grid.Row="1" Grid.Column="0" Background="Black">
                 <StackPanel Orientation="Vertical" >
                     <!--Recipes Button-->
                     <Button x:Name="recipesBtn" HorizontalAlignment="Stretch" Height="80" Margin="0 5 0 5" Background="SteelBlue" Click="recipesBtn_Click">
@@ -108,7 +108,7 @@
                     </Button>
 
                     <!--Options Button-->
-                    <Button x:Name="optionsBtn" HorizontalAlignment="Stretch" Height="80" Margin="0 0 0 5" Background="SteelBlue" Click="optionsBtn_Click">
+                    <Button x:Name="optionsBtn" HorizontalAlignment="Center" Height="80" Background="SteelBlue" VerticalAlignment="Center" Width="300" Margin="0,0,0,0">
                         <StackPanel Orientation="Horizontal">
                             <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8F1;" FontSize="25" Margin="0 0 10 0" Foreground="White"/>
                             <TextBlock  Text="Options"
@@ -125,25 +125,12 @@
 
                 <!--Centre big grid-->
             </Grid>
-            <Grid Grid.Row="1" Grid.Column="1" Background="LightGray" BorderBrush="SteelBlue" BorderThickness="1">
-
-                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-
-                 <!-- Add table -->
-
-
-                    <StackPanel Orientation="Horizontal">
-
-                        <Button x:Name="saveShoppingListBtn" Content="+" FontSize="30" Foreground="White" Background="SteelBlue" MinWidth="100" MinHeight="50"  />
-                        <Button x:Name="cancelShoppingListBtn" Content="-"  FontSize="30" Foreground="White" Background="Red" MinWidth="100" MinHeight="50" Margin="24"  />
-
-                    </StackPanel>
-                </StackPanel>
+            <Grid Grid.Row="1" Grid.Column="1" Background="Black" BorderBrush="SteelBlue" BorderThickness="1">
+               
 
 
 
             </Grid>
         </Grid>
     </Grid>
-
 </Page>
