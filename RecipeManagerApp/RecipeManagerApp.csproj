@@ -101,6 +101,7 @@
     <Compile Include="Helper\ShoppingList.cs" />
     <Compile Include="Helper\Units.cs" />
     <Compile Include="Helper\User.cs" />
+    <Compile Include="PageController\ExportPrint.cs" />
     <Compile Include="Page\Options.xaml.cs">
       <DependentUpon>Options.xaml</DependentUpon>
     </Compile>
