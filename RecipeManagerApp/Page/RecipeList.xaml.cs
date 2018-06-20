@@ -52,5 +52,10 @@ namespace RecipeManagerApp.Page
         {
             controller.Delete(listBox_recipes.SelectedIndex);
         }
+
+        private void homeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(WelcomeScreen));
+        }
     }
 }

@@ -41,5 +41,10 @@ namespace RecipeManagerApp.Page
         {
             Frame.Navigate(typeof(Options));
         }
+
+        private void homeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(WelcomeScreen));
+        }
     }
 }

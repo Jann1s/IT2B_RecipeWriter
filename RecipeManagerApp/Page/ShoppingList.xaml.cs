@@ -52,5 +52,10 @@ namespace RecipeManagerApp.Page
         {
             Frame.Navigate(typeof(AddShoppingList));
         }
+
+        private void homeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(WelcomeScreen));
+        }
     }
 }

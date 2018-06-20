@@ -72,6 +72,11 @@ namespace RecipeManagerApp.Page
             controller.DeleteIngredient(listBox_Ingredients.SelectedIndex);
         }
 
+        private void homeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(WelcomeScreen));
+        }
+
         private async void btn_addPhoto_Click(object sender, RoutedEventArgs e)
         {
             FileOpenPicker openPicker = new FileOpenPicker();
