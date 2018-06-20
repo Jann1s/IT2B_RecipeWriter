@@ -95,7 +95,7 @@
                     </Button>
 
                     <!--Options Button-->
-                    <Button x:Name="optionsBtn" HorizontalAlignment="Stretch" Height="80" Margin="0 0 0 5" Background="SteelBlue" Click="optionsBtn_Click">
+                    <!--Button x:Name="optionsBtn" HorizontalAlignment="Stretch" Height="80" Margin="0 0 0 5" Background="SteelBlue" Click="optionsBtn_Click">
                         <StackPanel Orientation="Horizontal">
                             <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8F1;" FontSize="25" Margin="0 0 10 0" Foreground="White"/>
                             <TextBlock  Text="Export / Print"
@@ -107,7 +107,7 @@
                                  />
                         </StackPanel>
 
-                    </Button>
+                    </Button-->
                 </StackPanel>
 
                 <!--Centre big grid-->
@@ -117,10 +117,16 @@
                 <StackPanel HorizontalAlignment="left" VerticalAlignment="Stretch" Margin="50,50,0,0">
                     
                     <ListBox x:Name="listBox_recipeList" HorizontalAlignment="Left" MinHeight="400" Width="400" VerticalAlignment="Center" Margin="0,0,0,0" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Border BorderThickness="0,0,0,2" BorderBrush="DarkSlateGray">
-                                    <Grid Margin="0,0,0,5">
+                                    <Grid Width="380" Margin="0,0,0,5">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="3*"/>
                                             <ColumnDefinition Width="7*"/>
@@ -145,10 +151,16 @@
                 
                 <StackPanel HorizontalAlignment="Right" VerticalAlignment="Stretch" Margin="0 50 50 0">
                     <ListBox x:Name="listBox_addedList" HorizontalAlignment="Left" MinHeight="400" Width="400" VerticalAlignment="Center" Margin="0,0,0,0" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Border BorderThickness="0,0,0,2" BorderBrush="DarkSlateGray">
-                                    <Grid Margin="0,0,0,5">
+                                    <Grid Width="380" Margin="0,0,0,5">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="3*"/>
                                             <ColumnDefinition Width="7*"/>

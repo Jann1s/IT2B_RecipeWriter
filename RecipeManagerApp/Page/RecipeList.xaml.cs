@@ -59,7 +59,8 @@ namespace RecipeManagerApp.Page
 
         private void btn_export_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(ExportPrint), "Recipe");
+            String[] parameter = new String[] { "Recipe", listBox_recipes.SelectedIndex.ToString() };
+            Frame.Navigate(typeof(ExportPrint), parameter);
         }
     }
 }

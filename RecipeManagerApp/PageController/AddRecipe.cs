@@ -21,23 +21,44 @@ namespace RecipeManagerApp.PageController
             ingredients = new ObservableCollection<Ingredient>();
         }
 
-        public void Add(string name, string description)
+        public bool Add(string name, string description)
         {
-            tempRecipe.title = name;
-            tempRecipe.description = description;
-            tempRecipe.ingredients = ingredients.ToList<Ingredient>();
+            if (!String.IsNullOrEmpty(name) && !String.IsNullOrEmpty(description) && ingredients.Count > 0)
+            {
+                tempRecipe.title = name;
+                tempRecipe.description = description;
+                tempRecipe.ingredients = ingredients.ToList<Ingredient>();
 
-            recipeManager.GetCurrentUser().AddRecipe(tempRecipe);
+                recipeManager.GetCurrentUser().AddRecipe(tempRecipe);
+
+                return true;
+            }
+            else
+            {
+                return false;
+            } 
         }
         
-        public void AddIngredient(string name, float amount, Units unit)
+        public bool AddIngredient(string name, string sAmount, int index)
         {
-            Ingredient tempIngredient = new Ingredient();
-            tempIngredient.Name = name;
-            tempIngredient.Amount = amount;
-            tempIngredient.Unit = unit;
+            float amount = -1;
 
-            ingredients.Add(tempIngredient);
+            if (!String.IsNullOrEmpty(name) && float.TryParse(sAmount, out amount) && index >= 0 && index < units.Count)
+            {
+                Ingredient tempIngredient = new Ingredient();
+                tempIngredient.Name = name;
+                tempIngredient.Amount = amount;
+                tempIngredient.Unit = units[index];
+
+                ingredients.Add(tempIngredient);
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
         }
 
         public void DeleteIngredient(int index)

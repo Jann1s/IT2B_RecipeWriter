@@ -96,7 +96,7 @@
                     </Button>
 
                     <!--Options Button-->
-                    <Button x:Name="optionsBtn" HorizontalAlignment="Stretch" MinHeight="80" Margin="0 0 0 5" Background="SteelBlue">
+                    <!--Button x:Name="optionsBtn" HorizontalAlignment="Stretch" MinHeight="80" Margin="0 0 0 5" Background="SteelBlue">
                         <StackPanel Orientation="Horizontal">
                             <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8F1;" FontSize="25" Margin="0 0 10 0" Foreground="White"/>
                             <TextBlock  Text="Export / Print"
@@ -108,7 +108,7 @@
                                  />
                         </StackPanel>
 
-                    </Button>
+                    </Button-->
                 </StackPanel>
 
                 <!--Centre big grid-->
@@ -131,42 +131,57 @@
 
                 </StackPanel>
 
-               
-                <StackPanel x:Name="listBoxPanel" HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="350 50 0 50" >
 
-                    <StackPanel Margin="0">
+                <Grid x:Name="listBoxPanel" HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="350 50 0 50" Padding="10">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Margin="0" Grid.Row="0">
                         <TextBox TabIndex="3" x:Name="textBox_ingredientName" Margin="0,0,0,15"  Header="Ingredient Name" InputScope="PersonalFullName" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                         <ComboBox TabIndex="4" x:Name="comboBox_Unit" Margin="0,0,0,15" Header="Unit" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                         <TextBox TabIndex="5" x:Name="textBox_amount"  Header="Amount" InputScope="Number" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                     </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" Margin="0 24 0 50">
+                    <StackPanel Orientation="Horizontal" Margin="0 24 0 50" Grid.Row="1">
                         <Button TabIndex="6" x:Name="btn_AddIngredient" Content="Add" HorizontalAlignment="Left" MinWidth="100" MinHeight="50" VerticalAlignment="Stretch" Click="btn_AddIngredient_Click"/>
                         <Button TabIndex="7" x:Name="btn_DeleteIngredient" Content="Delete" HorizontalAlignment="Left" MinWidth="100" MinHeight="50" Margin="24 0 0 0" VerticalAlignment="Stretch" Click="btn_DeleteIngredient_Click"/>
                     </StackPanel>
 
-                    <TextBlock Text="Ingredient list" Margin="0,0,0,10"/>
-                    <ListBox x:Name="listBox_Ingredients" Width="400" MinHeight="200" HorizontalAlignment="Left" VerticalAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Visible">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <Border BorderThickness="0,0,0,2" BorderBrush="DarkSlateGray">
-                                    <Grid Width="375" Margin="0,0,0,5">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="6*"/>
-                                            <ColumnDefinition Width="3*"/>
-                                            <ColumnDefinition Width="1*"/>
-                                        </Grid.ColumnDefinitions>
+                    <TextBlock Text="Ingredient list" Margin="0,0,0,10" Grid.Row="2"/>
+                    <Grid Grid.Row="3" >
+                        <ListBox x:Name="listBox_Ingredients" Width="400" MinHeight="200" HorizontalAlignment="Left" VerticalAlignment="Stretch" ScrollViewer.VerticalScrollMode="Enabled" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                            <ListBox.ItemContainerStyle>
+                                <Style TargetType="ListBoxItem">
+                                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                </Style>
+                            </ListBox.ItemContainerStyle>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Border BorderThickness="0,0,0,2" BorderBrush="DarkSlateGray">
+                                        <Grid Width="375" Margin="0,0,0,5">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="6*"/>
+                                                <ColumnDefinition Width="3*"/>
+                                                <ColumnDefinition Width="1*"/>
+                                            </Grid.ColumnDefinitions>
 
-                                        <TextBlock Grid.Column="0" Margin="5,0,0,0" Text="{Binding Path=Name}"/>
-                                        <TextBlock Grid.Column="1" Margin="10,0,0,0" HorizontalAlignment="Right" Text="{Binding Path=Amount}"/>
-                                        <TextBlock Grid.Column="2" Margin="5,0,5,0" Text="{Binding Path=Unit.Short}"/>
-                                    </Grid>
-                                </Border>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
-
-                </StackPanel>
+                                            <TextBlock Grid.Column="0" Margin="5,0,0,0" Text="{Binding Path=Name}"/>
+                                            <TextBlock Grid.Column="1" Margin="10,0,0,0" HorizontalAlignment="Right" Text="{Binding Path=Amount}"/>
+                                            <TextBlock Grid.Column="2" Margin="5,0,5,0" Text="{Binding Path=Unit.Short}"/>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
+                    
+                </Grid>
                 
             </Grid>
         </Grid>

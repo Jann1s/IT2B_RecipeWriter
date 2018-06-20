@@ -27,7 +27,7 @@ namespace RecipeManagerApp.PageController
 
         public void FillIngredients(int index)
         {
-
+            recipeList = new ObservableCollection<Helper.Ingredient>(recipeManager.GetCurrentUser().recipes[index].ingredients);
         }
     }
 }

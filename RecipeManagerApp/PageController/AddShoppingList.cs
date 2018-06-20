@@ -32,9 +32,17 @@ namespace RecipeManagerApp.PageController
             }
         }
 
-        public void Save()
+        public bool Save()
         {
-            recipeManager.GetCurrentUser().AddShoppingList(tempShoppingList);
+            if (tempShoppingList.recipes.Count > 0)
+            {
+                recipeManager.GetCurrentUser().AddShoppingList(tempShoppingList);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public void Delete(int index)

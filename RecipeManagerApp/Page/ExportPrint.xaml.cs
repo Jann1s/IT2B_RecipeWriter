@@ -45,20 +45,24 @@ namespace RecipeManagerApp.Page
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             String origin = String.Empty;
+            int index = -1;
 
             base.OnNavigatedTo(e);
             if (e.Parameter != null)
             {
-                origin = (String)e.Parameter;
+                origin = ((String[])e.Parameter)[0];
+                index = int.Parse(((String[])e.Parameter)[1]);
             }
 
             if (origin == "Recipe")
             {
+                controller.FillIngredients(index);
                 listBox_ingredientList.ItemsSource = controller.recipeList;
                 listBox_ingredientList.Visibility = Visibility.Visible;
             }
             else if (origin == "Shopping")
             {
+                controller.FillRecipe(index);
                 listBox_recipeList.ItemsSource = controller.shoppingList;
                 listBox_recipeList.Visibility = Visibility.Visible;
             }

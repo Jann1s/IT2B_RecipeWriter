@@ -51,8 +51,14 @@ namespace RecipeManagerApp.Page
 
         private void btn_saveShoppingList_Click(object sender, RoutedEventArgs e)
         {
-            controller.Save();
-            Frame.Navigate(typeof(ShoppingList));
+            if (controller.Save())
+            {
+                Frame.Navigate(typeof(ShoppingList));
+            }
+            else
+            {
+                ShowInputError();
+            }
         }
 
         private void btn_addShoppingList_Click(object sender, RoutedEventArgs e)
@@ -64,6 +70,18 @@ namespace RecipeManagerApp.Page
         private void btn_deleteShoppingList_Click(object sender, RoutedEventArgs e)
         {
             controller.Delete(listBox_addedList.SelectedIndex);
+        }
+
+        private async void ShowInputError()
+        {
+            ContentDialog inputErrorDialog = new ContentDialog
+            {
+                Title = "Shopping list empty",
+                Content = "Please add at least one recipe to the shopping list!",
+                CloseButtonText = "Ok"
+            };
+
+            ContentDialogResult result = await inputErrorDialog.ShowAsync();
         }
     }
 }

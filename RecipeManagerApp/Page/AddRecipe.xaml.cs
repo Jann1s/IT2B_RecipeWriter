@@ -37,7 +37,6 @@ namespace RecipeManagerApp.Page
 
             //init listbox
             listBox_Ingredients.ItemsSource = controller.ingredients;
-            //listBox_Ingredients.DisplayMemberPath = "Name";
         }
 
         private void recipesBtn_Click(object sender, RoutedEventArgs e)
@@ -57,14 +56,36 @@ namespace RecipeManagerApp.Page
 
         private void btn_AddIngredient_Click(object sender, RoutedEventArgs e)
         {
-            controller.AddIngredient(textBox_ingredientName.Text, float.Parse(textBox_amount.Text), controller.units[comboBox_Unit.SelectedIndex]);
+            if (!controller.AddIngredient(textBox_ingredientName.Text, textBox_amount.Text, comboBox_Unit.SelectedIndex))
+            {
+                ShowInputError();
+            }
+
             //listBox_Ingredients.ItemsSource = controller.ingredients;
+        }
+
+        private async void ShowInputError()
+        {
+            ContentDialog inputErrorDialog = new ContentDialog
+            {
+                Title = "Input error",
+                Content = "Check your input and try again.",
+                CloseButtonText = "Ok"
+            };
+
+            ContentDialogResult result = await inputErrorDialog.ShowAsync();
         }
 
         private void saveRecipeBtn_Click(object sender, RoutedEventArgs e)
         {
-            controller.Add(textBox_name.Text, textBox_description.Text);
-            Frame.Navigate(typeof(RecipeList));
+            if (controller.Add(textBox_name.Text, textBox_description.Text))
+            {
+                Frame.Navigate(typeof(RecipeList));
+            }
+            else
+            {
+                ShowInputError();
+            }
         }
 
         private void btn_DeleteIngredient_Click(object sender, RoutedEventArgs e)

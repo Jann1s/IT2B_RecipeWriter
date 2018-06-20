@@ -93,7 +93,7 @@
                     </Button>
 
                     <!--Options Button-->
-                    <Button x:Name="optionsBtn" HorizontalAlignment="Stretch" Height="80" Margin="0 0 0 5" Background="SteelBlue" Click="optionsBtn_Click">
+                    <!--Button x:Name="optionsBtn" HorizontalAlignment="Stretch" Height="80" Margin="0 0 0 5" Background="SteelBlue" Click="optionsBtn_Click">
                         <StackPanel Orientation="Horizontal">
                             <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8F1;" FontSize="25" Margin="0 0 10 0" Foreground="White"/>
                             <TextBlock  Text="Export / Print"
@@ -105,7 +105,7 @@
                                  />
                         </StackPanel>
 
-                    </Button>
+                    </Button-->
                 </StackPanel>
 
                 <!--Centre big grid-->
@@ -114,6 +114,12 @@
 
                 <StackPanel  VerticalAlignment="Stretch" Margin="20" HorizontalAlignment="Center">
                     <ListBox x:Name="listBox_recipes" MinHeight="400" Margin="0" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Border BorderThickness="0,0,0,2" BorderBrush="DarkSlateGray">
