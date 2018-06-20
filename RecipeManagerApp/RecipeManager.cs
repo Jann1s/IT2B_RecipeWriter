@@ -20,13 +20,22 @@ namespace RecipeManagerApp
             currentUser = new User(1, "Bob");
             units = new List<Units>();
 
-            units.Add(new Units() { Name = "Milligramm", Unit = EUnit.Milligramm });
-            units.Add(new Units() { Name = "Gramm", Unit = EUnit.Gramm });
-            units.Add(new Units() { Name = "Kilogramm", Unit = EUnit.Kilogramm });
-            units.Add(new Units() { Name = "Milliliter", Unit = EUnit.Milliliter });
-            units.Add(new Units() { Name = "Liter", Unit = EUnit.Liter });
-            units.Add(new Units() { Name = "Pieces", Unit = EUnit.Pieces });
-            units.Add(new Units() { Name = "Spoons", Unit = EUnit.Spoons });
+            units.Add(new Units() { Name = "Milligramm", Short = "mg", Unit = EUnit.Milligramm });
+            units.Add(new Units() { Name = "Gramm", Short = "g", Unit = EUnit.Gramm });
+            units.Add(new Units() { Name = "Kilogramm", Short = "kg", Unit = EUnit.Kilogramm });
+            units.Add(new Units() { Name = "Milliliter", Short = "ml", Unit = EUnit.Milliliter });
+            units.Add(new Units() { Name = "Liter", Short = "l", Unit = EUnit.Liter });
+            units.Add(new Units() { Name = "Pieces", Short = "Pcs.", Unit = EUnit.Pieces });
+            units.Add(new Units() { Name = "Spoons", Short = "Spns.", Unit = EUnit.Spoons });
+
+            Recipe recipe1 = new Recipe("This is an awesome description! WOw. just awesome", "Awesome-O");
+            recipe1.AddIngredient(new Ingredient() { Name = "Eggs", Amount = 2, Unit = units[5] });
+
+            Recipe recipe2 = new Recipe("And for the second time: This is an awesome description! WOw. just awesome", "Pizza");
+            recipe2.AddIngredient(new Ingredient() { Name = "pizza", Amount = 1, Unit = units[5] });
+
+            currentUser.AddRecipe(recipe1);
+            currentUser.AddRecipe(recipe2);
         }
 
         public void Login(string name, string password)

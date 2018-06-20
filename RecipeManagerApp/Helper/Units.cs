@@ -9,6 +9,7 @@ namespace RecipeManagerApp.Helper
     public class Units
     {
         public string Name { get; set; }
+        public string Short { get; set; }
         public EUnit Unit { get; set; }
     }
 }

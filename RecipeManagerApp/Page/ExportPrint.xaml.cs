@@ -54,13 +54,13 @@ namespace RecipeManagerApp.Page
 
             if (origin == "Recipe")
             {
-                listBox_shoppingList.ItemsSource = controller.recipeList;
-                listBox_shoppingList.DisplayMemberPath = "title";
+                listBox_ingredientList.ItemsSource = controller.recipeList;
+                listBox_ingredientList.Visibility = Visibility.Visible;
             }
             else if (origin == "Shopping")
             {
-                listBox_shoppingList.ItemsSource = controller.shoppingList;
-                listBox_shoppingList.DisplayMemberPath = "date";
+                listBox_recipeList.ItemsSource = controller.shoppingList;
+                listBox_recipeList.Visibility = Visibility.Visible;
             }
         }
 

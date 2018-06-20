@@ -30,7 +30,6 @@ namespace RecipeManagerApp.Page
 
             //init listbox
             listBox_recipeList.ItemsSource = controller.shoppingList;
-            listBox_recipeList.DisplayMemberPath = "id";
         }
 
         private void optionsBtn_Click(object sender, RoutedEventArgs e)
@@ -60,7 +59,8 @@ namespace RecipeManagerApp.Page
 
         private void btn_export_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(ExportPrint), "Shopping");
+            String[] testArr = new String[] { "Shopping" , listBox_recipeList.SelectedIndex.ToString() };
+            Frame.Navigate(typeof(ExportPrint), testArr);
         }
     }
 }

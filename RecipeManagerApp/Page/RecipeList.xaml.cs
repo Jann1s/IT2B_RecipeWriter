@@ -30,7 +30,6 @@ namespace RecipeManagerApp.Page
 
             //init listbox
             listBox_recipes.ItemsSource = controller.recipe;
-            listBox_recipes.DisplayMemberPath = "title";
         }
 
         private void addRecipeBtn_Click(object sender, RoutedEventArgs e)

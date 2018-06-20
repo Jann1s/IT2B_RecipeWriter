@@ -37,7 +37,7 @@ namespace RecipeManagerApp.Page
 
             //init listbox
             listBox_Ingredients.ItemsSource = controller.ingredients;
-            listBox_Ingredients.DisplayMemberPath = "Name";
+            //listBox_Ingredients.DisplayMemberPath = "Name";
         }
 
         private void recipesBtn_Click(object sender, RoutedEventArgs e)
