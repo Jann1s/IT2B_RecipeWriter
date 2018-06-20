@@ -20,17 +20,48 @@ namespace RecipeManagerApp.Page
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class Options //: Page
+    public sealed partial class ExportPrint //: Page
     {
         PageController.ExportPrint controller = new PageController.ExportPrint();
 
-        public Options()
+        public ExportPrint()
         {
             this.InitializeComponent();
 
             //init listbox
-            listBox_shoppingList.ItemsSource = controller.shoppingList;
-            listBox_shoppingList.DisplayMemberPath = "date";
+            /*
+            if (origin == "Recipe")
+            {
+                listBox_shoppingList.ItemsSource = controller.recipeList;
+                listBox_shoppingList.DisplayMemberPath = "title";
+            }
+            else if (origin == "Shopping")
+            {
+                listBox_shoppingList.ItemsSource = controller.shoppingList;
+                listBox_shoppingList.DisplayMemberPath = "date";
+            }*/
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            String origin = String.Empty;
+
+            base.OnNavigatedTo(e);
+            if (e.Parameter != null)
+            {
+                origin = (String)e.Parameter;
+            }
+
+            if (origin == "Recipe")
+            {
+                listBox_shoppingList.ItemsSource = controller.recipeList;
+                listBox_shoppingList.DisplayMemberPath = "title";
+            }
+            else if (origin == "Shopping")
+            {
+                listBox_shoppingList.ItemsSource = controller.shoppingList;
+                listBox_shoppingList.DisplayMemberPath = "date";
+            }
         }
 
         private void recipesBtn_Click(object sender, RoutedEventArgs e)

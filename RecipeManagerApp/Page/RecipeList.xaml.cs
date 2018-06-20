@@ -40,7 +40,7 @@ namespace RecipeManagerApp.Page
 
         private void optionsBtn_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(Options));
+            Frame.Navigate(typeof(ExportPrint));
         }
 
         private void shoppingListBtn_Click(object sender, RoutedEventArgs e)
@@ -56,6 +56,11 @@ namespace RecipeManagerApp.Page
         private void homeBtn_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(WelcomeScreen));
+        }
+
+        private void btn_export_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(ExportPrint), "Recipe");
         }
     }
 }

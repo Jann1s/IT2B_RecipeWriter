@@ -11,11 +11,13 @@ namespace RecipeManagerApp.PageController
     {
         private RecipeManager recipeManager = RecipeManager.instance;
         public ObservableCollection<Helper.ShoppingList> shoppingList { get; }
+        public ObservableCollection<Helper.Recipe> recipeList { get; }
         //private PDFProcessor pdfProcessor;    //@TODO: !
 
         public ExportPrint()
         {
             shoppingList = new ObservableCollection<Helper.ShoppingList>(recipeManager.GetCurrentUser().shoppingLists);
+            recipeList = new ObservableCollection<Helper.Recipe>(recipeManager.GetCurrentUser().recipes);
         }
     }
 }

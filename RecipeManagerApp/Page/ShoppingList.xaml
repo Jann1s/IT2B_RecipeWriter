@@ -117,9 +117,10 @@
                     <ListBox x:Name="listBox_recipeList" Margin="0" MinHeight="400"/>
                 </StackPanel>
 
-                <StackPanel  VerticalAlignment="Bottom" Margin="0 0 0 20" HorizontalAlignment="Center" Orientation="Horizontal">
-                    <Button x:Name="btn_addShoppingList" Content="Add" Foreground="White" Background="SteelBlue" MinWidth="100" Margin="24" MinHeight="50" Click="btn_addShoppingList_Click" />
-                    <Button x:Name="btn_deleteShoppingList" Content="Delete" Foreground="White" Background="Red" MinWidth="100" MinHeight="50" Click="btn_deleteShoppingList_Click" />
+                <StackPanel  VerticalAlignment="Bottom" Margin="0 0 0 20" Padding="20" HorizontalAlignment="Center" Orientation="Horizontal">
+                    <Button x:Name="btn_addShoppingList" Content="Add" Foreground="White" Background="SteelBlue" MinWidth="100" Margin="10,0,10,0" MinHeight="50" Click="btn_addShoppingList_Click" />
+                    <Button x:Name="btn_deleteShoppingList" Content="Delete" Foreground="White" Background="Red" MinWidth="100" Margin="10,0,10,0" MinHeight="50" Click="btn_deleteShoppingList_Click" />
+                    <Button x:Name="btn_export" Content="Export / Print" Foreground="White" Background="Green" MinWidth="100" Margin="10,0,10,0" MinHeight="50" Click="btn_export_Click"/>
                 </StackPanel>
 
 

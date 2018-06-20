@@ -39,7 +39,7 @@ namespace RecipeManagerApp.Page
 
         private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(Options));
+            Frame.Navigate(typeof(ExportPrint));
         }
 
         private void homeBtn_Click(object sender, RoutedEventArgs e)

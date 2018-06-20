@@ -31,5 +31,11 @@ namespace RecipeManagerApp.Page
         {
             Frame.Navigate(typeof(SignUp));
         }
+
+        private void btn_login_Click(object sender, RoutedEventArgs e)
+        {
+            //@TODO: HAS TO BE CHANGED TO BE WORKING!
+            Frame.Navigate(typeof(RecipeList));
+        }
     }
 }

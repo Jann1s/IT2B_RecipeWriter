@@ -105,8 +105,8 @@
     <Compile Include="Page\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Page\Options.xaml.cs">
-      <DependentUpon>Options.xaml</DependentUpon>
+    <Compile Include="Page\ExportPrint.xaml.cs">
+      <DependentUpon>ExportPrint.xaml</DependentUpon>
     </Compile>
     <Compile Include="Page\SignUp.xaml.cs">
       <DependentUpon>SignUp.xaml</DependentUpon>
@@ -199,7 +199,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Page\Options.xaml">
+    <Page Include="Page\ExportPrint.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

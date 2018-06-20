@@ -48,7 +48,7 @@ namespace RecipeManagerApp.Page
 
         private void optionsBtn_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(Options));
+            Frame.Navigate(typeof(ExportPrint));
         }
 
         private void btn_saveShoppingList_Click(object sender, RoutedEventArgs e)

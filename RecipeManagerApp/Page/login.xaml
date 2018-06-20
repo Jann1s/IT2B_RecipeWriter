@@ -92,7 +92,7 @@
                     <TextBox x:Name="loginPassword_txtBox" Margin="0,24,0,0" Header= "Password" MaxLength="50" MinWidth="400" HorizontalAlignment="Left" InputScope="Password" />
 
                     <StackPanel Orientation="Horizontal">
-                        <Button Content="Login" Margin="0,24" Foreground="White" Background="Green"/>
+                        <Button x:Name="btn_login" Content="Login" Margin="0,24" Foreground="White" Background="Green" Click="btn_login_Click"/>
                     </StackPanel>
                 </StackPanel>
 
