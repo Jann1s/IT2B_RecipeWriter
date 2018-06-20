@@ -59,7 +59,7 @@
             <Grid Grid.Row="1" Grid.Column="0" Background="LightGray">
                 <StackPanel Orientation="Vertical" >
                     <!--LogIn Button-->
-                    <Button x:Name="loginBtn" HorizontalAlignment="Stretch" Height="80" Margin="0 5 0 5" Background="SteelBlue" >
+                    <Button x:Name="loginBtn" HorizontalAlignment="Stretch" Height="80" Margin="0 5 0 5" Background="SteelBlue" Click="loginBtn_Click" >
                         <StackPanel Orientation="Horizontal">
                             <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE785;" FontSize="25" Margin="0 0 10 0" Foreground="White"/>
                             <TextBlock  Text="Login"
@@ -74,7 +74,7 @@
                     </Button>
 
                     <!--SignUp Button-->
-                    <Button x:Name="signUpBtn" HorizontalAlignment="Stretch" Height="80" Margin="0 0 0 5" Background="SteelBlue">
+                    <Button x:Name="signUpBtn" HorizontalAlignment="Stretch" Height="80" Margin="0 0 0 5" Background="SteelBlue" Click="signUpBtn_Click">
                         <StackPanel Orientation="Horizontal">
                             <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xF0E3;" FontSize="25" Margin="0 0 10 0" Foreground="White"/>
                             <TextBlock  Text="Signup"
