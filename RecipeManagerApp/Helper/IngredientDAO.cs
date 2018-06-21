@@ -25,19 +25,31 @@ namespace RecipeManagerApp.Helper
 
         }
 
-        //public static async Task<ObservableCollection<Ingredient>> GetAll(int recipeid)
-        //{
-        //    ObservableCollection<Ingredient> r = new ObservableCollection<Ingredient>();
-        //    String query = @"SELECT * FROM ingredients WHERE recipes_idrecipes = " + recipeid;
-        //    await DBConnector.initAsync();
-        //    MySqlCommand cmd = new MySqlCommand(query, DBConnector.conn);
-        //    MySqlDataReader reader = cmd.ExecuteReader();
-        //    while (reader.Read())
-        //    {
-        //        r.Add(new Ingredient(reader["description"] + "", reader["title"] + ""));
-        //    }
+        public static async Task<ObservableCollection<Ingredient>> GetAll(int recipeid)
+        {
+            ObservableCollection<Ingredient> r = new ObservableCollection<Ingredient>();
+            String query = @"SELECT * FROM ingredients WHERE recipes_idrecipes = " + recipeid;
+            await DBConnector.initAsync();
+            MySqlCommand cmd = new MySqlCommand(query, DBConnector.conn);
+            MySqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                Ingredient i = new Ingredient();
+                i.Name = reader["name"] + "";
+                i.Amount = int.Parse(reader["amount"] + "");
+                String units = reader["unit"] + "";
 
-        //    return r;
-        //}
+                switch (units)
+                {
+                    case "Liter":
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+
+            return r;
+        }
     }
 }

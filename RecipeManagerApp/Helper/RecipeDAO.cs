@@ -34,7 +34,8 @@ namespace RecipeManagerApp.Helper
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                r.Add(new Recipe(int.Parse(reader["idrecipe"]+""),reader["description"] + "", reader["title"] + ""));
+                r.Add(new Recipe(reader["description"] + "", reader["title"] + ""));
+                r.ElementAt(r.Count).id = int.Parse(reader["idrecipe"]+"");
             }
 
             return r;

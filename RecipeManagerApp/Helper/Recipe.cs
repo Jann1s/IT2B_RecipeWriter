@@ -9,7 +9,7 @@ namespace RecipeManagerApp.Helper
     public class Recipe
     {
         public string description { get; set; }
-        public int id { get; }
+        public int id { get; set; }
         public List<Ingredient> ingredients { get; set; }
         public string title { get; set; }
 
