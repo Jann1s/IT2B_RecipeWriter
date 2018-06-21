@@ -76,9 +76,9 @@ namespace RecipeManagerApp.Page
             ContentDialogResult result = await inputErrorDialog.ShowAsync();
         }
 
-        private void saveRecipeBtn_Click(object sender, RoutedEventArgs e)
+        private async void saveRecipeBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (controller.Add(textBox_name.Text, textBox_description.Text))
+            if (await controller.AddAsync(textBox_name.Text, textBox_description.Text))
             {
                 Frame.Navigate(typeof(RecipeList));
             }

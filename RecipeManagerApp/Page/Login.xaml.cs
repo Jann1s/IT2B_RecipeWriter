@@ -1,10 +1,12 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -32,10 +34,23 @@ namespace RecipeManagerApp.Page
             Frame.Navigate(typeof(SignUp));
         }
 
-        private void btn_login_Click(object sender, RoutedEventArgs e)
+        private async void btn_login_ClickAsync(object sender, RoutedEventArgs e)
+
         {
-            //@TODO: HAS TO BE CHANGED TO BE WORKING!
-            Frame.Navigate(typeof(RecipeList));
+            bool log;
+            try
+            {
+                log = await RecipeManager.instance.LoginAsync(logInUsername_txtBox.Text, loginPassword_txtBox.Text);
+            } catch (MySqlException mse)
+            {
+                await new MessageDialog(mse.ToString()).ShowAsync();
+                log = false;
+                await new MessageDialog("Invalid username or password.").ShowAsync();
+            }
+            if (log)
+            {
+                Frame.Navigate(typeof(RecipeList));
+            }
         }
     }
 }

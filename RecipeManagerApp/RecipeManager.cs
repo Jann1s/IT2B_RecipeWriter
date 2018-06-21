@@ -38,14 +38,22 @@ namespace RecipeManagerApp
             currentUser.AddRecipe(recipe2);
         }
 
-        public void Login(string name, string password)
+        public async Task<bool> LoginAsync(String username, String password)
         {
+            User u = await UserDAO.getUser(username, password);
+            if (u == null)
+            {
+                return false;
+            }
+            currentUser = u;
+            return true;
 
         }
 
-        public void Register(string name, string password)
+        public async Task<bool> RegisterAsync(string name, string password)
         {
-
+            bool added = await UserDAO.addUser(name, password);
+            return added;
         }
 
         public User GetCurrentUser()

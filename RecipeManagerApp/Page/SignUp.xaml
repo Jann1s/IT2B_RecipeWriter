@@ -91,7 +91,7 @@
                     <TextBox x:Name="password_txtBox" Margin="0,24,0,0" Header= "Password" MaxLength="50" MinWidth="400" HorizontalAlignment="Left" InputScope="Password" />
 
                     <StackPanel Orientation="Horizontal">
-                        <Button Content="Sign Up" Margin="0,24" Foreground="White" Background="Green"/>
+                        <Button Content="Sign Up" Margin="0,24" Foreground="White" Background="Green" Click="Button_ClickAsync"/>
                     </StackPanel>
                 </StackPanel>
 

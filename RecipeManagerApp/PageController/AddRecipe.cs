@@ -1,10 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
+using System.Xml.Linq;
 using RecipeManagerApp.Helper;
+using Windows.Storage;
+using Windows.Storage.Streams;
 
 namespace RecipeManagerApp.PageController
 {
@@ -21,7 +26,7 @@ namespace RecipeManagerApp.PageController
             ingredients = new ObservableCollection<Ingredient>();
         }
 
-        public bool Add(string name, string description)
+        public async Task<bool> AddAsync(string name, string description)
         {
             if (!String.IsNullOrEmpty(name) && !String.IsNullOrEmpty(description) && ingredients.Count > 0)
             {
@@ -29,7 +34,11 @@ namespace RecipeManagerApp.PageController
                 tempRecipe.description = description;
                 tempRecipe.ingredients = ingredients.ToList<Ingredient>();
 
+               
+
                 recipeManager.GetCurrentUser().AddRecipe(tempRecipe);
+
+                await RecipeDAO.AddRecipeAsync(tempRecipe);
 
                 return true;
             }
@@ -38,6 +47,8 @@ namespace RecipeManagerApp.PageController
                 return false;
             } 
         }
+
+        
         
         public bool AddIngredient(string name, string sAmount, int index)
         {
