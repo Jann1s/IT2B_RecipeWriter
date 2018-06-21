@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Popups;
 
 namespace RecipeManagerApp.Helper
 {
@@ -35,11 +36,13 @@ namespace RecipeManagerApp.Helper
             while (reader.Read())
             {
                 r.Add(new Recipe(reader["description"] + "", reader["title"] + ""));
-                r.ElementAt(r.Count).id = int.Parse(reader["idrecipes"]+"");
-                r.ElementAt(r.Count).ingredients = IngredientDAO.GetAll(r.ElementAt(r.Count).id);
+                
+                r.ElementAt(r.Count-1).id = int.Parse(reader["idrecipes"]+"");
+                r.ElementAt(r.Count-1).ingredients = IngredientDAO.GetAll((r.ElementAt(r.Count-1).id)).Result.ToList();
+                
             }
 
-
+            await new MessageDialog(r.Count.ToString()).ShowAsync();
             return r;
         }
     }

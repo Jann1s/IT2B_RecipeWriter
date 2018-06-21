@@ -25,6 +25,7 @@ namespace RecipeManagerApp.PageController
 
         public async void setRecipeList()
         {
+            await new MessageDialog(RecipeManager.instance.GetCurrentUser().id.ToString()).ShowAsync();
             recipe = await RecipeDAO.GetAll(RecipeManager.instance.GetCurrentUser().id);
         }
         
