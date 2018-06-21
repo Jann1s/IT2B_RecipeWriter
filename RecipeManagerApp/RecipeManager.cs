@@ -28,6 +28,7 @@ namespace RecipeManagerApp
             units.Add(new Units() { Name = "Pieces", Short = "Pcs.", Unit = EUnit.Pieces });
             units.Add(new Units() { Name = "Spoons", Short = "Spns.", Unit = EUnit.Spoons });
 
+            /*
             Recipe recipe1 = new Recipe("This is an awesome description! WOw. just awesome", "Awesome-O");
             recipe1.AddIngredient(new Ingredient() { Name = "Eggs", Amount = 2, Unit = units[5] });
 
@@ -36,6 +37,7 @@ namespace RecipeManagerApp
 
             currentUser.AddRecipe(recipe1);
             currentUser.AddRecipe(recipe2);
+            */
         }
 
         public async Task<bool> LoginAsync(String username, String password)

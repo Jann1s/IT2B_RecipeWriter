@@ -9,13 +9,13 @@ namespace RecipeManagerApp.Helper
     public class Recipe
     {
         public string description { get; set; }
-        public int id { get; set; }
+        public int id { get; }
         public List<Ingredient> ingredients { get; set; }
         public string title { get; set; }
 
-        public Recipe(int id,string description, string title)
+        public Recipe(string description, string title)
         {
-            this.id = id;
+            //this.id = id;
             this.description = description;
             this.title = title;
             ingredients = new List<Ingredient>();
