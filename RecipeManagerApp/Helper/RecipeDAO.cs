@@ -35,8 +35,10 @@ namespace RecipeManagerApp.Helper
             while (reader.Read())
             {
                 r.Add(new Recipe(reader["description"] + "", reader["title"] + ""));
-                r.ElementAt(r.Count).id = int.Parse(reader["idrecipe"]+"");
+                r.ElementAt(r.Count).id = int.Parse(reader["idrecipes"]+"");
+                r.ElementAt(r.Count).ingredients = IngredientDAO.GetAll(r.ElementAt(r.Count).id);
             }
+
 
             return r;
         }

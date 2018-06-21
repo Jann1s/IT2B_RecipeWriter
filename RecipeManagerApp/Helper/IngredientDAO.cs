@@ -38,10 +38,43 @@ namespace RecipeManagerApp.Helper
                 i.Name = reader["name"] + "";
                 i.Amount = int.Parse(reader["amount"] + "");
                 String units = reader["unit"] + "";
-
+    
                 switch (units)
                 {
                     case "Liter":
+                        i.Unit.Unit = EUnit.Liter;
+                        i.Unit.Short = "L";
+                        i.Unit.Name = "Liter";
+                        break;
+                    case "Pieces":
+                        i.Unit.Unit = EUnit.Pieces;
+                        i.Unit.Short = "P";
+                        i.Unit.Name = "Pieces";
+                        break;
+                    case "Spoons":
+                        i.Unit.Unit = EUnit.Spoons;
+                        i.Unit.Short = "SP";
+                        i.Unit.Name = "Spoons";
+                        break;
+                    case "Mililiter":
+                        i.Unit.Unit = EUnit.Milliliter;
+                        i.Unit.Short = "ml";
+                        i.Unit.Name = "Mililiter";
+                        break;
+                    case "Kilogramm":
+                        i.Unit.Unit = EUnit.Kilogramm;
+                        i.Unit.Short = "KG";
+                        i.Unit.Name = "Kilogramm";
+                        break;
+                    case "Gram":
+                        i.Unit.Unit = EUnit.Gramm;
+                        i.Unit.Short = "G";
+                        i.Unit.Name = "Gramm";
+                        break;
+                    case "Miligram":
+                        i.Unit.Unit = EUnit.Milligramm;
+                        i.Unit.Short = "MG";
+                        i.Unit.Name = "Miligram";
                         break;
 
                     default:
