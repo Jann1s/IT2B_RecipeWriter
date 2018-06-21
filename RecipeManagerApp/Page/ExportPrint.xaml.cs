@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Graphics.Printing;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -12,6 +13,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.UI.Xaml.Printing;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -24,6 +26,11 @@ namespace RecipeManagerApp.Page
     {
         PageController.ExportPrint controller = new PageController.ExportPrint();
 
+        /*
+        private PrintManager printMan;
+        private PrintDocument printDoc;
+        private IPrintDocumentSource printDocSource;
+        */
         public ExportPrint()
         {
             this.InitializeComponent();
@@ -66,6 +73,19 @@ namespace RecipeManagerApp.Page
                 listBox_recipeList.ItemsSource = controller.shoppingList;
                 listBox_recipeList.Visibility = Visibility.Visible;
             }
+
+            /*
+            // Register for PrintTaskRequested event
+            printMan = PrintManager.GetForCurrentView();
+            printMan.PrintTaskRequested += PrintTaskRequested;
+
+            // Build a PrintDocument and register for callbacks
+            printDoc = new PrintDocument();
+            printDocSource = printDoc.DocumentSource;
+            printDoc.Paginate += Paginate;
+            printDoc.GetPreviewPage += GetPreviewPage;
+            printDoc.AddPages += AddPages;
+            */
         }
 
         private void recipesBtn_Click(object sender, RoutedEventArgs e)

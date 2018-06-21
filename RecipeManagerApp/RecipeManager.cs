@@ -38,6 +38,9 @@ namespace RecipeManagerApp
             currentUser.AddRecipe(recipe1);
             currentUser.AddRecipe(recipe2);
             */
+
+            PDFProcessor pdf = new PDFProcessor();
+            pdf.Export();
         }
 
         public async Task<bool> LoginAsync(String username, String password)
@@ -67,5 +70,7 @@ namespace RecipeManagerApp
         {
             return units;
         }
+
+        
     }
 }
