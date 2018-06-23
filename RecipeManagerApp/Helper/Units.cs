@@ -8,6 +8,17 @@ namespace RecipeManagerApp.Helper
 {
     public class Units
     {
+        public Units(String name, String Short, EUnit unit)
+        {
+            this.Name = Name;
+            this.Short = Short;
+            this.Unit = unit;
+        }
+
+        public Units()
+        {
+
+        }
         public string Name { get; set; }
         public string Short { get; set; }
         public EUnit Unit { get; set; }

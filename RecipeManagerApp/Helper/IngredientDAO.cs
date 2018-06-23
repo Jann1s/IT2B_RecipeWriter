@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Popups;
 
 namespace RecipeManagerApp.Helper
 {
@@ -42,45 +43,31 @@ namespace RecipeManagerApp.Helper
                 switch (units)
                 {
                     case "Liter":
-                        i.Unit.Unit = EUnit.Liter;
-                        i.Unit.Short = "L";
-                        i.Unit.Name = "Liter";
+                        i.Unit = new Units() { Name = "Liter", Short = "L", Unit = EUnit.Liter };
                         r.Add(i);
                         break;
                     case "Pieces":
-                        i.Unit.Unit = EUnit.Pieces;
-                        i.Unit.Short = "P";
-                        i.Unit.Name = "Pieces";
+                        i.Unit = new Units() { Name = "Pieces", Short = "P.", Unit = EUnit.Pieces };
                         r.Add(i);
                         break;
                     case "Spoons":
-                        i.Unit.Unit = EUnit.Spoons;
-                        i.Unit.Short = "SP";
-                        i.Unit.Name = "Spoons";
+                        i.Unit = new Units() { Name = "Spoons", Short = "Spns.", Unit = EUnit.Spoons };
                         r.Add(i);
                         break;
                     case "Mililiter":
-                        i.Unit.Unit = EUnit.Milliliter;
-                        i.Unit.Short = "ml";
-                        i.Unit.Name = "Mililiter";
+                        i.Unit = new Units() { Name = "Mililiter", Short = "ml", Unit = EUnit.Spoons };
                         r.Add(i);
                         break;
                     case "Kilogramm":
-                        i.Unit.Unit = EUnit.Kilogramm;
-                        i.Unit.Short = "KG";
-                        i.Unit.Name = "Kilogramm";
+                        i.Unit = new Units() { Name = "Kilogramm", Short = "kg", Unit = EUnit.Kilogramm };
                         r.Add(i);
                         break;
                     case "Gram":
-                        i.Unit.Unit = EUnit.Gramm;
-                        i.Unit.Short = "G";
-                        i.Unit.Name = "Gramm";
+                        i.Unit = new Units() { Name = "Gramm", Short = "G", Unit = EUnit.Gramm };
                         r.Add(i);
                         break;
                     case "Miligram":
-                        i.Unit.Unit = EUnit.Milligramm;
-                        i.Unit.Short = "MG";
-                        i.Unit.Name = "Miligram";
+                        i.Unit = new Units() { Name = "Miligram", Short = "mg", Unit = EUnit.Milligramm };
                         r.Add(i);
                         break;
 

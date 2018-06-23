@@ -38,11 +38,10 @@ namespace RecipeManagerApp.Helper
                 r.Add(new Recipe(reader["description"] + "", reader["title"] + ""));
                 
                 r.ElementAt(r.Count-1).id = int.Parse(reader["idrecipes"]+"");
-                r.ElementAt(r.Count-1).ingredients = IngredientDAO.GetAll((r.ElementAt(r.Count-1).id)).Result.ToList();
+                r.ElementAt(r.Count-1).ingredients = await IngredientDAO.GetAll((r.ElementAt(r.Count - 1).id));
                 
             }
 
-            await new MessageDialog(r.Count.ToString()).ShowAsync();
             return r;
         }
     }

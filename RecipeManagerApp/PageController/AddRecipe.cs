@@ -32,7 +32,7 @@ namespace RecipeManagerApp.PageController
             {
                 tempRecipe.title = name;
                 tempRecipe.description = description;
-                tempRecipe.ingredients = ingredients.ToList<Ingredient>();
+                tempRecipe.ingredients = ingredients;
 
                
 
