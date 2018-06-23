@@ -39,6 +39,9 @@ namespace RecipeManagerApp
         /// <param name="e">Details über Startanforderung und -prozess.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
+            RecipeManager recipeManager = new RecipeManager();
+            RecipeManager.instance = recipeManager;
+
             Frame rootFrame = Window.Current.Content as Frame;
 
             // App-Initialisierung nicht wiederholen, wenn das Fenster bereits Inhalte enthält.

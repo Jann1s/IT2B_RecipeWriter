@@ -22,9 +22,14 @@ namespace RecipeManagerApp.Page
     /// </summary>
     public sealed partial class RecipeList// : Page
     {
+        PageController.RecipeList controller = new PageController.RecipeList();
+
         public RecipeList()
         {
             this.InitializeComponent();
+
+            //init listbox
+            listBox_recipes.ItemsSource = controller.recipe;
         }
 
         private void addRecipeBtn_Click(object sender, RoutedEventArgs e)
@@ -34,12 +39,28 @@ namespace RecipeManagerApp.Page
 
         private void optionsBtn_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(Options));
+            Frame.Navigate(typeof(ExportPrint));
         }
 
         private void shoppingListBtn_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(ShoppingList));
+        }
+
+        private void btn_deleteRecipe_Click(object sender, RoutedEventArgs e)
+        {
+            controller.Delete(listBox_recipes.SelectedIndex);
+        }
+
+        private void homeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(WelcomeScreen));
+        }
+
+        private void btn_export_Click(object sender, RoutedEventArgs e)
+        {
+            String[] parameter = new String[] { "Recipe", listBox_recipes.SelectedIndex.ToString() };
+            Frame.Navigate(typeof(ExportPrint), parameter);
         }
     }
 }

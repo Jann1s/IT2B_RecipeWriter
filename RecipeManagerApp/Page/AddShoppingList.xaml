@@ -14,27 +14,14 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="12*"/>
         </Grid.RowDefinitions>
-        <Grid Background="Black" Grid.Row="0">
-
-            <!--Add the top most Menu bar-->
-            <StackPanel Orientation="Horizontal">
-
-                <CommandBar DefaultLabelPosition="Right" Background="Black">
-                    <AppBarButton x:Name="fileBtn" Icon="OpenFile" Label="File" HorizontalAlignment="Center" Foreground="SteelBlue">
-                        <Button.Flyout>
-                            <MenuFlyout>
-                                <MenuFlyoutItem Text="Action 1" Width="140" Height="50"/>
-                                <MenuFlyoutItem Text="Action 2" Width="140" Height="50"/>
-                                <MenuFlyoutItem Text="Action 3" Width="140" Height="50"/>
-                            </MenuFlyout>
-                        </Button.Flyout>
-                    </AppBarButton>
-                    <AppBarSeparator Foreground="SteelBlue"/>
-                    <AppBarButton x:Name="settingsBtn" Icon="Setting" Label="settings" HorizontalAlignment="Center" Foreground="SteelBlue"/>
-                    <AppBarSeparator Foreground="SteelBlue"/>
-                    <AppBarButton x:Name="exitBtn" Icon="Cancel" Label="Exit" HorizontalAlignment="Center" Foreground="SteelBlue" />
+        <Grid Background="LightGray" Grid.Row="0">
+            <StackPanel HorizontalAlignment="Left">
+                <CommandBar DefaultLabelPosition="Right" Background="LightGray">
+                    <AppBarButton x:Name="homeBtn" Icon="Home" HorizontalAlignment="Center" Foreground="Black" FontSize="50"/>
                 </CommandBar>
             </StackPanel>
+            <!--Add the top most Menu bar-->
+            
         </Grid>
 
         <!--Second row of the GUI-->
@@ -52,7 +39,7 @@
             <!--Logo grid-->
             <Grid Grid.Row="0" Grid.Column="0" Background="LightGray" >
                 <StackPanel>
-                    <Image Width="300" Source="ms-appx:///../Assets/food.png"/>
+                    <Image MinWidth="300" Source="ms-appx:///../Assets/food.png"/>
 
 
                 </StackPanel>
@@ -108,10 +95,10 @@
                     </Button>
 
                     <!--Options Button-->
-                    <Button x:Name="optionsBtn" HorizontalAlignment="Stretch" Height="80" Margin="0 0 0 5" Background="SteelBlue" Click="optionsBtn_Click">
+                    <!--Button x:Name="optionsBtn" HorizontalAlignment="Stretch" Height="80" Margin="0 0 0 5" Background="SteelBlue" Click="optionsBtn_Click">
                         <StackPanel Orientation="Horizontal">
                             <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8F1;" FontSize="25" Margin="0 0 10 0" Foreground="White"/>
-                            <TextBlock  Text="Options"
+                            <TextBlock  Text="Export / Print"
                                Foreground="White" 
                                FontSize="20"
                                TextAlignment="Right"
@@ -120,26 +107,74 @@
                                  />
                         </StackPanel>
 
-                    </Button>
+                    </Button-->
                 </StackPanel>
 
                 <!--Centre big grid-->
             </Grid>
             <Grid Grid.Row="1" Grid.Column="1" Background="LightGray" BorderBrush="SteelBlue" BorderThickness="1">
 
-                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel HorizontalAlignment="left" VerticalAlignment="Stretch" Margin="50,50,0,0">
+                    
+                    <ListBox x:Name="listBox_recipeList" HorizontalAlignment="Left" MinHeight="400" Width="400" VerticalAlignment="Center" Margin="0,0,0,0" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderThickness="0,0,0,2" BorderBrush="DarkSlateGray">
+                                    <Grid Width="380" Margin="0,0,0,5">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="3*"/>
+                                            <ColumnDefinition Width="7*"/>
+                                        </Grid.ColumnDefinitions>
 
-                 <!-- Add table -->
-
-
-                    <StackPanel Orientation="Horizontal">
-
-                        <Button x:Name="saveShoppingListBtn" Content="+" FontSize="30" Foreground="White" Background="SteelBlue" MinWidth="100" MinHeight="50"  />
-                        <Button x:Name="cancelShoppingListBtn" Content="-"  FontSize="30" Foreground="White" Background="Red" MinWidth="100" MinHeight="50" Margin="24"  />
-
-                    </StackPanel>
+                                        <TextBlock Grid.Column="0" Margin="5,0,0,0" Text="{Binding Path=title}" FontWeight="Bold"/>
+                                        <TextBlock Grid.Column="1" Margin="10,0,0,0" Text="{Binding Path=description}" FontStyle="Italic"/>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
                 </StackPanel>
 
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="100">
+
+                    
+                    <Button x:Name="btn_addShoppingList" Content="+" FontSize="30" Foreground="White" Background="SteelBlue" MinWidth="100" MinHeight="50" Margin="24" Click="btn_addShoppingList_Click"  />
+                    <Button x:Name="btn_deleteShoppingList" Content="-"  FontSize="30" Foreground="White" Background="Red" MinWidth="100" MinHeight="50" Margin="24" Click="btn_deleteShoppingList_Click"  />
+                    <Button x:Name="btn_saveShoppingList" Content="Save" FontSize="30" Foreground="White" Background="Green" MinWidth="100" MinHeight="50" Margin="24" Click="btn_saveShoppingList_Click" />
+                </StackPanel>
+                
+                <StackPanel HorizontalAlignment="Right" VerticalAlignment="Stretch" Margin="0 50 50 0">
+                    <ListBox x:Name="listBox_addedList" HorizontalAlignment="Left" MinHeight="400" Width="400" VerticalAlignment="Center" Margin="0,0,0,0" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderThickness="0,0,0,2" BorderBrush="DarkSlateGray">
+                                    <Grid Width="380" Margin="0,0,0,5">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="3*"/>
+                                            <ColumnDefinition Width="7*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <TextBlock Grid.Column="0" Margin="5,0,0,0" Text="{Binding Path=title}" FontWeight="Bold"/>
+                                        <TextBlock Grid.Column="1" Margin="10,0,0,0" Text="{Binding Path=description}" FontStyle="Italic"/>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+               
 
 
             </Grid>

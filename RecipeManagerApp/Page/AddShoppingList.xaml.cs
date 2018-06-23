@@ -22,9 +22,16 @@ namespace RecipeManagerApp.Page
     /// </summary>
     public sealed partial class AddShoppingList// : Page
     {
+        PageController.AddShoppingList controller = new PageController.AddShoppingList();
+
         public AddShoppingList()
         {
             this.InitializeComponent();
+
+            //init listbox
+            listBox_recipeList.ItemsSource = controller.recipe;
+
+            listBox_addedList.ItemsSource = controller.addedRecipes;
         }
 
         private void recipesBtn_Click(object sender, RoutedEventArgs e)
@@ -39,9 +46,42 @@ namespace RecipeManagerApp.Page
 
         private void optionsBtn_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(Options));
+            Frame.Navigate(typeof(ExportPrint));
         }
 
-       
+        private void btn_saveShoppingList_Click(object sender, RoutedEventArgs e)
+        {
+            if (controller.Save())
+            {
+                Frame.Navigate(typeof(ShoppingList));
+            }
+            else
+            {
+                ShowInputError();
+            }
+        }
+
+        private void btn_addShoppingList_Click(object sender, RoutedEventArgs e)
+        {
+            controller.Add(listBox_recipeList.SelectedIndex);
+            
+        }
+
+        private void btn_deleteShoppingList_Click(object sender, RoutedEventArgs e)
+        {
+            controller.Delete(listBox_addedList.SelectedIndex);
+        }
+
+        private async void ShowInputError()
+        {
+            ContentDialog inputErrorDialog = new ContentDialog
+            {
+                Title = "Shopping list empty",
+                Content = "Please add at least one recipe to the shopping list!",
+                CloseButtonText = "Ok"
+            };
+
+            ContentDialogResult result = await inputErrorDialog.ShowAsync();
+        }
     }
 }
