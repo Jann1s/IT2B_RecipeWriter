@@ -12,12 +12,12 @@ namespace RecipeManagerApp.Helper
     class IngredientDAO
     {
 
-        public static async Task<bool> AddIngredient(int id, Recipe r)
+        public static bool AddIngredient(int id, Recipe r)
         {
            foreach (Ingredient i in r.ingredients)
             {
                 String query = @"INSERT INTO ingredients VALUES (NULL, '" + i.Name + "', " + i.Amount + " , '" + i.Unit.Name + "' , " + id + ");";
-                await DBConnector.initAsync();
+                DBConnector.initAsync();
                 MySqlCommand cmd = new MySqlCommand(query, DBConnector.conn);
                 cmd.ExecuteNonQuery();
                 DBConnector.conn.Close();
@@ -26,11 +26,11 @@ namespace RecipeManagerApp.Helper
 
         }
 
-        public static async Task<ObservableCollection<Ingredient>> GetAll(int recipeid)
+        public static ObservableCollection<Ingredient> GetAll(int recipeid)
         {
             ObservableCollection<Ingredient> r = new ObservableCollection<Ingredient>();
             String query = @"SELECT * FROM ingredients WHERE recipes_idrecipes = " + recipeid;
-            await DBConnector.initAsync();
+            DBConnector.initAsync();
             MySqlCommand cmd = new MySqlCommand(query, DBConnector.conn);
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())

@@ -78,7 +78,7 @@ namespace RecipeManagerApp.Page
 
         private void saveRecipeBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (controller.AddAsync(textBox_name.Text, textBox_description.Text).Result)
+            if (controller.AddDB(textBox_name.Text, textBox_description.Text))
             {
                 Frame.Navigate(typeof(RecipeList));
             }

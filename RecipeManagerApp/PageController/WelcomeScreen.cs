@@ -10,14 +10,14 @@ namespace RecipeManagerApp.PageController
     {
         private RecipeManager recipeManager = RecipeManager.instance;
 
-        public async Task LoginAsync(string name, string password)
+        public void LoginAsync(string name, string password)
         {
-            //await RecipeManager.LoginAsync(name, password);
+            recipeManager.LoginAsync(name, password);
         }
 
-        public async Task RegisterAsync(string name, string password)
+        public void RegisterAsync(string name, string password)
         {
-            await recipeManager.RegisterAsync(name, password);
+            recipeManager.RegisterAsync(name, password);
         }
     }
 }

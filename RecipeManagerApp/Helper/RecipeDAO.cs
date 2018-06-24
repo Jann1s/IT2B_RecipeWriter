@@ -12,25 +12,25 @@ namespace RecipeManagerApp.Helper
     public class RecipeDAO
     {
 
-        public static async Task<bool> AddRecipeAsync(Recipe r)
+        public static bool AddRecipeAsync(Recipe r)
         {
             String query = @"INSERT INTO recipes VALUES (NULL, '" + r.title + "', '" + r.description + "' , " + RecipeManager.instance.GetCurrentUser().id + ");";
-            await DBConnector.initAsync();
+            DBConnector.initAsync();
             MySqlCommand cmd = new MySqlCommand(query, DBConnector.conn);
             cmd.ExecuteNonQuery();
 
-            await IngredientDAO.AddIngredient((int)cmd.LastInsertedId , r);
+            IngredientDAO.AddIngredient((int)cmd.LastInsertedId , r);
 
             DBConnector.conn.Close();
             return true;
 
         }
 
-        public static async Task<ObservableCollection<Recipe>> GetAll(int userid)
+        public static ObservableCollection<Recipe> GetAll(int userid)
         {
             ObservableCollection<Recipe> r = new ObservableCollection<Recipe>();
-            String query = @"SELECT * FROM Recipes WHERE users_id = " + userid;
-            await DBConnector.initAsync();
+            String query = @"SELECT * FROM recipes WHERE users_id = " + userid;
+            DBConnector.initAsync();
             MySqlCommand cmd = new MySqlCommand(query, DBConnector.conn);
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
@@ -38,7 +38,7 @@ namespace RecipeManagerApp.Helper
                 r.Add(new Recipe(reader["description"] + "", reader["title"] + ""));
                 
                 r.ElementAt(r.Count-1).id = int.Parse(reader["idrecipes"]+"");
-                r.ElementAt(r.Count-1).ingredients = await IngredientDAO.GetAll((r.ElementAt(r.Count - 1).id));
+                r.ElementAt(r.Count-1).ingredients = IngredientDAO.GetAll((r.ElementAt(r.Count - 1).id));
                 
             }
 

@@ -19,20 +19,7 @@ namespace RecipeManagerApp.PageController
 
         public RecipeList()
         {
-            setRecipeList();
-           
-        }
-
-        public async void setRecipeList()
-        {
-            await new MessageDialog("USERID: " + RecipeManager.instance.GetCurrentUser().id.ToString()).ShowAsync();
-            recipe = await RecipeDAO.GetAll(RecipeManager.instance.GetCurrentUser().id);
-            await new MessageDialog("RECIPE: " + recipe.ElementAt(0).title).ShowAsync();
-            await new MessageDialog("RECIPE: " + recipe.ElementAt(0).description).ShowAsync();
-            await new MessageDialog("RECIPE: " + recipe.ElementAt(0).id).ShowAsync();
-            await new MessageDialog("RECIPE: " + recipe.ElementAt(0).title).ShowAsync();
-            await new MessageDialog("RECIPE: " + recipe.ElementAt(0).description).ShowAsync();
-            await new MessageDialog("RECIPE: " + recipe.ElementAt(0).ingredients.ElementAt(0)).ShowAsync();
+            recipe = RecipeDAO.GetAll(recipeManager.GetCurrentUser().id);
         }
         
         public void Delete(int index)

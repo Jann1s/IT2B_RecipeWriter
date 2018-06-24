@@ -10,10 +10,10 @@ namespace RecipeManagerApp.Helper
     class UserDAO
     {
 
-        public static async Task<bool> addUser(String username, String password)
+        public static bool addUser(String username, String password)
         {
             String query = @"INSERT INTO users VALUES (NULL, '" + username + "', '" + password + "');";
-            await DBConnector.initAsync();
+            DBConnector.initAsync();
             MySqlCommand cmd = new MySqlCommand(query, DBConnector.conn);
             cmd.ExecuteNonQuery();
             DBConnector.conn.Close();
@@ -21,11 +21,11 @@ namespace RecipeManagerApp.Helper
 
         }
 
-        public static async Task<User> getUser(String username, String password)
+        public static User getUser(String username, String password)
         {
             User user = null;
-            String query = @"SELECT * FROM Users WHERE username = '" + username + "' AND password = '" + password + "'";
-            await DBConnector.initAsync();
+            String query = @"SELECT * FROM users WHERE username = '" + username + "' AND password = '" + password + "'";
+            DBConnector.initAsync();
             MySqlCommand cmd = new MySqlCommand(query, DBConnector.conn);
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())

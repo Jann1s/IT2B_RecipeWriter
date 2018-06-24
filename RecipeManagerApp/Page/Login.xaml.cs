@@ -34,18 +34,17 @@ namespace RecipeManagerApp.Page
             Frame.Navigate(typeof(SignUp));
         }
 
-        private async void btn_login_ClickAsync(object sender, RoutedEventArgs e)
+        private void btn_login_ClickAsync(object sender, RoutedEventArgs e)
 
         {
             bool log;
             try
             {
-                log = await RecipeManager.instance.LoginAsync(logInUsername_txtBox.Text, loginPassword_txtBox.Text);
+                log = RecipeManager.instance.LoginAsync(logInUsername_txtBox.Text, loginPassword_txtBox.Text);
             } catch (MySqlException mse)
             {
-                await new MessageDialog(mse.ToString()).ShowAsync();
                 log = false;
-                await new MessageDialog("Invalid username or password.").ShowAsync();
+                //@TODO: await new MessageDialog("Invalid username or password.").ShowAsync();
             }
             if (log)
             {

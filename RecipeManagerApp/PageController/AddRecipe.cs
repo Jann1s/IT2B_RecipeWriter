@@ -26,19 +26,17 @@ namespace RecipeManagerApp.PageController
             ingredients = new ObservableCollection<Ingredient>();
         }
 
-        public async Task<bool> AddAsync(string name, string description)
+        public bool AddDB(string name, string description)
         {
             if (!String.IsNullOrEmpty(name) && !String.IsNullOrEmpty(description) && ingredients.Count > 0)
             {
                 tempRecipe.title = name;
                 tempRecipe.description = description;
                 tempRecipe.ingredients = ingredients;
-
-               
-
+                
                 recipeManager.GetCurrentUser().AddRecipe(tempRecipe);
 
-                await RecipeDAO.AddRecipeAsync(tempRecipe);
+                RecipeDAO.AddRecipeAsync(tempRecipe);
 
                 return true;
             }

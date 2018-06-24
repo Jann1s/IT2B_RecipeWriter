@@ -12,19 +12,20 @@ namespace RecipeManagerApp.Helper
     {
 
         public static MySqlConnection conn;
-        const String connStr = "server=localhost;user=admin;password=admin;database=mydb;persistsecurityinfo=True;SslMode=None;Convert Zero Datetime = True";
+        const String connStr = "server=localhost;user=root;password=;database=mydb;persistsecurityinfo=True;SslMode=None;Convert Zero Datetime = True";
 
-        public static async Task initAsync()
+        public static void initAsync()
         {
             conn = new MySqlConnection(connStr);
             try
             {
-
                 conn.Open();
-
             }
             catch (MySqlException mse)
             {
+                /*
+                 * Either implement a logging system or use the debugger.
+                 * 
                 if (mse.Number == 0)
                 {
                     await new MessageDialog(mse.ToString()).ShowAsync();
@@ -35,6 +36,7 @@ namespace RecipeManagerApp.Helper
                     await new MessageDialog("ERROR2").ShowAsync();
                 }
                 await new MessageDialog("ERROR3").ShowAsync();
+                */
             }
         }
     }

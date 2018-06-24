@@ -39,14 +39,14 @@ namespace RecipeManagerApp.Page
             bool reg = false;
             try
             {
-                reg = await RecipeManager.instance.RegisterAsync(firstName_txtbox.Text, password_txtBox.Text);
+                reg = RecipeManager.instance.RegisterAsync(firstName_txtbox.Text, password_txtBox.Text);
             } catch (MySqlException mse)
             {
-                await new MessageDialog("Error registering").ShowAsync();
+                //@TODO: await new MessageDialog("Error registering").ShowAsync();
             }
             if (reg)
             {
-                await new MessageDialog("User registered").ShowAsync();
+                //@TODO: await new MessageDialog("User registered").ShowAsync();
                 Frame.Navigate(typeof(login));
             }
         }

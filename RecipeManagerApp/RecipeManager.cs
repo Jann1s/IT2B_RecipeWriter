@@ -43,9 +43,9 @@ namespace RecipeManagerApp
             pdf.Export();
         }
 
-        public async Task<bool> LoginAsync(String username, String password)
+        public bool LoginAsync(String username, String password)
         {
-            User u = await UserDAO.getUser(username, password);
+            User u = UserDAO.getUser(username, password);
             if (u == null)
             {
                 return false;
@@ -55,9 +55,9 @@ namespace RecipeManagerApp
 
         }
 
-        public async Task<bool> RegisterAsync(string name, string password)
+        public bool RegisterAsync(string name, string password)
         {
-            bool added = await UserDAO.addUser(name, password);
+            bool added = UserDAO.addUser(name, password);
             return added;
         }
 
