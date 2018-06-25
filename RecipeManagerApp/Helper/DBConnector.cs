@@ -12,7 +12,7 @@ namespace RecipeManagerApp.Helper
     {
 
         public static MySqlConnection conn;
-        const String connStr = "server=localhost;user=root;password=;database=mydb;persistsecurityinfo=True;SslMode=None;Convert Zero Datetime = True";
+        const String connStr = "server=37.120.171.52;port=8531;user=root;password=stenden11;database=mydb;persistsecurityinfo=True;SslMode=None;Convert Zero Datetime = True";
 
         public static void initAsync()
         {
