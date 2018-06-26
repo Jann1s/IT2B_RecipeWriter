@@ -15,11 +15,11 @@ namespace RecipeManagerApp.PageController
     class RecipeList
     {
         private RecipeManager recipeManager = RecipeManager.instance;
-        public ObservableCollection<Recipe> recipe { get; set; }
+        public  ObservableCollection<Recipe> recipe { get; set; }
 
         public RecipeList()
         {
-            recipe = RecipeDAO.GetAll(recipeManager.GetCurrentUser().id);
+            recipe = RecipeManagerApp.Page.login.recp;
         }
         
         public void Delete(int index)

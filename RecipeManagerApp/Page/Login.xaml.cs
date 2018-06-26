@@ -1,6 +1,8 @@
 ﻿using MySql.Data.MySqlClient;
+using RecipeManagerApp.Helper;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -24,8 +26,11 @@ namespace RecipeManagerApp.Page
     /// </summary>
     public sealed partial class login //: Page
     {
+        PageController.RecipeList controller = new PageController.RecipeList();
+        public static ObservableCollection<Recipe> recp;
         public login()
         {
+
             this.InitializeComponent();
         }
 
@@ -48,6 +53,7 @@ namespace RecipeManagerApp.Page
             }
             if (log)
             {
+                recp = RecipeDAO.GetAll(RecipeManager.instance.GetCurrentUser().id);
                 Frame.Navigate(typeof(RecipeList));
             }
         }
