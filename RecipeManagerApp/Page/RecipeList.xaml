@@ -8,7 +8,131 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+
+    <SplitView x:Name="MySplitView" DisplayMode="CompactInline"  IsPaneOpen="False" 
+               CompactPaneLength="50" OpenPaneLength="200" >
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="Phone">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="header.Style" Value="{StaticResource TitleTextBlockStyle}" />
+                        <Setter Target="MySplitView.DisplayMode" Value="CompactOverlay"/>
+                        <Setter Target="MySplitView.IsPaneOpen" Value="False"/>
+                        <Setter Target="buttonsStack.Orientation" Value="Horizontal" />
+                        <Setter Target="buttonsStack.VerticalAlignment" Value="Bottom" />
+                        <Setter Target="buttonsStack.HorizontalAlignment" Value="Center" />
+                        <Setter Target="tablePanel.HorizontalAlignment" Value="Center"/>
+                        <Setter Target="tablePanel.VerticalAlignment" Value="Top"/>
+                        <Setter Target="tablePanel.Margin" Value="20 60 20 20"/>
+
+
+
+                    </VisualState.Setters>
+                </VisualState>
+
+                <VisualState x:Name="Desktop">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="720"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="header.Style" Value="{StaticResource HeaderTextBlockStyle}"/>
+                        <Setter Target="MySplitView.DisplayMode" Value="CompactInline"/>
+                        <Setter Target="MySplitView.IsPaneOpen" Value="True"/>
+                        <Setter Target="buttonsStack.Orientation" Value="Horizontal" />
+                        <Setter Target="tablePanel.HorizontalAlignment" Value="Center"/>
+                        <Setter Target="tablePanel.VerticalAlignment" Value="Top"/>
+                        <Setter Target="tablePanel.Margin" Value="20 100 20 20"/>
+
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <SplitView.Pane>
+            <StackPanel Background="SteelBlue">
+                <Button x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;"
+                    Width="50" Height="50" Background="Transparent" Click="HamburgerButton_Click"/>
+
+                <!--Recipe-->
+              
+
+                <!--Shopping List Button-->
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="shoppingListBtn" Foreground="White" FontFamily="Segoe MDL2 Assets" Content="&#xE785;"
+                    MinWidth="50" MinHeight="50" Background="Transparent" Click="shoppingListBtn_Click"/>
+                    <TextBlock Text="Shopping List" Foreground="White" FontSize="18" VerticalAlignment="Center" />
+                </StackPanel>
+
+                <!--Print/Export Button-->
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="optionsBtn" Foreground="White" FontFamily="Segoe MDL2 Assets" Content="&#xE785;"
+                    MinWidth="50" MinHeight="50" Background="Transparent" Click="optionsBtn_Click"/>
+                    <TextBlock Text="Print/Export" Foreground="White" FontSize="18" VerticalAlignment="Center" />
+                </StackPanel>
+
+            </StackPanel>
+        </SplitView.Pane>
+        <SplitView.Content>
+            <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                
+                <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Margin="24">
+                    <TextBlock x:Name="header" Text="RECIPES" Foreground="Black"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"
+                   Style="{StaticResource HeaderTextBlockStyle}"/>
+                </StackPanel>
+
+                <!--Recipes Table-->
+                <StackPanel x:Name="tablePanel"  VerticalAlignment="Stretch" Margin="20 100 20 20" HorizontalAlignment="Center">
+                    <ListBox x:Name="listBox_recipes" MinHeight="400" Margin="0" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderThickness="0,0,0,2" BorderBrush="DarkSlateGray">
+                                    <Grid Margin="0,0,0,5">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="3*"/>
+                                            <ColumnDefinition Width="7*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <TextBlock Grid.Column="0" Margin="5,0,0,0" Text="{Binding Path=title}" FontWeight="Bold"/>
+                                        <TextBlock Grid.Column="1" Margin="10,0,0,0" Text="{Binding Path=description}" FontStyle="Italic"/>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+
+                <StackPanel x:Name="buttonsStack" VerticalAlignment="Bottom" Margin="0 0 0 20" HorizontalAlignment="Center" Orientation="Horizontal">
+                    <Button x:Name="addRecipeBtn" Content="Add" Foreground="White" Background="SteelBlue" MinWidth="100" Margin="10,0,10,0" MinHeight="50" Click="addRecipeBtn_Click" />
+                    <Button x:Name="btn_deleteRecipe" Content="Delete" Foreground="White" Background="Red" MinWidth="100" Margin="10,0,10,0" MinHeight="50" Click="btn_deleteRecipe_Click" />
+                    <Button x:Name="btn_export" Content="Export / Print" Foreground="White" Background="Green" MinWidth="100" Margin="10,0,10,0" MinHeight="50" Click="btn_export_Click" />
+                </StackPanel>
+
+
+
+
+
+
+
+            </Grid>
+
+        </SplitView.Content>
+
+
+    </SplitView>
+
+    <!--<Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="12*"/>
@@ -19,12 +143,12 @@
                     <AppBarButton x:Name="homeBtn" Icon="Home" HorizontalAlignment="Center" Foreground="Black" FontSize="50"/>
                 </CommandBar>
             </StackPanel>
-            <!--Add the top most Menu bar-->
+            --><!--Add the top most Menu bar--><!--
           
         </Grid>
 
-        <!--Second row of the GUI-->
-        <!--define some dimesions for the grid-->
+        --><!--Second row of the GUI-->
+        <!--define some dimesions for the grid--><!--
         <Grid  Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -35,7 +159,7 @@
                 <RowDefinition Height="4*"/>
             </Grid.RowDefinitions>
 
-            <!--Logo grid-->
+            --><!--Logo grid--><!--
             <Grid Grid.Row="0" Grid.Column="0" Background="LightGray" >
                 <StackPanel>
                     <Image MinWidth="300" Source="ms-appx:///../Assets/food.png"/>
@@ -44,7 +168,7 @@
 
             </Grid>
 
-            <!-- Welcome grid -->
+            --><!-- Welcome grid --><!--
 
 
             <Grid Grid.Row="0" Grid.Column="1" Background="LightGray" >
@@ -59,10 +183,10 @@
 
             </Grid>
 
-            <!--Vertical Buttons grid-->
+            --><!--Vertical Buttons grid--><!--
             <Grid Grid.Row="1" Grid.Column="0" Background="LightGray">
                 <StackPanel Orientation="Vertical" >
-                    <!--Recipes Button-->
+                    --><!--Recipes Button--><!--
                     <Button x:Name="recipesBtn" HorizontalAlignment="Stretch" Height="80" Margin="0 5 0 5" Background="SteelBlue">
                         <StackPanel Orientation="Horizontal">
                             <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEADF;" FontSize="25" Margin="0 0 10 0" Foreground="White"/>
@@ -77,7 +201,7 @@
 
                     </Button>
 
-                    <!--Shopping Button-->
+                    --><!--Shopping Button--><!--
                     <Button x:Name="shoppingListBtn" HorizontalAlignment="Stretch" Height="80" Margin="0 0 0 5" Background="SteelBlue" Click="shoppingListBtn_Click">
                         <StackPanel Orientation="Horizontal">
                             <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE7BF;" FontSize="25" Margin="0 0 10 0" Foreground="White"/>
@@ -92,7 +216,7 @@
 
                     </Button>
 
-                    <!--Options Button-->
+                    --><!--Options Button-->
                     <!--Button x:Name="optionsBtn" HorizontalAlignment="Stretch" Height="80" Margin="0 0 0 5" Background="SteelBlue" Click="optionsBtn_Click">
                         <StackPanel Orientation="Horizontal">
                             <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8F1;" FontSize="25" Margin="0 0 10 0" Foreground="White"/>
@@ -105,10 +229,10 @@
                                  />
                         </StackPanel>
 
-                    </Button-->
+                    </Button--><!--
                 </StackPanel>
 
-                <!--Centre big grid-->
+                --><!--Centre big grid--><!--
             </Grid>
             <Grid Grid.Row="1" Grid.Column="1" Background="LightGray" BorderBrush="SteelBlue" BorderThickness="1">
 
@@ -146,6 +270,6 @@
 
             </Grid>
         </Grid>
-    </Grid>
+    </Grid>-->
 
 </Page>

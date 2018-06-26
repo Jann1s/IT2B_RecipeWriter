@@ -27,25 +27,25 @@ namespace RecipeManagerApp.Page
             this.InitializeComponent();
         }
 
-        private void recipesBtn_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(RecipeList));
-        }
+        //private void recipesBtn_Click(object sender, RoutedEventArgs e)
+        //{
+        //    Frame.Navigate(typeof(RecipeList));
+        //}
 
-        private void shoppingListBtn_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(ShoppingList));
-        }
+        //private void shoppingListBtn_Click(object sender, RoutedEventArgs e)
+        //{
+        //    Frame.Navigate(typeof(ShoppingList));
+        //}
 
         private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(ExportPrint));
         }
 
-        private void homeBtn_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(WelcomeScreen));
-        }
+        //private void homeBtn_Click(object sender, RoutedEventArgs e)
+        //{
+        //    Frame.Navigate(typeof(WelcomeScreen));
+        //}
 
         private void loginBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -55,6 +55,12 @@ namespace RecipeManagerApp.Page
         private void signUpBtn_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(SignUp));
+        }
+
+        private void HamburgerButton_Click(object sender, RoutedEventArgs e)
+        {
+          
+            MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;
         }
     }
 }

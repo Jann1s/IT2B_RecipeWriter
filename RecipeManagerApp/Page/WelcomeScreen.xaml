@@ -7,19 +7,160 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-    <Grid>
+
+    <SplitView x:Name="MySplitView" DisplayMode="CompactInline"  IsPaneOpen="False" 
+               CompactPaneLength="50" OpenPaneLength="150">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="Phone">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="header.Style" Value="{StaticResource TitleTextBlockStyle}"/>
+                        <Setter Target="welcomeStackpanel.Margin" Value="0 100 0 0"/>
+                        <Setter Target="welcomeTxt.Style" Value="{StaticResource SubtitleTextBlockStyle}"/>
+                        <Setter Target="MySplitView.DisplayMode" Value="CompactOverlay"/>
+                        <Setter Target="MySplitView.IsPaneOpen" Value="False"/>
+                        <Setter Target="firstBlockWelcome.HorizontalAlignment" Value="Center"/>
+                        <Setter Target="firstBlockWelcome.VerticalAlignment" Value="Stretch"/>
+                        <Setter Target="firstBlockWelcome.Margin" Value="0 200 0 0"/>
+                        <Setter Target="secondBlockWelcome.HorizontalAlignment" Value="Center"/>
+                        <Setter Target="secondBlockWelcome.VerticalAlignment" Value="Stretch"/>
+                        <Setter Target="secondBlockWelcome.Margin" Value="0 300 0 0"/>
+                        
+                    </VisualState.Setters>
+                </VisualState>
+               
+                <VisualState x:Name="Desktop">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="720"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="header.Style" Value="{StaticResource HeaderTextBlockStyle}"/>
+                        <Setter Target="welcomeStackpanel.Margin" Value="0 100 0 0"/>
+                        <Setter Target="MySplitView.DisplayMode" Value="CompactInline"/>
+                        <Setter Target="MySplitView.IsPaneOpen" Value="True"/>
+                        <Setter Target="firstBlockWelcome.HorizontalAlignment" Value="Left"/>
+                        <Setter Target="secondBlockWelcome.HorizontalAlignment" Value="Right"/>
+                        <Setter Target="secondBlockWelcome.Margin" Value="0 300 200 0"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <SplitView.Pane>
+            <StackPanel Background="SteelBlue">
+                <Button x:Name="HamburgerButton" Foreground="White" FontFamily="Segoe MDL2 Assets" Content="&#xE700;"
+                    Width="50" Height="50" Background="Transparent" Click="HamburgerButton_Click"/>
+              
+
+                <!--Log in button-->
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="loginBtn" Foreground="White" FontFamily="Segoe MDL2 Assets" Content="&#xE785;"
+                    Width="50" Height="50" Background="Transparent" Click="loginBtn_Click"/>
+                    <TextBlock Text="Login" Foreground="White" FontSize="18" VerticalAlignment="Center" />
+                </StackPanel>
+                
+                <!--Sign up button-->
+                <StackPanel Orientation="Horizontal">
+
+                    <Button x:Name="signUpBtn" Foreground="White" FontFamily="Segoe MDL2 Assets" Content="&#xE910;"
+                        Width="50" Height="50" Background="Transparent"  Click="signUpBtn_Click"/>
+                    <TextBlock Text="Register" Foreground="White" FontSize="18" VerticalAlignment="Center" />
+                   
+                </StackPanel>
+               
+            </StackPanel>
+        </SplitView.Pane>
+        <SplitView.Content>
+            <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+                <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Margin="24">
+                    <TextBlock x:Name="header" Text="WELCOME" Foreground="Black"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"
+                   Style="{StaticResource HeaderTextBlockStyle}"/>
+                </StackPanel>
+
+                <StackPanel x:Name="welcomeStackpanel" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 100 0 0">
+                    <TextBlock x:Name="welcomeTxt" Text="Welcome to Recipe writer!"
+                               Foreground="Black" 
+                              Style="{StaticResource SubheaderTextBlockStyle}"
+                               TextAlignment="Center"
+                               FontFamily="Segoe UI" 
+                         
+                                 />
+
+                    <TextBlock  Text="This app provides 2 functions:"
+                               Foreground="Black" 
+                               Style="{StaticResource TitleTextBlockStyle}"
+                               TextAlignment="Center"
+                               FontFamily="Segoe UI" 
+                               
+                                 />
+
+
+                </StackPanel>
+
+                <StackPanel x:Name="firstBlockWelcome" HorizontalAlignment="Left" Margin="200 300 0 0" VerticalAlignment="Stretch">
+                    <TextBlock x:Name="firstBlockHeaderWelcome"  Text="Recipe writer!"
+                               Foreground="Black" 
+                               Style="{StaticResource TitleTextBlockStyle}"
+                               TextAlignment="Center"
+                               FontFamily="Segoe UI" 
+                               MaxWidth="290"
+                               
+                                 />
+                    <TextBlock x:Name="firstBlockBodyWelcome"  TextWrapping="Wrap" 
+                                Text="write down your recipes and this app will let you store and access them at any given time"
+                               Foreground="Black" 
+                               Style="{StaticResource BodyTextBlockStyle}"
+                               TextAlignment="Center"
+                               FontFamily="Segoe UI" 
+                               MaxWidth="290"
+                                 />
+
+                </StackPanel>
+
+                <StackPanel x:Name="secondBlockWelcome" HorizontalAlignment="Right" Margin="0 300 200 0" VerticalAlignment="Stretch">
+                    <TextBlock  Text="Shopping List!"
+                               Foreground="Black" 
+                               Style="{StaticResource TitleTextBlockStyle}"
+                               TextAlignment="Center"
+                               FontFamily="Segoe UI" 
+                               MaxWidth="290"
+                               
+                                 />
+                    <TextBlock   TextWrapping="Wrap" 
+                                Text="Keep track of your fridge items and ingredients you need to buy for your recipe"
+                               Foreground="Black" 
+                               Style="{StaticResource BodyTextBlockStyle}"
+                               TextAlignment="Center"
+                               FontFamily="Segoe UI" 
+                               MaxWidth="290"
+                                 />
+
+                </StackPanel>
+
+              
+            </Grid>
+            
+        </SplitView.Content>
+        
+        
+    </SplitView>
+
+    <!--<Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="12*"/>
         </Grid.RowDefinitions>
         <Grid Background="LightGray" Grid.Row="0">
 
-            <!--Add the top most Menu bar-->
+            --><!--Add the top most Menu bar--><!--
            
         </Grid>
 
-        <!--Second row of the GUI-->
-        <!--define some dimesions for the grid-->
+        --><!--Second row of the GUI-->
+        <!--define some dimesions for the grid--><!--
         <Grid  Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -30,7 +171,7 @@
                 <RowDefinition Height="4*"/>
             </Grid.RowDefinitions>
 
-            <!--Logo grid-->
+            --><!--Logo grid--><!--
             <Grid Grid.Row="0" Grid.Column="0" Background="LightGray" >
                 <StackPanel>
                     <Image MinWidth="300" Source="ms-appx:///../Assets/food.png"/>
@@ -40,7 +181,7 @@
 
             </Grid>
 
-            <!-- Welcome grid -->
+            --><!-- Welcome grid --><!--
 
 
             <Grid Grid.Row="0" Grid.Column="1" Background="LightGray" >
@@ -55,10 +196,10 @@
 
             </Grid>
 
-            <!--Vertical Buttons grid-->
+            --><!--Vertical Buttons grid--><!--
             <Grid Grid.Row="1" Grid.Column="0" Background="LightGray">
                 <StackPanel Orientation="Vertical" >
-                    <!--LogIn Button-->
+                    --><!--LogIn Button--><!--
                     <Button x:Name="loginBtn" HorizontalAlignment="Stretch" Height="80" Margin="0 5 0 5" Background="SteelBlue" Click="loginBtn_Click" >
                         <StackPanel Orientation="Horizontal">
                             <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE785;" FontSize="25" Margin="0 0 10 0" Foreground="White"/>
@@ -73,7 +214,7 @@
 
                     </Button>
 
-                    <!--SignUp Button-->
+                    --><!--SignUp Button--><!--
                     <Button x:Name="signUpBtn" HorizontalAlignment="Stretch" Height="80" Margin="0 0 0 5" Background="SteelBlue" Click="signUpBtn_Click">
                         <StackPanel Orientation="Horizontal">
                             <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xF0E3;" FontSize="25" Margin="0 0 10 0" Foreground="White"/>
@@ -91,7 +232,7 @@
                     
                 </StackPanel>
 
-                <!--Centre big grid-->
+                --><!--Centre big grid--><!--
             </Grid>
             <Grid Grid.Row="1" Grid.Column="1" Background="LightGray" BorderBrush="SteelBlue" BorderThickness="1">
                 <StackPanel HorizontalAlignment="Center" Margin="0 20 0 0">
@@ -158,6 +299,6 @@
 
             </Grid>
         </Grid>
-    </Grid>
+    </Grid>-->
 
 </Page>

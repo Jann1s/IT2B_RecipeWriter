@@ -29,9 +29,17 @@ namespace RecipeManagerApp.Page
             this.InitializeComponent();
         }
 
+        
+
         private void signUpBtn_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(SignUp));
+        }
+
+        private void HamburgerButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;
         }
 
         private void btn_login_ClickAsync(object sender, RoutedEventArgs e)
@@ -40,7 +48,7 @@ namespace RecipeManagerApp.Page
             bool log;
             try
             {
-                log = RecipeManager.instance.LoginAsync(logInUsername_txtBox.Text, loginPassword_txtBox.Text);
+                log = RecipeManager.instance.LoginAsync(logInUsername_txtBox.Text, loginPassword_txtBox.Password);
             } catch (MySqlException mse)
             {
                 log = false;

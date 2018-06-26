@@ -39,6 +39,13 @@ namespace RecipeManagerApp.Page
             listBox_Ingredients.ItemsSource = controller.ingredients;
         }
 
+        private void HamburgerButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;
+        }
+
+
         private void recipesBtn_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(RecipeList));
@@ -47,6 +54,11 @@ namespace RecipeManagerApp.Page
         private void shoppingListBtn_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(ShoppingList));
+        }
+
+        private void optionsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(ExportPrint));
         }
 
         private void cancelRecipeBtn_Click(object sender, RoutedEventArgs e)
@@ -93,10 +105,6 @@ namespace RecipeManagerApp.Page
             controller.DeleteIngredient(listBox_Ingredients.SelectedIndex);
         }
 
-        private void homeBtn_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(WelcomeScreen));
-        }
 
         private async void btn_addPhoto_Click(object sender, RoutedEventArgs e)
         {

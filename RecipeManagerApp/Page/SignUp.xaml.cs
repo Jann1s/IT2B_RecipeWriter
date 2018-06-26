@@ -34,12 +34,18 @@ namespace RecipeManagerApp.Page
             Frame.Navigate(typeof(login));
         }
 
+        private void HamburgerButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;
+        }
+
         private async void Button_ClickAsync(object sender, RoutedEventArgs e)
         {
             bool reg = false;
             try
             {
-                reg = RecipeManager.instance.RegisterAsync(firstName_txtbox.Text, password_txtBox.Text);
+                reg = RecipeManager.instance.RegisterAsync(firstName_txtbox.Text, password_txtBox.Password);
             } catch (MySqlException mse)
             {
                 //@TODO: await new MessageDialog("Error registering").ShowAsync();

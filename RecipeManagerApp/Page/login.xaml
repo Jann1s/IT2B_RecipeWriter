@@ -8,7 +8,98 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+
+    <SplitView x:Name="MySplitView" DisplayMode="CompactInline"  IsPaneOpen="False" 
+               CompactPaneLength="50" OpenPaneLength="150">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="Phone">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="header.Style" Value="{StaticResource TitleTextBlockStyle}"/>
+                        <Setter Target="welcomeStackpanel.Margin" Value="0 100 0 0"/>
+                        <Setter Target="welcomeTxt.Style" Value="{StaticResource SubtitleTextBlockStyle}"/>
+                        <Setter Target="MySplitView.DisplayMode" Value="CompactOverlay"/>
+                        <Setter Target="MySplitView.IsPaneOpen" Value="False"/>
+                        <Setter Target="loginPanel.HorizontalAlignment" Value="Center"/>
+                        <Setter Target="loginPanel.VerticalAlignment" Value="Stretch"/>
+                        <Setter Target="loginPanel.Margin" Value="0 100 0 0"/>
+                        <Setter Target="logInUsername_txtBox.MinWidth" Value="200"/>
+                        <Setter Target="loginPassword_txtBox.MinWidth" Value="200"/>
+
+                    </VisualState.Setters>
+                </VisualState>
+
+                <VisualState x:Name="Desktop">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="720"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="header.Style" Value="{StaticResource HeaderTextBlockStyle}"/>
+                        <Setter Target="welcomeStackpanel.Margin" Value="0 100 0 0"/>
+                        <Setter Target="MySplitView.DisplayMode" Value="CompactInline"/>
+                        <Setter Target="MySplitView.IsPaneOpen" Value="True"/>
+                        <Setter Target="loginPanel.HorizontalAlignment" Value="Center"/>
+                        <Setter Target="loginPanel.VerticalAlignment" Value="Stretch"/>
+                        <Setter Target="loginPanel.Margin" Value="0 100 0 0"/>
+                        <Setter Target="logInUsername_txtBox.MinWidth" Value="400"/>
+                        <Setter Target="loginPassword_txtBox.MinWidth" Value="400"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <SplitView.Pane>
+            <StackPanel Background="Gray">
+                <Button x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;"
+                    Width="50" Height="50" Background="Transparent" Click="HamburgerButton_Click"/>
+
+
+                <!--Sign up button-->
+                <StackPanel Orientation="Horizontal">
+
+                    <Button x:Name="signUpBtn" FontFamily="Segoe MDL2 Assets" Content="&#xE910;"
+                        MinWidth="50" MinHeight="50" Background="Transparent"  Click="signUpBtn_Click"/>
+                    <TextBlock Text="Register" FontSize="18" VerticalAlignment="Center" />
+
+                </StackPanel>
+
+            </StackPanel>
+        </SplitView.Pane>
+        <SplitView.Content>
+            <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+                <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Margin="24">
+                    <TextBlock x:Name="header" Text="LOG IN" Foreground="Black"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"
+                   Style="{StaticResource HeaderTextBlockStyle}"/>
+                </StackPanel>
+
+                <!--Log in Form-->
+                <StackPanel x:Name="loginPanel" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 100 0 0">
+
+                    <TextBox x:Name="logInUsername_txtBox" Header= "Username" Margin="0,24,0,0" MaxLength="32" MinWidth="400" HorizontalAlignment="Left" PlaceholderText="Enter your username" />
+                    <PasswordBox x:Name="loginPassword_txtBox"  Header="Password" Margin="0,24,0,0" MinWidth="400" PlaceholderText="Enter your password"/>
+                    
+
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="btn_login" Content="Login" Margin="0,24" Foreground="White" Background="Green" Click="btn_login_ClickAsync"/>
+                    </StackPanel>
+
+                </StackPanel>
+
+                
+
+              
+
+
+            </Grid>
+
+        </SplitView.Content>
+
+
+    </SplitView>
+    <!--<Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="12*"/>
@@ -19,12 +110,12 @@
                     <AppBarButton x:Name="homeBtn" Icon="Home" HorizontalAlignment="Center" Foreground="Black" FontSize="50"/>
                 </CommandBar>
             </StackPanel>
-            <!--Add the top most Menu bar-->
+            --><!--Add the top most Menu bar--><!--
 
         </Grid>
 
-        <!--Second row of the GUI-->
-        <!--define some dimesions for the grid-->
+        --><!--Second row of the GUI-->
+        <!--define some dimesions for the grid--><!--
         <Grid  Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -35,7 +126,7 @@
                 <RowDefinition Height="4*"/>
             </Grid.RowDefinitions>
 
-            <!--Logo grid-->
+            --><!--Logo grid--><!--
             <Grid Grid.Row="0" Grid.Column="0" Background="LightGray" >
                 <StackPanel>
                     <Image MinWidth="300" Source="ms-appx:///../Assets/food.png"/>
@@ -45,7 +136,7 @@
 
             </Grid>
 
-            <!-- Welcome grid -->
+            --><!-- Welcome grid --><!--
 
 
             <Grid Grid.Row="0" Grid.Column="1" Background="LightGray" >
@@ -60,12 +151,12 @@
 
             </Grid>
 
-            <!--Vertical Buttons grid-->
+            --><!--Vertical Buttons grid--><!--
             <Grid Grid.Row="1" Grid.Column="0" Background="LightGray">
                 <StackPanel Orientation="Vertical" Margin="0 100 0 0">
 
 
-                    <!--SignUp Button-->
+                    --><!--SignUp Button--><!--
                     <Button x:Name="signUpBtn" HorizontalAlignment="Stretch" Height="80" Margin="0 0 0 5" Background="SteelBlue" Click="signUpBtn_Click">
                         <StackPanel Orientation="Horizontal">
                             <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xF0E3;" FontSize="25" Margin="0 0 10 0" Foreground="White"/>
@@ -82,7 +173,7 @@
 
 
                 </StackPanel>
-                <!--Centre big grid-->
+                --><!--Centre big grid--><!--
             </Grid>
             <Grid Grid.Row="1" Grid.Column="1" Background="LightGray" BorderBrush="SteelBlue" BorderThickness="1">
                 <StackPanel HorizontalAlignment="Center">
@@ -98,5 +189,5 @@
 
             </Grid>
         </Grid>
-    </Grid>
+    </Grid>-->
 </Page>
