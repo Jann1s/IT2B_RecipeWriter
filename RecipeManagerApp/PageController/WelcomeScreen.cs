@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MySql.Data.MySqlClient;
 
 namespace RecipeManagerApp.PageController
 {
@@ -10,14 +11,14 @@ namespace RecipeManagerApp.PageController
     {
         private RecipeManager recipeManager = RecipeManager.instance;
 
-        public void LoginAsync(string name, string password)
+        public bool Login(string name, string password)
         {
-            recipeManager.LoginAsync(name, password);
+            return recipeManager.Login(name, password);
         }
 
-        public void RegisterAsync(string name, string password)
+        public bool Register(string name, string password)
         {
-            recipeManager.RegisterAsync(name, password);
+            return recipeManager.Register(name, password);
         }
     }
 }

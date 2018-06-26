@@ -1,6 +1,6 @@
-﻿using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -24,6 +24,8 @@ namespace RecipeManagerApp.Page
     /// </summary>
     public sealed partial class login //: Page
     {
+        PageController.WelcomeScreen controller = new PageController.WelcomeScreen();
+
         public login()
         {
             this.InitializeComponent();
@@ -43,18 +45,9 @@ namespace RecipeManagerApp.Page
         }
 
         private void btn_login_ClickAsync(object sender, RoutedEventArgs e)
-
         {
-            bool log;
-            try
-            {
-                log = RecipeManager.instance.LoginAsync(logInUsername_txtBox.Text, loginPassword_txtBox.Password);
-            } catch (MySqlException mse)
-            {
-                log = false;
-                //@TODO: await new MessageDialog("Invalid username or password.").ShowAsync();
-            }
-            if (log)
+            bool result = controller.Login(logInUsername_txtBox.Text, loginPassword_txtBox.Text);
+            if (result)
             {
                 Frame.Navigate(typeof(RecipeList));
             }

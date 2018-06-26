@@ -14,16 +14,16 @@ namespace RecipeManagerApp.Helper
 
         public static bool AddIngredient(int id, Recipe r)
         {
-           foreach (Ingredient i in r.ingredients)
-            {
-                String query = @"INSERT INTO ingredients VALUES (NULL, '" + i.Name + "', " + i.Amount + " , '" + i.Unit.Name + "' , " + id + ");";
-                DBConnector.initAsync();
-                MySqlCommand cmd = new MySqlCommand(query, DBConnector.conn);
-                cmd.ExecuteNonQuery();
-                DBConnector.conn.Close();
-            }
-            return true;
+            foreach (Ingredient i in r.ingredients)
+                {
+                    String query = @"INSERT INTO ingredients VALUES (NULL, '" + i.Name + "', " + i.Amount + " , '" + i.Unit.Name + "' , " + id + ");";
+                    DBConnector.initAsync();
+                    MySqlCommand cmd = new MySqlCommand(query, DBConnector.conn);
+                    cmd.ExecuteNonQuery();
+                    DBConnector.conn.Close();
+                }
 
+            return true;
         }
 
         public static ObservableCollection<Ingredient> GetAll(int recipeid)

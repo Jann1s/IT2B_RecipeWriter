@@ -33,6 +33,25 @@ namespace RecipeManagerApp.Helper
         {
             shoppingLists.RemoveAt(index);
         }
+        public void AddAll(List<Recipe> recipes, List<ShoppingList> shoppingLists)
+        {
+            if (recipes != null)
+            {
+                foreach (Recipe rec in recipes)
+                {
+                    AddRecipe(rec);
+                }
+            }
+
+            if (shoppingLists != null)
+            {
+                foreach (ShoppingList shop in shoppingLists)
+                {
+                    AddShoppingList(shop);
+                }
+            }
+            
+        }
 
         public void AddRecipe(Recipe recipe)
         {
@@ -46,7 +65,7 @@ namespace RecipeManagerApp.Helper
 
         public void AddFavRecipe()
         {
-
+            //@TODO: adding fav button and option
         }
     }
 }

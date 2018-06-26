@@ -26,9 +26,9 @@ namespace RecipeManagerApp.Helper
 
         }
 
-        public static ObservableCollection<Recipe> GetAll(int userid)
+        public static List<Recipe> GetAll(int userid)
         {
-            ObservableCollection<Recipe> r = new ObservableCollection<Recipe>();
+            List<Recipe> r = new List<Recipe>();
             String query = @"SELECT * FROM recipes WHERE users_id = " + userid;
             DBConnector.initAsync();
             MySqlCommand cmd = new MySqlCommand(query, DBConnector.conn);
