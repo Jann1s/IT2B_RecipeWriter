@@ -1,5 +1,4 @@
-﻿using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -40,7 +39,7 @@ namespace RecipeManagerApp.Page
             MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;
         }
 
-        private async void Button_ClickAsync(object sender, RoutedEventArgs e)
+        private void Button_ClickAsync(object sender, RoutedEventArgs e)
         {
             /*
             bool reg = false;

@@ -46,7 +46,7 @@ namespace RecipeManagerApp.Page
 
         private void btn_login_ClickAsync(object sender, RoutedEventArgs e)
         {
-            bool result = controller.Login(logInUsername_txtBox.Text, loginPassword_txtBox.Text);
+            bool result = controller.Login(logInUsername_txtBox.Text, loginPassword_txtBox.Password);
             if (result)
             {
                 Frame.Navigate(typeof(RecipeList));
