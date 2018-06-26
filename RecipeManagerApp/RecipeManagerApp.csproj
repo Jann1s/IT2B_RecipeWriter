@@ -103,6 +103,7 @@
     <Compile Include="Helper\Recipe.cs" />
     <Compile Include="Helper\RecipeDAO.cs" />
     <Compile Include="Helper\ShoppingList.cs" />
+    <Compile Include="Helper\ShoppingListDAO.cs" />
     <Compile Include="Helper\Units.cs" />
     <Compile Include="Helper\User.cs" />
     <Compile Include="Helper\UserDAO.cs" />
