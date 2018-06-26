@@ -52,9 +52,10 @@ namespace RecipeManagerApp.Page
             controller.Delete(listBox_recipes.SelectedIndex);
         }
 
-        private void homeBtn_Click(object sender, RoutedEventArgs e)
+        private void HamburgerButton_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(WelcomeScreen));
+
+            MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;
         }
 
         private void btn_export_Click(object sender, RoutedEventArgs e)

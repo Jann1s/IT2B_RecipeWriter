@@ -31,9 +31,17 @@ namespace RecipeManagerApp.Page
             this.InitializeComponent();
         }
 
+        
+
         private void signUpBtn_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(SignUp));
+        }
+
+        private void HamburgerButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;
         }
 
         private void btn_login_ClickAsync(object sender, RoutedEventArgs e)
@@ -43,7 +51,6 @@ namespace RecipeManagerApp.Page
             {
                 Frame.Navigate(typeof(RecipeList));
             }
-            
         }
     }
 }

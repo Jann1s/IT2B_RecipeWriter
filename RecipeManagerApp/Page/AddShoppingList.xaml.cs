@@ -34,6 +34,12 @@ namespace RecipeManagerApp.Page
             listBox_addedList.ItemsSource = controller.addedRecipes;
         }
 
+        private void HamburgerButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;
+        }
+
         private void recipesBtn_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(RecipeList));
