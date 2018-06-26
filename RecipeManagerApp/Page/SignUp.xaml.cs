@@ -36,6 +36,7 @@ namespace RecipeManagerApp.Page
 
         private async void Button_ClickAsync(object sender, RoutedEventArgs e)
         {
+            /*
             bool reg = false;
             try
             {
@@ -49,6 +50,7 @@ namespace RecipeManagerApp.Page
                 //@TODO: await new MessageDialog("User registered").ShowAsync();
                 Frame.Navigate(typeof(login));
             }
+            */
         }
     }
 }

@@ -13,22 +13,26 @@ namespace RecipeManagerApp.Helper
 
         public static bool AddShoppinglistAsync(ShoppingList sl)
         {
-
             String query = @"INSERT INTO shoppinglist VALUES (NULL, NOW(), ";//TODO: add ids of all ingredients or recipes contained from DB
             DBConnector.initAsync();
             MySqlCommand cmd = new MySqlCommand(query, DBConnector.conn);
             cmd.ExecuteNonQuery();
 
-            IngredientDAO.AddIngredient((int)cmd.LastInsertedId, r);
+            foreach(Recipe r in sl.recipes)
+            {
+                IngredientDAO.AddIngredient((int)cmd.LastInsertedId, r);
+            }
 
             DBConnector.conn.Close();
             return true;
 
         }
 
-        public static ObservableCollection<ShoppingList> GetAll(int userid)
+        public static List<ShoppingList> GetAll(int userid)
         {
-            ObservableCollection<ShoppingList> sl = new ObservableCollection<ShoppingList>();
+            /*
+             * @TODO:!!!
+            List<ShoppingList> sl = new List<ShoppingList>();
             String query = @"SELECT * FROM shoppinglist WHERE users_id = " + userid;
             DBConnector.initAsync();
             MySqlCommand cmd = new MySqlCommand(query, DBConnector.conn);
@@ -40,6 +44,8 @@ namespace RecipeManagerApp.Helper
             }
 
             return sl;
+            */
+            return null;
         }
 
     }

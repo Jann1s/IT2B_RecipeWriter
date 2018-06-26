@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MySql.Data.MySqlClient;
 using RecipeManagerApp.Helper;
 
 namespace RecipeManagerApp
@@ -43,19 +44,41 @@ namespace RecipeManagerApp
             pdf.Export();
         }
 
-        public bool LoginAsync(String username, String password)
+        public bool Login(String username, String password)
         {
-            User u = UserDAO.getUser(username, password);
-            if (u == null)
+            bool log;
+
+            try
+            {
+                User u = UserDAO.getUser(username, password);
+
+                if (u == null)
+                {
+                    log = false;
+                }
+
+                currentUser = u;
+
+                log = true;
+            }
+            catch (MySqlException mse)
+            {
+                log = false;
+                //@TODO: await new MessageDialog("Invalid username or password.").ShowAsync();
+            }
+
+            if (log)
+            {
+                currentUser.AddAll(RecipeDAO.GetAll(currentUser.id), ShoppingListDAO.GetAll(currentUser.id));
+                return true;
+            }
+            else
             {
                 return false;
             }
-            currentUser = u;
-            return true;
-
         }
 
-        public bool RegisterAsync(string name, string password)
+        public bool Register(string name, string password)
         {
             bool added = UserDAO.addUser(name, password);
             return added;

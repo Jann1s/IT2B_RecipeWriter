@@ -1,6 +1,4 @@
-﻿using MySql.Data.MySqlClient;
-using RecipeManagerApp.Helper;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -26,11 +24,10 @@ namespace RecipeManagerApp.Page
     /// </summary>
     public sealed partial class login //: Page
     {
-        PageController.RecipeList controller = new PageController.RecipeList();
-        public static ObservableCollection<Recipe> recp;
+        PageController.WelcomeScreen controller = new PageController.WelcomeScreen();
+
         public login()
         {
-
             this.InitializeComponent();
         }
 
@@ -40,22 +37,13 @@ namespace RecipeManagerApp.Page
         }
 
         private void btn_login_ClickAsync(object sender, RoutedEventArgs e)
-
         {
-            bool log;
-            try
+            bool result = controller.Login(logInUsername_txtBox.Text, loginPassword_txtBox.Text);
+            if (result)
             {
-                log = RecipeManager.instance.LoginAsync(logInUsername_txtBox.Text, loginPassword_txtBox.Text);
-            } catch (MySqlException mse)
-            {
-                log = false;
-                //@TODO: await new MessageDialog("Invalid username or password.").ShowAsync();
-            }
-            if (log)
-            {
-                recp = RecipeDAO.GetAll(RecipeManager.instance.GetCurrentUser().id);
                 Frame.Navigate(typeof(RecipeList));
             }
+            
         }
     }
 }

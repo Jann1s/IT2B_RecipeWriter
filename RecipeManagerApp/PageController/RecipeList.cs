@@ -19,7 +19,7 @@ namespace RecipeManagerApp.PageController
 
         public RecipeList()
         {
-            recipe = RecipeManagerApp.Page.login.recp;
+            recipe = new ObservableCollection<Helper.Recipe>(recipeManager.GetCurrentUser().recipes);
         }
         
         public void Delete(int index)
