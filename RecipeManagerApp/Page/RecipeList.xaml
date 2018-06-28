@@ -85,7 +85,7 @@
 
                 <!--Recipes Table-->
                 <StackPanel x:Name="tablePanel"  VerticalAlignment="Stretch" Margin="20 100 20 20" HorizontalAlignment="Center">
-                    <ListBox x:Name="listBox_recipes" MinHeight="400" Margin="0" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                    <ListBox x:Name="listBox_recipes" MinHeight="400" Margin="0" ScrollViewer.VerticalScrollBarVisibility="Visible" DoubleTapped="listBox_recipes_DoubleTapped">
                         <ListBox.ItemContainerStyle>
                             <Style TargetType="ListBoxItem">
                                 <Setter Property="HorizontalAlignment" Value="Stretch"/>

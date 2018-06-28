@@ -12,10 +12,17 @@ namespace RecipeManagerApp.Helper
     public class RecipeDAO
     {
 
-        public static int AddRecipeAsync(Recipe r)
+        public static int AddRecipeAsync(Recipe r, int index = -1)
         {
+            int useIndex = RecipeManager.instance.lastRecipeID;
+
+            if (index > -1)
+            {
+                useIndex = index;
+            }
+
             int usedId = -1;
-            String query = @"INSERT INTO recipes VALUES (" + RecipeManager.instance.lastRecipeID + ", '" + MySqlHelper.EscapeString(r.title) + "', '" + MySqlHelper.EscapeString(r.description) + "' , " + RecipeManager.instance.GetCurrentUser().id + ");";
+            String query = @"INSERT INTO recipes VALUES (" + useIndex + ", '" + MySqlHelper.EscapeString(r.title) + "', '" + MySqlHelper.EscapeString(r.description) + "' , " + RecipeManager.instance.GetCurrentUser().id + ");";
             DBConnector.initAsync();
             MySqlCommand cmd = new MySqlCommand(query, DBConnector.conn);
             cmd.ExecuteNonQuery();

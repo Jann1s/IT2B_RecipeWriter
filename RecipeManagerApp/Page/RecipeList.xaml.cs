@@ -34,7 +34,8 @@ namespace RecipeManagerApp.Page
 
         private void addRecipeBtn_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(AddRecipe));
+            String[] parameter = new String[] { "Add", "-1" };
+            Frame.Navigate(typeof(AddRecipe), parameter);
         }
 
         private void optionsBtn_Click(object sender, RoutedEventArgs e)
@@ -62,6 +63,12 @@ namespace RecipeManagerApp.Page
         {
             String[] parameter = new String[] { "Recipe", listBox_recipes.SelectedIndex.ToString() };
             Frame.Navigate(typeof(ExportPrint), parameter);
+        }
+
+        private void listBox_recipes_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+        {
+            String[] parameter = new String[] { "Edit", listBox_recipes.SelectedIndex.ToString() };
+            Frame.Navigate(typeof(AddRecipe), parameter);
         }
     }
 }

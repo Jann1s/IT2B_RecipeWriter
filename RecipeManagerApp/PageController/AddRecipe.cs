@@ -18,7 +18,9 @@ namespace RecipeManagerApp.PageController
         private RecipeManager recipeManager = RecipeManager.instance;
         private Recipe tempRecipe = new Recipe("placeholder", "placeholder");
         public List<Units> units { get; }
-        public ObservableCollection<Ingredient> ingredients { get; }
+        public ObservableCollection<Ingredient> ingredients { get; set; }
+        public bool edit { get; set; }
+        private int index = -1;
         
         public AddRecipe()
         {
@@ -34,16 +36,28 @@ namespace RecipeManagerApp.PageController
                 tempRecipe.description = description;
                 tempRecipe.ingredients = ingredients;
 
-                int result = RecipeDAO.AddRecipeAsync(tempRecipe);
-
-                if (result >= 0)
+                if (edit)
                 {
-                    tempRecipe.id = result;
+                    RecipeDAO.DeleteRecipe(recipeManager.GetCurrentUser().recipes[index]);
+                    tempRecipe.id = recipeManager.GetCurrentUser().recipes[index].id;
+                    recipeManager.GetCurrentUser().recipes.RemoveAt(index);
+                    recipeManager.GetCurrentUser().recipes.Insert(index, tempRecipe);
+
+                    RecipeDAO.AddRecipeAsync(tempRecipe, tempRecipe.id);
                 }
+                else
+                {
+                    int result = RecipeDAO.AddRecipeAsync(tempRecipe);
 
-                //Add it to running instance
-                recipeManager.GetCurrentUser().AddRecipe(tempRecipe);
+                    if (result >= 0)
+                    {
+                        tempRecipe.id = result;
+                    }
 
+                    //Add it to running instance
+                    recipeManager.GetCurrentUser().AddRecipe(tempRecipe);
+                }
+                
                 return true;
             }
             else
@@ -51,8 +65,6 @@ namespace RecipeManagerApp.PageController
                 return false;
             } 
         }
-
-        
         
         public bool AddIngredient(string name, string sAmount, int index)
         {
@@ -82,6 +94,12 @@ namespace RecipeManagerApp.PageController
             {
                 ingredients.RemoveAt(index);
             }
+        }
+
+        public void SetIngredients(int index)
+        {
+            this.index = index;
+            ingredients = recipeManager.GetCurrentUser().recipes[index].ingredients;
         }
 
         /*
