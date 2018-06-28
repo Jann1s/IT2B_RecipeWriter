@@ -34,8 +34,9 @@ namespace RecipeManagerApp.PageController
                 tempRecipe.description = description;
                 tempRecipe.ingredients = ingredients;
                 
+                //Add it to running instance
                 recipeManager.GetCurrentUser().AddRecipe(tempRecipe);
-
+                //Add it to the database
                 RecipeDAO.AddRecipeAsync(tempRecipe);
 
                 return true;

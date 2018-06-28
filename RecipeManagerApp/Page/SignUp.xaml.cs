@@ -23,6 +23,8 @@ namespace RecipeManagerApp.Page
     /// </summary>
     public sealed partial class SignUp //: Page
     {
+        PageController.WelcomeScreen controller = new PageController.WelcomeScreen();
+
         public SignUp()
         {
             this.InitializeComponent();
@@ -35,27 +37,52 @@ namespace RecipeManagerApp.Page
 
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
         {
-
             MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;
         }
 
         private void Button_ClickAsync(object sender, RoutedEventArgs e)
         {
-            /*
-            bool reg = false;
-            try
+            if (!String.IsNullOrEmpty(firstName_txtbox.Text) && !String.IsNullOrEmpty(lastName_txtbox.Text) && !String.IsNullOrEmpty(password_txtBox.Password))
             {
-                reg = RecipeManager.instance.RegisterAsync(firstName_txtbox.Text, password_txtBox.Password);
-            } catch (MySqlException mse)
-            {
-                //@TODO: await new MessageDialog("Error registering").ShowAsync();
+                bool result = controller.Register(firstName_txtbox.Text, lastName_txtbox.Text, password_txtBox.Password);
+                if (result)
+                {
+                    ShowSuccessMessage();
+                }
             }
-            if (reg)
+            else
             {
-                //@TODO: await new MessageDialog("User registered").ShowAsync();
+                ShowInputError();
+            }
+        }
+
+        private async void ShowInputError()
+        {
+            ContentDialog inputErrorDialog = new ContentDialog
+            {
+                Title = "Error",
+                Content = "Please fill in all boxes!",
+                CloseButtonText = "Try again"
+            };
+
+            ContentDialogResult result = await inputErrorDialog.ShowAsync();
+        }
+
+        private async void ShowSuccessMessage()
+        {
+            ContentDialog inputErrorDialog = new ContentDialog
+            {
+                Title = "Success",
+                Content = "Your account is now registered. Please login.",
+                CloseButtonText = "Login now."
+            };
+
+            ContentDialogResult result = await inputErrorDialog.ShowAsync();
+
+            if (result == ContentDialogResult.None)
+            {
                 Frame.Navigate(typeof(login));
             }
-            */
         }
     }
 }

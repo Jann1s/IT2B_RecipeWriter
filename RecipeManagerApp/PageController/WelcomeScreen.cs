@@ -16,9 +16,9 @@ namespace RecipeManagerApp.PageController
             return recipeManager.Login(name, password);
         }
 
-        public bool Register(string name, string password)
+        public bool Register(string name, string lastname, string password)
         {
-            return recipeManager.Register(name, password);
+            return recipeManager.Register(name, lastname, password);
         }
     }
 }

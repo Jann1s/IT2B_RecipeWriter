@@ -13,39 +13,49 @@ namespace RecipeManagerApp.Helper
 
         public static bool AddShoppinglistAsync(ShoppingList sl)
         {
-            String query = @"INSERT INTO shoppinglist VALUES (NULL, NOW(), ";//TODO: add ids of all ingredients or recipes contained from DB
+            foreach (Recipe r in sl.recipes)
+            {
+                string query = @"INSERT INTO shoppinglist VALUES ('NULL', 'NOW()', '" + r.id + "'";
+                DBConnector.initAsync();
+                MySqlCommand cmd = new MySqlCommand(query, DBConnector.conn);
+                cmd.ExecuteNonQuery();
+            }
+
+            /*
+            String query = @"INSERT INTO shoppinglist VALUES ('NULL', 'NOW()', ''";
             DBConnector.initAsync();
             MySqlCommand cmd = new MySqlCommand(query, DBConnector.conn);
             cmd.ExecuteNonQuery();
+            
 
             foreach(Recipe r in sl.recipes)
             {
                 IngredientDAO.AddIngredient((int)cmd.LastInsertedId, r);
             }
+            */
 
             DBConnector.conn.Close();
             return true;
 
         }
 
-        public static List<ShoppingList> GetAll(int userid)
+        public static List<ShoppingList> GetAll(int shoppingid)
         {
-            /*
-             * @TODO:!!!
+            //have to use userid to get recipes and get recipe id 
             List<ShoppingList> sl = new List<ShoppingList>();
-            String query = @"SELECT * FROM shoppinglist WHERE users_id = " + userid;
+            String query = @"SELECT * FROM shoppinglist WHERE idshoppinglist = " + shoppingid;
             DBConnector.initAsync();
             MySqlCommand cmd = new MySqlCommand(query, DBConnector.conn);
             MySqlDataReader reader = cmd.ExecuteReader();
+
+            sl.Add(new ShoppingList(((int)reader["idshoppinglist"])))
+
             while (reader.Read())
             {
-                sl.Add(new ShoppingList(1));
-
+                sl.Add(new ShoppingList(((int)reader["idshoppinglist"])));
             }
 
             return sl;
-            */
-            return null;
         }
 
     }

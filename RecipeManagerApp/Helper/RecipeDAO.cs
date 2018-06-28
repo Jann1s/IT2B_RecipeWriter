@@ -23,7 +23,6 @@ namespace RecipeManagerApp.Helper
 
             DBConnector.conn.Close();
             return true;
-
         }
 
         public static List<Recipe> GetAll(int userid)

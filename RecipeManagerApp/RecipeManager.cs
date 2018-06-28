@@ -46,41 +46,31 @@ namespace RecipeManagerApp
 
         public bool Login(String username, String password)
         {
-            bool log;
-
             try
             {
                 User u = UserDAO.getUser(username, password);
 
-                if (u == null)
+                if (u != null)
                 {
-                    log = false;
+                    currentUser = u;
+                    currentUser.AddAll(RecipeDAO.GetAll(currentUser.id), ShoppingListDAO.GetAll(currentUser.id));
+                    return true;
                 }
-
-                currentUser = u;
-
-                log = true;
+                else
+                {
+                    return false;
+                }
             }
             catch (MySqlException mse)
             {
-                log = false;
-                //@TODO: await new MessageDialog("Invalid username or password.").ShowAsync();
-            }
-
-            if (log)
-            {
-                currentUser.AddAll(RecipeDAO.GetAll(currentUser.id), ShoppingListDAO.GetAll(currentUser.id));
-                return true;
-            }
-            else
-            {
                 return false;
+                //@TODO: adding logging!
             }
         }
 
-        public bool Register(string name, string password)
+        public bool Register(string name, string lastname, string password)
         {
-            bool added = UserDAO.addUser(name, password);
+            bool added = UserDAO.addUser(name, lastname, password);
             return added;
         }
 

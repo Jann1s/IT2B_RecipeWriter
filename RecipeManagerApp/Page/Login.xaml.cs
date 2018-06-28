@@ -51,6 +51,24 @@ namespace RecipeManagerApp.Page
             {
                 Frame.Navigate(typeof(RecipeList));
             }
+            else
+            {
+                logInUsername_txtBox.Text = "";
+                loginPassword_txtBox.Password = "";
+                ShowLoginError();
+            }
+        }
+
+        private async void ShowLoginError()
+        {
+            ContentDialog inputErrorDialog = new ContentDialog
+            {
+                Title = "Error",
+                Content = "username and/or password wrong!",
+                CloseButtonText = "Try again"
+            };
+
+            ContentDialogResult result = await inputErrorDialog.ShowAsync();
         }
     }
 }

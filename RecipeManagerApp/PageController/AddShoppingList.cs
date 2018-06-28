@@ -37,6 +37,7 @@ namespace RecipeManagerApp.PageController
             if (tempShoppingList.recipes.Count > 0)
             {
                 recipeManager.GetCurrentUser().AddShoppingList(tempShoppingList);
+                Helper.ShoppingListDAO.AddShoppinglistAsync(tempShoppingList);
                 return true;
             }
             else
