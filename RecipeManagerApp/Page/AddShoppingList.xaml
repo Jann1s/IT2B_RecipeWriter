@@ -18,7 +18,7 @@
                         <AdaptiveTrigger MinWindowWidth="0"/>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="header.Style" Value="{StaticResource TitleTextBlockStyle}" />
+                        <Setter Target="header.Style" Value="{StaticResource SubtitleTextBlockStyle}" />
                         <Setter Target="MySplitView.DisplayMode" Value="CompactOverlay"/>
                         <Setter Target="MySplitView.IsPaneOpen" Value="False"/>
                         <Setter Target="buttonsStack.Orientation" Value="Horizontal" />
@@ -27,7 +27,17 @@
                         <Setter Target="tablePanel.HorizontalAlignment" Value="Center"/>
                         <Setter Target="tablePanel.VerticalAlignment" Value="Top"/>
                         <Setter Target="tablePanel.Margin" Value="20 60 20 20"/>
-                       
+                        <Setter Target="rightList.HorizontalAlignment" Value="Left"/>
+                        <Setter Target="leftList.HorizontalAlignment" Value="Left"/>
+                        <Setter Target="listBox_recipeList.Width" Value="200"/>
+                        <Setter Target="listBox_recipeList.MinHeight" Value="100"/>
+                        <Setter Target="listBox_addedList.Width" Value="200"/>
+                        <Setter Target="listBox_addedList.MinHeight" Value="100"/>
+                        <Setter Target="rightList.Margin" Value="10 500 0 0"/>
+                        <Setter Target="buttonsPanel.Orientation" Value="Horizontal"/>
+                        <Setter Target="buttonsPanel.HorizontalAlignment" Value="Left"/>
+                        <Setter Target="buttonsPanel.VerticalAlignment" Value="Center"/>
+                        <Setter Target="buttonsPanel.Margin" Value="10 50 0 0"/>
 
 
 
@@ -46,6 +56,10 @@
                         <Setter Target="tablePanel.HorizontalAlignment" Value="Center"/>
                         <Setter Target="tablePanel.VerticalAlignment" Value="Top"/>
                         <Setter Target="tablePanel.Margin" Value="20 100 20 20"/>
+                        <Setter Target="leftList.HorizontalAlignment" Value="Left"/>
+                        <Setter Target="rightList.HorizontalAlignment" Value="Right"/>
+                        <Setter Target="listBox_recipeList.Width" Value="400"/>
+                        <Setter Target="listBox_addedList.Width" Value="400"/>
 
                     </VisualState.Setters>
                 </VisualState>
@@ -64,7 +78,7 @@
                 </StackPanel>
 
                 <!--Shopping List Button-->
-                <StackPanel Orientation="Horizontal">
+                <StackPanel  Orientation="Horizontal">
                     <Button x:Name="shoppingListBtn" Foreground="White" FontFamily="Segoe MDL2 Assets" Content="&#xE785;"
                     MinWidth="50" MinHeight="50" Background="Transparent" Click="shoppingListBtn_Click"/>
                     <TextBlock Text="Shopping List" Foreground="White" FontSize="18" VerticalAlignment="Center" />
@@ -79,8 +93,12 @@
 
             </StackPanel>
         </SplitView.Pane>
+       
+            
+     
         <SplitView.Content>
-            <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <ScrollViewer>
+                <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
@@ -93,7 +111,7 @@
 
                 <!--Shopping List Table-->
                 
-                <StackPanel HorizontalAlignment="left" VerticalAlignment="Stretch" Margin="50,50,0,0">
+                <StackPanel x:Name="leftList" HorizontalAlignment="left" VerticalAlignment="Stretch" Margin="10,200,0,0">
 
                     <ListBox x:Name="listBox_recipeList" HorizontalAlignment="Left" MinHeight="400" Width="400" VerticalAlignment="Center" Margin="0,0,0,0" ScrollViewer.VerticalScrollBarVisibility="Visible">
                         <ListBox.ItemContainerStyle>
@@ -120,15 +138,15 @@
                     </ListBox>
                 </StackPanel>
 
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="100">
+                    <StackPanel x:Name="buttonsPanel" Orientation="Vertical" HorizontalAlignment="Center" Margin="0 200">
 
 
-                    <Button x:Name="btn_addShoppingList" Content="+" FontSize="30" Foreground="White" Background="SteelBlue" MinWidth="100" MinHeight="50" Margin="24" Click="btn_addShoppingList_Click"  />
-                    <Button x:Name="btn_deleteShoppingList" Content="-"  FontSize="30" Foreground="White" Background="Red" MinWidth="100" MinHeight="50" Margin="24" Click="btn_deleteShoppingList_Click"  />
-                    <Button x:Name="btn_saveShoppingList" Content="Save" FontSize="30" Foreground="White" Background="Green" MinWidth="100" MinHeight="50" Margin="24" Click="btn_saveShoppingList_Click" />
+                    <Button x:Name="btn_addShoppingList" Content="+" FontSize="30" Foreground="White" Background="SteelBlue" MinWidth="50" MinHeight="50" Margin="24" Click="btn_addShoppingList_Click"  />
+                    <Button x:Name="btn_deleteShoppingList" Content="-"  FontSize="30" Foreground="White" Background="Red" MinWidth="50" MinHeight="50" Margin="24" Click="btn_deleteShoppingList_Click"  />
+                    <Button x:Name="btn_saveShoppingList" Content="Save" FontSize="30" Foreground="White" Background="Green" MinWidth="50" MinHeight="50" Margin="24" Click="btn_saveShoppingList_Click" />
                 </StackPanel>
 
-                <StackPanel HorizontalAlignment="Right" VerticalAlignment="Stretch" Margin="0 50 50 0" >
+                <StackPanel x:Name="rightList"  HorizontalAlignment="Right" VerticalAlignment="Stretch" Margin="0 200 0 10" >
                     <ListBox x:Name="listBox_addedList" HorizontalAlignment="Left" MinHeight="400" Width="400" VerticalAlignment="Center" Margin="0,0,0,0" ScrollViewer.VerticalScrollBarVisibility="Visible">
                         <ListBox.ItemContainerStyle>
                             <Style TargetType="ListBoxItem">
@@ -159,9 +177,9 @@
 
 
             </Grid>
-
+            </ScrollViewer>
         </SplitView.Content>
-
+        
 
     </SplitView>
 

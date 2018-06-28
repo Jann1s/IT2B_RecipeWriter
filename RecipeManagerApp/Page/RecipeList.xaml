@@ -28,8 +28,6 @@
                         <Setter Target="tablePanel.VerticalAlignment" Value="Top"/>
                         <Setter Target="tablePanel.Margin" Value="20 60 20 20"/>
 
-
-
                     </VisualState.Setters>
                 </VisualState>
 

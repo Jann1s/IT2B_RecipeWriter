@@ -51,15 +51,15 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
         <SplitView.Pane>
-            <StackPanel Background="Gray">
-                <Button x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;"
+            <StackPanel Background="SteelBlue">
+                <Button x:Name="HamburgerButton" Foreground="White" FontFamily="Segoe MDL2 Assets" Content="&#xE700;"
                     Width="50" Height="50" Background="Transparent" Click="HamburgerButton_Click"/>
 
 
                 <!--Sign up button-->
                 <StackPanel Orientation="Horizontal">
 
-                    <Button x:Name="signUpBtn" FontFamily="Segoe MDL2 Assets" Content="&#xE910;"
+                    <Button x:Name="signUpBtn" Foreground="White" FontFamily="Segoe MDL2 Assets" Content="&#xE910;"
                         MinWidth="50" MinHeight="50" Background="Transparent"  Click="signUpBtn_Click"/>
                     <TextBlock Text="Register" FontSize="18" VerticalAlignment="Center" />
 

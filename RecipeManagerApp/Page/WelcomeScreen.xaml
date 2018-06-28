@@ -31,7 +31,8 @@
                         
                     </VisualState.Setters>
                 </VisualState>
-               
+
+
                 <VisualState x:Name="Desktop">
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="720"/>
@@ -42,10 +43,15 @@
                         <Setter Target="MySplitView.DisplayMode" Value="CompactInline"/>
                         <Setter Target="MySplitView.IsPaneOpen" Value="True"/>
                         <Setter Target="firstBlockWelcome.HorizontalAlignment" Value="Left"/>
+                        <Setter Target="firstBlockWelcome.VerticalAlignment" Value="Stretch"/>
                         <Setter Target="secondBlockWelcome.HorizontalAlignment" Value="Right"/>
+                        <Setter Target="secondBlockWelcome.VerticalAlignment" Value="Stretch"/>
                         <Setter Target="secondBlockWelcome.Margin" Value="0 300 200 0"/>
                     </VisualState.Setters>
                 </VisualState>
+
+    
+
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
         <SplitView.Pane>
