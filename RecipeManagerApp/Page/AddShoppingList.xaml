@@ -67,28 +67,28 @@
         </VisualStateManager.VisualStateGroups>
         <SplitView.Pane>
             <StackPanel Background="SteelBlue">
-                <Button x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;"
+                <Button x:Name="HamburgerButton" Foreground="White" FontFamily="Segoe MDL2 Assets" Content="&#xE700;"
                     Width="50" Height="50" Background="Transparent" Click="HamburgerButton_Click"/>
 
                 <!--Recipe-->
                 <StackPanel Orientation="Horizontal">
-                    <Button x:Name="recipesBtn" Foreground="White" FontFamily="Segoe MDL2 Assets" Content="&#xE785;"
+                    <Button x:Name="recipesBtn" Foreground="White" FontFamily="Segoe MDL2 Assets" Content="&#xE7C3;"
                     MinWidth="50" MinHeight="50" Background="SteelBlue" Click="recipesBtn_Click" />
-                    <TextBlock Text="&#xE785;" Foreground="White" FontSize="18" VerticalAlignment="Center" FontFamily="Segoe MDL2 Assets"  />
+                    <TextBlock Text="Recipes" Foreground="White" FontSize="18" VerticalAlignment="Center" FontFamily="Segoe"  />
                 </StackPanel>
 
                 <!--Shopping List Button-->
                 <StackPanel  Orientation="Horizontal">
-                    <Button x:Name="shoppingListBtn" Foreground="White" FontFamily="Segoe MDL2 Assets" Content="&#xE785;"
+                    <Button x:Name="shoppingListBtn" Foreground="White" FontFamily="Segoe MDL2 Assets" Content="&#xE7BF;"
                     MinWidth="50" MinHeight="50" Background="Transparent" Click="shoppingListBtn_Click"/>
-                    <TextBlock Text="Shopping List" Foreground="White" FontSize="18" VerticalAlignment="Center" />
+                    <TextBlock Text="Shopping List" Foreground="White" FontSize="18" VerticalAlignment="Center" FontFamily="Segoe"  />
                 </StackPanel>
 
                 <!--Print/Export Button-->
                 <StackPanel Orientation="Horizontal">
-                    <Button x:Name="optionsBtn" Foreground="White" FontFamily="Segoe MDL2 Assets" Content="&#xE785;"
+                    <Button x:Name="optionsBtn" Foreground="White" FontFamily="Segoe MDL2 Assets" Content="&#xE749;"
                     MinWidth="50" MinHeight="50" Background="Transparent" Click="optionsBtn_Click"/>
-                    <TextBlock Text="Print/Export" Foreground="White" FontSize="18" VerticalAlignment="Center" />
+                    <TextBlock Text="Print/Export" Foreground="White" FontSize="18" VerticalAlignment="Center" FontFamily="Segoe"  />
                 </StackPanel>
 
             </StackPanel>
@@ -113,7 +113,7 @@
                 
                 <StackPanel x:Name="leftList" HorizontalAlignment="left" VerticalAlignment="Stretch" Margin="10,200,0,0">
 
-                    <ListBox x:Name="listBox_recipeList" HorizontalAlignment="Left" MinHeight="400" Width="400" VerticalAlignment="Center" Margin="0,0,0,0" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                    <ListBox x:Name="listBox_recipeList" HorizontalAlignment="Left" MinHeight="400" Width="400" VerticalAlignment="Center"  ScrollViewer.VerticalScrollBarVisibility="Visible">
                         <ListBox.ItemContainerStyle>
                             <Style TargetType="ListBoxItem">
                                 <Setter Property="HorizontalAlignment" Value="Stretch"/>
@@ -146,8 +146,8 @@
                     <Button x:Name="btn_saveShoppingList" Content="Save" FontSize="30" Foreground="White" Background="Green" MinWidth="50" MinHeight="50" Margin="24" Click="btn_saveShoppingList_Click" />
                 </StackPanel>
 
-                <StackPanel x:Name="rightList"  HorizontalAlignment="Right" VerticalAlignment="Stretch" Margin="0 200 0 10" >
-                    <ListBox x:Name="listBox_addedList" HorizontalAlignment="Left" MinHeight="400" Width="400" VerticalAlignment="Center" Margin="0,0,0,0" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                <StackPanel x:Name="rightList"  HorizontalAlignment="Right" VerticalAlignment="Stretch" Margin="0 200 20 0" >
+                    <ListBox x:Name="listBox_addedList" HorizontalAlignment="Left" MinHeight="400" Width="400" VerticalAlignment="Center"  ScrollViewer.VerticalScrollBarVisibility="Visible">
                         <ListBox.ItemContainerStyle>
                             <Style TargetType="ListBoxItem">
                                 <Setter Property="HorizontalAlignment" Value="Stretch"/>
@@ -183,177 +183,5 @@
 
     </SplitView>
 
-
-    <!--<Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="12*"/>
-        </Grid.RowDefinitions>
-        <Grid Background="LightGray" Grid.Row="0">
-            <StackPanel HorizontalAlignment="Left">
-                <CommandBar DefaultLabelPosition="Right" Background="LightGray">
-                    <AppBarButton x:Name="homeBtn" Icon="Home" HorizontalAlignment="Center" Foreground="Black" FontSize="50"/>
-                </CommandBar>
-            </StackPanel>
-            --><!--Add the top most Menu bar--><!--
-            
-        </Grid>
-
-        --><!--Second row of the GUI-->
-        <!--define some dimesions for the grid--><!--
-        <Grid  Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="4*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="4*"/>
-            </Grid.RowDefinitions>
-
-            --><!--Logo grid--><!--
-            <Grid Grid.Row="0" Grid.Column="0" Background="LightGray" >
-                <StackPanel>
-                    <Image MinWidth="300" Source="ms-appx:///../Assets/food.png"/>
-
-
-                </StackPanel>
-
-            </Grid>
-
-            --><!-- Welcome grid --><!--
-
-
-            <Grid Grid.Row="0" Grid.Column="1" Background="LightGray" >
-                <TextBlock Text="Add Shopping list" 
-               Style="{StaticResource HeaderTextBlockStyle}"
-               IsTextSelectionEnabled="True" 
-               Foreground="SteelBlue" 
-               FontSize="80"
-               TextAlignment="Center"
-               FontFamily="Segoe UI" 
-               FontStyle="Normal"/>
-
-            </Grid>
-
-            --><!--Vertical Buttons grid--><!--
-            <Grid Grid.Row="1" Grid.Column="0" Background="LightGray">
-                <StackPanel Orientation="Vertical" >
-                    --><!--Recipes Button--><!--
-                    <Button x:Name="recipesBtn" HorizontalAlignment="Stretch" Height="80" Margin="0 5 0 5" Background="SteelBlue" Click="recipesBtn_Click">
-                        <StackPanel Orientation="Horizontal">
-                            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEADF;" FontSize="25" Margin="0 0 10 0" Foreground="White"/>
-                            <TextBlock  Text="Recipes"
-                               Foreground="White" 
-                               FontSize="20"
-                               TextAlignment="Right"
-                               FontFamily="Segoe UI" 
-                               FontStyle="Normal"
-                                 />
-                        </StackPanel>
-
-                    </Button>
-
-                    --><!--Shopping Button--><!--
-                    <Button x:Name="shoppingListBtn" HorizontalAlignment="Stretch" Height="80" Margin="0 0 0 5" Background="SteelBlue" Click="shoppingListBtn_Click">
-                        <StackPanel Orientation="Horizontal">
-                            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE7BF;" FontSize="25" Margin="0 0 10 0" Foreground="White"/>
-                            <TextBlock  Text="Shopping List"
-                               Foreground="white" 
-                               FontSize="20"
-                               TextAlignment="Right"
-                               FontFamily="Segoe UI" 
-                               FontStyle="Normal"
-                                 />
-                        </StackPanel>
-
-                    </Button>
-
-                    --><!--Options Button-->
-                    <!--Button x:Name="optionsBtn" HorizontalAlignment="Stretch" Height="80" Margin="0 0 0 5" Background="SteelBlue" Click="optionsBtn_Click">
-                        <StackPanel Orientation="Horizontal">
-                            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8F1;" FontSize="25" Margin="0 0 10 0" Foreground="White"/>
-                            <TextBlock  Text="Export / Print"
-                               Foreground="White" 
-                               FontSize="20"
-                               TextAlignment="Right"
-                               FontFamily="Segoe UI" 
-                               FontStyle="Normal"
-                                 />
-                        </StackPanel>
-
-                    </Button--><!--
-                </StackPanel>
-
-                --><!--Centre big grid--><!--
-            </Grid>
-            <Grid Grid.Row="1" Grid.Column="1" Background="LightGray" BorderBrush="SteelBlue" BorderThickness="1">
-
-                <StackPanel HorizontalAlignment="left" VerticalAlignment="Stretch" Margin="50,50,0,0">
-                    
-                    <ListBox x:Name="listBox_recipeList" HorizontalAlignment="Left" MinHeight="400" Width="400" VerticalAlignment="Center" Margin="0,0,0,0" ScrollViewer.VerticalScrollBarVisibility="Visible">
-                        <ListBox.ItemContainerStyle>
-                            <Style TargetType="ListBoxItem">
-                                <Setter Property="HorizontalAlignment" Value="Stretch"/>
-                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                            </Style>
-                        </ListBox.ItemContainerStyle>
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <Border BorderThickness="0,0,0,2" BorderBrush="DarkSlateGray">
-                                    <Grid Width="380" Margin="0,0,0,5">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="3*"/>
-                                            <ColumnDefinition Width="7*"/>
-                                        </Grid.ColumnDefinitions>
-
-                                        <TextBlock Grid.Column="0" Margin="5,0,0,0" Text="{Binding Path=title}" FontWeight="Bold"/>
-                                        <TextBlock Grid.Column="1" Margin="10,0,0,0" Text="{Binding Path=description}" FontStyle="Italic"/>
-                                    </Grid>
-                                </Border>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
-                </StackPanel>
-
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="100">
-
-                    
-                    <Button x:Name="btn_addShoppingList" Content="+" FontSize="30" Foreground="White" Background="SteelBlue" MinWidth="100" MinHeight="50" Margin="24" Click="btn_addShoppingList_Click"  />
-                    <Button x:Name="btn_deleteShoppingList" Content="-"  FontSize="30" Foreground="White" Background="Red" MinWidth="100" MinHeight="50" Margin="24" Click="btn_deleteShoppingList_Click"  />
-                    <Button x:Name="btn_saveShoppingList" Content="Save" FontSize="30" Foreground="White" Background="Green" MinWidth="100" MinHeight="50" Margin="24" Click="btn_saveShoppingList_Click" />
-                </StackPanel>
-                
-                <StackPanel HorizontalAlignment="Right" VerticalAlignment="Stretch" Margin="0 50 50 0">
-                    <ListBox x:Name="listBox_addedList" HorizontalAlignment="Left" MinHeight="400" Width="400" VerticalAlignment="Center" Margin="0,0,0,0" ScrollViewer.VerticalScrollBarVisibility="Visible">
-                        <ListBox.ItemContainerStyle>
-                            <Style TargetType="ListBoxItem">
-                                <Setter Property="HorizontalAlignment" Value="Stretch"/>
-                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                            </Style>
-                        </ListBox.ItemContainerStyle>
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <Border BorderThickness="0,0,0,2" BorderBrush="DarkSlateGray">
-                                    <Grid Width="380" Margin="0,0,0,5">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="3*"/>
-                                            <ColumnDefinition Width="7*"/>
-                                        </Grid.ColumnDefinitions>
-
-                                        <TextBlock Grid.Column="0" Margin="5,0,0,0" Text="{Binding Path=title}" FontWeight="Bold"/>
-                                        <TextBlock Grid.Column="1" Margin="10,0,0,0" Text="{Binding Path=description}" FontStyle="Italic"/>
-                                    </Grid>
-                                </Border>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
-                </StackPanel>
-               
-
-
-            </Grid>
-        </Grid>
-    </Grid>-->
 
 </Page>

@@ -7,115 +7,85 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <SplitView x:Name="MySplitView" DisplayMode="CompactInline"  IsPaneOpen="False" 
+               CompactPaneLength="50" OpenPaneLength="200" >
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="Phone">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="header.Style" Value="{StaticResource TitleTextBlockStyle}" />
+                        <Setter Target="MySplitView.DisplayMode" Value="CompactOverlay"/>
+                        <Setter Target="MySplitView.IsPaneOpen" Value="False"/>
+                        <Setter Target="buttonsStack.Orientation" Value="Horizontal" />
+                        <Setter Target="buttonsStack.VerticalAlignment" Value="Bottom" />
+                        <Setter Target="buttonsStack.HorizontalAlignment" Value="Center" />
+                        <Setter Target="tablePanel.HorizontalAlignment" Value="Center"/>
+                        <Setter Target="tablePanel.VerticalAlignment" Value="Top"/>
+                        <Setter Target="tablePanel.Margin" Value="20 60 20 20"/>
+                        <Setter Target="buttonsPanel.Margin" Value="0 20 0 0"/>
 
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="12*"/>
-        </Grid.RowDefinitions>
-        <Grid Background="LightGray" Grid.Row="0">
-            <StackPanel HorizontalAlignment="Left">
-                <CommandBar DefaultLabelPosition="Right" Background="LightGray">
-                    <AppBarButton x:Name="homeBtn" Icon="Home" HorizontalAlignment="Center" Foreground="Black" FontSize="50"/>
-                </CommandBar>
+
+                    </VisualState.Setters>
+                </VisualState>
+
+                <VisualState x:Name="Desktop">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="720"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="header.Style" Value="{StaticResource HeaderTextBlockStyle}"/>
+                        <Setter Target="MySplitView.DisplayMode" Value="CompactInline"/>
+                        <Setter Target="MySplitView.IsPaneOpen" Value="True"/>
+                        <Setter Target="buttonsStack.Orientation" Value="Horizontal" />
+                        <Setter Target="tablePanel.HorizontalAlignment" Value="Center"/>
+                        <Setter Target="tablePanel.VerticalAlignment" Value="Top"/>
+                        <Setter Target="tablePanel.Margin" Value="20 100 20 20"/>
+                        <Setter Target="buttonsPanel.Margin" Value="0 0 50 0"/>
+
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <SplitView.Pane>
+            <StackPanel Background="SteelBlue">
+                <Button x:Name="HamburgerButton" Foreground="White" FontFamily="Segoe MDL2 Assets" Content="&#xE700;"
+                    Width="50" Height="50" Background="Transparent" Click="HamburgerButton_Click"/>
+
+                <!--Recipe-->
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="recipesBtn" Foreground="White" FontFamily="Segoe MDL2 Assets" Content="&#xE7C3;"
+                    MinWidth="50" MinHeight="50" Background="SteelBlue" Click="recipesBtn_Click" />
+                    <TextBlock Text="Recipes" Foreground="White" FontSize="18" VerticalAlignment="Center" FontFamily="Segoe"  />
+                </StackPanel>
+
+                <!--Shopping List Button-->
+                <StackPanel  Orientation="Horizontal">
+                    <Button x:Name="shoppingListBtn" Foreground="White" FontFamily="Segoe MDL2 Assets" Content="&#xE7BF;"
+                    MinWidth="50" MinHeight="50" Background="Transparent" Click="shoppingListBtn_Click"/>
+                    <TextBlock Text="Shopping List" Foreground="White" FontSize="18" VerticalAlignment="Center" FontFamily="Segoe"  />
+                </StackPanel>
+
             </StackPanel>
-            <!--Add the top most Menu bar-->
-           
-        </Grid>
+        </SplitView.Pane>
+        <SplitView.Content>
+            <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
 
-        <!--Second row of the GUI-->
-        <!--define some dimesions for the grid-->
-        <Grid  Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="4*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="4*"/>
-            </Grid.RowDefinitions>
-
-            <!--Logo grid-->
-            <Grid Grid.Row="0" Grid.Column="0" Background="LightGray" >
-                <StackPanel>
-                    <Image MinWidth="300" Source="ms-appx:///../Assets/food.png"/>
-
-
+                <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Margin="24">
+                    <TextBlock x:Name="header" Text="EXPORT / PRINT" Foreground="Black"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"
+                   Style="{StaticResource HeaderTextBlockStyle}"/>
                 </StackPanel>
 
-            </Grid>
-
-            <!-- Welcome grid -->
-
-
-            <Grid Grid.Row="0" Grid.Column="1" Background="LightGray" >
-                <TextBlock Text="Export / Print" 
-               Style="{StaticResource HeaderTextBlockStyle}"
-               IsTextSelectionEnabled="True" 
-               Foreground="SteelBlue" 
-               FontSize="80"
-               TextAlignment="Center"
-               FontFamily="Segoe UI" 
-               FontStyle="Normal"/>
-
-            </Grid>
-
-            <!--Vertical Buttons grid-->
-            <Grid Grid.Row="1" Grid.Column="0" Background="LightGray">
-                <StackPanel Orientation="Vertical" >
-                    <!--Recipes Button-->
-                    <Button x:Name="recipesBtn" HorizontalAlignment="Stretch" Height="80" Margin="0 5 0 5" Background="SteelBlue" Click="recipesBtn_Click">
-                        <StackPanel Orientation="Horizontal">
-                            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEADF;" FontSize="25" Margin="0 0 10 0" Foreground="White"/>
-                            <TextBlock  Text="Recipes"
-                               Foreground="White" 
-                               FontSize="20"
-                               TextAlignment="Right"
-                               FontFamily="Segoe UI" 
-                               FontStyle="Normal"
-                                 />
-                        </StackPanel>
-
-                    </Button>
-
-                    <!--Shopping Button-->
-                    <Button x:Name="shoppingListBtn" HorizontalAlignment="Stretch" Height="80" Margin="0 0 0 5" Background="SteelBlue" Click="shoppingListBtn_Click">
-                        <StackPanel Orientation="Horizontal">
-                            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE7BF;" FontSize="25" Margin="0 0 10 0" Foreground="White"/>
-                            <TextBlock  Text="Shopping List"
-                               Foreground="white" 
-                               FontSize="20"
-                               TextAlignment="Right"
-                               FontFamily="Segoe UI" 
-                               FontStyle="Normal"
-                                 />
-                        </StackPanel>
-
-                    </Button>
-
-                    <!--Options Button-->
-                    <!--Button x:Name="optionsBtn" HorizontalAlignment="Stretch" Height="80" Background="SteelBlue" VerticalAlignment="Center" Margin="0,0,0,0">
-                        <StackPanel Orientation="Horizontal">
-                            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8F1;" FontSize="25" Margin="0 0 10 0" Foreground="White"/>
-                            <TextBlock  Text="Export / Print"
-                               Foreground="White" 
-                               FontSize="20"
-                               TextAlignment="Right"
-                               FontFamily="Segoe UI" 
-                               FontStyle="Normal"
-                                 />
-                        </StackPanel>
-
-                    </Button-->
-                </StackPanel>
-
-                <!--Centre big grid-->
-            </Grid>
-            <Grid Grid.Row="1" Grid.Column="1" Background="LightGray" BorderBrush="SteelBlue" BorderThickness="1">
-               
-                <StackPanel  VerticalAlignment="Stretch" Margin="20" HorizontalAlignment="Center">
-                    <ListBox x:Name="listBox_recipeList" MinHeight="400" Margin="0" ScrollViewer.VerticalScrollBarVisibility="Visible" Visibility="Collapsed">
+                <!--Table-->
+                <StackPanel  VerticalAlignment="Stretch" Margin="10 100 10 10" HorizontalAlignment="Center">
+                    <ListBox x:Name="listBox_recipeList" MinHeight="400" Margin="0" ScrollViewer.VerticalScrollBarVisibility="Visible">
                         <ListBox.ItemContainerStyle>
                             <Style TargetType="ListBoxItem">
                                 <Setter Property="HorizontalAlignment" Value="Stretch"/>
@@ -131,14 +101,13 @@
                                             <ColumnDefinition Width="7*"/>
                                         </Grid.ColumnDefinitions>
 
-                                        <TextBlock Grid.Column="0" Margin="5,0,0,0" Text="{Binding Path=title}" FontWeight="Bold"/>
-                                        <TextBlock Grid.Column="1" Margin="10,0,0,0" Text="{Binding Path=description}" FontStyle="Italic"/>
+                                        <TextBlock Grid.Column="0" Margin="5,0,0,0" Text="{Binding Path=id}" FontWeight="Bold"/>
+                                        <TextBlock Grid.Column="1" Margin="10,0,0,0" Text="{Binding Path=date}" FontStyle="Italic"/>
                                     </Grid>
                                 </Border>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-
                     <ListBox x:Name="listBox_ingredientList" MinHeight="400" Margin="0" ScrollViewer.VerticalScrollBarVisibility="Visible" Visibility="Collapsed">
                         <ListBox.ItemContainerStyle>
                             <Style TargetType="ListBoxItem">
@@ -164,13 +133,22 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                </StackPanel>
 
-                <StackPanel  VerticalAlignment="Bottom" Margin="0 0 0 20" HorizontalAlignment="Center" Orientation="Horizontal">
+                </StackPanel>
+                
+                
+
+                <StackPanel x:Name="buttonsPanel"  VerticalAlignment="Bottom" Margin="0 0 0 50" Padding="20" HorizontalAlignment="Center" Orientation="Horizontal">
                     <Button x:Name="btn_print" Content="Print" Foreground="White" Background="Green" MinWidth="100" Margin="24" MinHeight="50" />
                     <Button x:Name="btn_export" Content="Export" Foreground="White" Background="Green" MinWidth="100" MinHeight="50" />
                 </StackPanel>
+
+
             </Grid>
-        </Grid>
-    </Grid>
+
+        </SplitView.Content>
+
+
+    </SplitView>
+   
 </Page>

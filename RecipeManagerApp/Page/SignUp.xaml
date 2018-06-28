@@ -51,15 +51,15 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
         <SplitView.Pane>
-            <StackPanel Background="Gray">
-                <Button x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;"
+            <StackPanel Background="SteelBlue">
+                <Button x:Name="HamburgerButton" Foreground="White" FontFamily="Segoe MDL2 Assets" Content="&#xE700;"
                     Width="50" Height="50" Background="Transparent" Click="HamburgerButton_Click"/>
 
                 <!--Log in button-->
                 <StackPanel Orientation="Horizontal">
-                    <Button x:Name="loginBtn" FontFamily="Segoe MDL2 Assets" Content="&#xE785;"
-                    MinWidth="50" MinHeight="50" Background="Transparent" Click="loginBtn_Click"/>
-                    <TextBlock Text="Login" FontSize="18" VerticalAlignment="Center" />
+                    <Button x:Name="loginBtn" Foreground="White" FontFamily="Segoe MDL2 Assets" Content="&#xE785;"
+                    Width="50" Height="50" Background="Transparent" Click="loginBtn_Click"/>
+                    <TextBlock Text="Login" Foreground="White" FontSize="18" VerticalAlignment="Center" />
                 </StackPanel>
 
             </StackPanel>
@@ -75,8 +75,8 @@
                 <!--Log in Form-->
                 <StackPanel x:Name="loginPanel" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 100 0 0">
 
-                    <TextBox x:Name="firstName_txtbox" Header= "First Name" Margin="0,24,0,0" MaxLength="32" MinWidth="400" HorizontalAlignment="Left" InputScope="PersonalFullName"/>
-                    <TextBox x:Name="lastName_txtbox" Header= "Last Name" Margin="0,24,0,0" MaxLength="32" MinWidth="400" HorizontalAlignment="Left" InputScope="PersonalFullName"/>
+                    <TextBox x:Name="firstName_txtbox" Header= "First Name" Margin="0,24,0,0" MaxLength="32" MinWidth="400" HorizontalAlignment="Left" PlaceholderText="e.g John" InputScope="PersonalFullName"/>
+                    <TextBox x:Name="lastName_txtbox" Header= "Last Name" Margin="0,24,0,0" MaxLength="32" MinWidth="400" HorizontalAlignment="Left" PlaceholderText="e.g Doe" InputScope="PersonalFullName"/>
        
                     <PasswordBox x:Name="password_txtBox"  Header="Password" Margin="0,24,0,0" MinWidth="400" PlaceholderText="Enter your password"/>
                     <StackPanel Orientation="Horizontal">
@@ -96,94 +96,5 @@
 
 
     </SplitView>
-    <!--<Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="12*"/>
-        </Grid.RowDefinitions>
-        <Grid Background="LightGray" Grid.Row="0">
-            <StackPanel HorizontalAlignment="Left">
-                <CommandBar DefaultLabelPosition="Right" Background="LightGray">
-                    <AppBarButton x:Name="homeBtn" Icon="Home" HorizontalAlignment="Center" Foreground="Black" FontSize="50"/>
-                </CommandBar>
-            </StackPanel>
-            --><!--Add the top most Menu bar--><!--
-
-        </Grid>
-
-        --><!--Second row of the GUI-->
-        <!--define some dimesions for the grid--><!--
-        <Grid  Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="4*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="4*"/>
-            </Grid.RowDefinitions>
-
-            --><!--Logo grid--><!--
-            <Grid Grid.Row="0" Grid.Column="0" Background="LightGray" >
-                <StackPanel>
-                    <Image MinWidth="300" Source="ms-appx:///../Assets/food.png"/>
-
-
-                </StackPanel>
-
-            </Grid>
-
-            --><!-- Welcome grid --><!--
-
-
-            <Grid Grid.Row="0" Grid.Column="1" Background="LightGray" >
-                <TextBlock Text="Sign Up" 
-               Style="{StaticResource HeaderTextBlockStyle}"
-               IsTextSelectionEnabled="True" 
-               Foreground="SteelBlue" 
-               FontSize="80"
-               TextAlignment="Center"
-               FontFamily="Segoe UI" 
-               FontStyle="Normal"/>
-
-            </Grid>
-
-            --><!--Vertical Buttons grid--><!--
-            <Grid Grid.Row="1" Grid.Column="0" Background="LightGray">
-                <StackPanel Orientation="Vertical" Margin="0 100 0 0" >
-                    --><!--LogIn Button--><!--
-                    <Button x:Name="loginBtn" HorizontalAlignment="Stretch" Height="80" Margin="0 5 0 5" Background="SteelBlue" Click="loginBtn_Click" >
-                        <StackPanel Orientation="Horizontal">
-                            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE785;" FontSize="25" Margin="0 0 10 0" Foreground="White"/>
-                            <TextBlock  Text="Login"
-                               Foreground="White" 
-                               FontSize="20"
-                               TextAlignment="Right"
-                               FontFamily="Segoe UI" 
-                               FontStyle="Normal"
-                                 />
-                        </StackPanel>
-
-                    </Button>
-
-                  
-                </StackPanel>
-                --><!--Centre big grid--><!--
-            </Grid>
-            <Grid Grid.Row="1" Grid.Column="1" Background="LightGray" BorderBrush="SteelBlue" BorderThickness="1">
-                <StackPanel HorizontalAlignment="Center">
-
-                    <TextBox x:Name="firstName_txtbox" Header= "First Name" Margin="0,24,0,0" MaxLength="32" MinWidth="400" HorizontalAlignment="Left" InputScope="PersonalFullName"/>
-                    <TextBox x:Name="lastName_txtbox" Header= "Last Name" Margin="0,24,0,0" MaxLength="32" MinWidth="400" HorizontalAlignment="Left" InputScope="PersonalFullName"/>
-
-                    <TextBox x:Name="password_txtBox" Margin="0,24,0,0" Header= "Password" MaxLength="50" MinWidth="400" HorizontalAlignment="Left" InputScope="Password" />
-
-                    <StackPanel Orientation="Horizontal">
-                        <Button Content="Sign Up" Margin="0,24" Foreground="White" Background="Green" Click="Button_ClickAsync"/>
-                    </StackPanel>
-                </StackPanel>
-
-            </Grid>
-        </Grid>
-    </Grid>-->
+    
 </Page>
