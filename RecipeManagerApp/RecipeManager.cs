@@ -11,6 +11,8 @@ namespace RecipeManagerApp
     public class RecipeManager
     {
         public static RecipeManager instance { get; set; }
+        public int lastShoppingID { get; set; }
+
         private User currentUser;
         private List<Units> units;
 
@@ -53,7 +55,10 @@ namespace RecipeManagerApp
                 if (u != null)
                 {
                     currentUser = u;
-                    currentUser.AddAll(RecipeDAO.GetAll(currentUser.id), ShoppingListDAO.GetAll(currentUser.id));
+
+                    currentUser.AddAllRecipes(RecipeDAO.GetAll(currentUser.id));
+                    currentUser.AddAllShoppingLists(ShoppingListDAO.GetAll(currentUser.id));
+
                     return true;
                 }
                 else

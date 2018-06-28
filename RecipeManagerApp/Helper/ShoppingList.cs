@@ -9,7 +9,7 @@ namespace RecipeManagerApp.Helper
     public class ShoppingList
     {
         public List<Recipe> recipes { get; }
-        public int id { get; }
+        public int id { get; set; }
         public DateTime date { get; set; }
 
         public ShoppingList(int id)

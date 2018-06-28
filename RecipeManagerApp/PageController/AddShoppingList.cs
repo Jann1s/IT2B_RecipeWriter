@@ -36,8 +36,16 @@ namespace RecipeManagerApp.PageController
         {
             if (tempShoppingList.recipes.Count > 0)
             {
+                
+                int result = Helper.ShoppingListDAO.AddShoppinglistAsync(tempShoppingList);
+
+                if (result >= 0)
+                {
+                    tempShoppingList.id = result;
+                }
+
                 recipeManager.GetCurrentUser().AddShoppingList(tempShoppingList);
-                Helper.ShoppingListDAO.AddShoppinglistAsync(tempShoppingList);
+
                 return true;
             }
             else

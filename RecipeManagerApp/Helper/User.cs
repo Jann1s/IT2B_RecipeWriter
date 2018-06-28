@@ -33,7 +33,8 @@ namespace RecipeManagerApp.Helper
         {
             shoppingLists.RemoveAt(index);
         }
-        public void AddAll(List<Recipe> recipes, List<ShoppingList> shoppingLists)
+
+        public void AddAllRecipes(List<Recipe> recipes)
         {
             if (recipes != null)
             {
@@ -42,7 +43,11 @@ namespace RecipeManagerApp.Helper
                     AddRecipe(rec);
                 }
             }
+            
+        }
 
+        public void AddAllShoppingLists(List<ShoppingList> shoppingLists)
+        {
             if (shoppingLists != null)
             {
                 foreach (ShoppingList shop in shoppingLists)
@@ -50,7 +55,6 @@ namespace RecipeManagerApp.Helper
                     AddShoppingList(shop);
                 }
             }
-            
         }
 
         public void AddRecipe(Recipe recipe)
