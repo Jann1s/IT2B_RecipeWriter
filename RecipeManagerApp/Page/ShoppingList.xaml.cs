@@ -64,5 +64,11 @@ namespace RecipeManagerApp.Page
             String[] parameter = new String[] { "Shopping" , listBox_recipeList.SelectedIndex.ToString() };
             Frame.Navigate(typeof(ExportPrint), parameter);
         }
+
+        private void listBox_recipeList_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+        {
+            String[] parameter = new String[] { "Edit", listBox_recipeList.SelectedIndex.ToString() };
+            Frame.Navigate(typeof(AddShoppingList), parameter);
+        }
     }
 }
