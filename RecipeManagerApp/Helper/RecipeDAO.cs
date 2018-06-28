@@ -12,9 +12,10 @@ namespace RecipeManagerApp.Helper
     public class RecipeDAO
     {
 
-        public static bool AddRecipeAsync(Recipe r)
+        public static int AddRecipeAsync(Recipe r)
         {
-            String query = @"INSERT INTO recipes VALUES (NULL, '" + r.title + "', '" + r.description + "' , " + RecipeManager.instance.GetCurrentUser().id + ");";
+            int usedId = -1;
+            String query = @"INSERT INTO recipes VALUES (" + RecipeManager.instance.lastRecipeID + ", '" + MySqlHelper.EscapeString(r.title) + "', '" + MySqlHelper.EscapeString(r.description) + "' , " + RecipeManager.instance.GetCurrentUser().id + ");";
             DBConnector.initAsync();
             MySqlCommand cmd = new MySqlCommand(query, DBConnector.conn);
             cmd.ExecuteNonQuery();
@@ -22,7 +23,10 @@ namespace RecipeManagerApp.Helper
             IngredientDAO.AddIngredient((int)cmd.LastInsertedId , r);
 
             DBConnector.conn.Close();
-            return true;
+
+            usedId = RecipeManager.instance.lastRecipeID;
+            RecipeManager.instance.lastRecipeID++;
+            return usedId;
         }
 
         public static List<Recipe> GetAll(int userid)
@@ -41,7 +45,37 @@ namespace RecipeManagerApp.Helper
                 
             }
 
+
+            DBConnector.conn.Close();
+
+            String queryMax = @"SELECT MAX(idRecipes) AS RINDEX FROM recipes";
+            DBConnector.initAsync();
+            MySqlCommand cmdMax = new MySqlCommand(queryMax, DBConnector.conn);
+            MySqlDataReader readerMax = cmdMax.ExecuteReader();
+
+            while (readerMax.Read())
+            {
+                RecipeManager.instance.lastRecipeID = (int)readerMax["RINDEX"] + 1;
+            }
+
+            DBConnector.conn.Close();
+
             return r;
+        }
+
+        public static void DeleteRecipe(Recipe recipe)
+        {
+            String queryIngredients = @"DELETE FROM ingredients WHERE Recipes_idRecipes=" + recipe.id;
+            String query = @"DELETE FROM recipes WHERE idRecipes=" + recipe.id;
+
+            DBConnector.initAsync();
+
+            MySqlCommand cmdIngredients = new MySqlCommand(queryIngredients, DBConnector.conn);
+            cmdIngredients.ExecuteNonQuery();
+            MySqlCommand cmd = new MySqlCommand(query, DBConnector.conn);
+            cmd.ExecuteNonQuery();
+
+            DBConnector.conn.Close();
         }
     }
 

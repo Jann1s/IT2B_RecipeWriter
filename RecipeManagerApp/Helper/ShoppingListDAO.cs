@@ -156,8 +156,21 @@ namespace RecipeManagerApp.Helper
                 RecipeManager.instance.lastShoppingID = (int)readerMax["SINDEX"] + 1;
             }
 
+            DBConnector.conn.Close();
+
             return sl;
         }
 
+        public static void DeleteShoppingList(ShoppingList shoppingList)
+        {
+            String query = @"DELETE FROM shoppinglist WHERE idshoppinglist=" + shoppingList.id;
+
+            DBConnector.initAsync();
+
+            MySqlCommand cmd = new MySqlCommand(query, DBConnector.conn);
+            cmd.ExecuteNonQuery();
+
+            DBConnector.conn.Close();
+        }
     }
 }

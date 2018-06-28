@@ -33,11 +33,16 @@ namespace RecipeManagerApp.PageController
                 tempRecipe.title = name;
                 tempRecipe.description = description;
                 tempRecipe.ingredients = ingredients;
-                
+
+                int result = RecipeDAO.AddRecipeAsync(tempRecipe);
+
+                if (result >= 0)
+                {
+                    tempRecipe.id = result;
+                }
+
                 //Add it to running instance
                 recipeManager.GetCurrentUser().AddRecipe(tempRecipe);
-                //Add it to the database
-                RecipeDAO.AddRecipeAsync(tempRecipe);
 
                 return true;
             }

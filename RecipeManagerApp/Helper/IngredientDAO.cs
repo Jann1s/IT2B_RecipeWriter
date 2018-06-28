@@ -16,7 +16,7 @@ namespace RecipeManagerApp.Helper
         {
             foreach (Ingredient i in r.ingredients)
                 {
-                    String query = @"INSERT INTO ingredients VALUES (NULL, '" + i.Name + "', " + i.Amount + " , '" + i.Unit.Name + "' , " + id + ");";
+                    String query = @"INSERT INTO ingredients VALUES (NULL, '" + MySqlHelper.EscapeString(i.Name) + "', " + i.Amount + " , '" + i.Unit.Name + "' , " + id + ");";
                     DBConnector.initAsync();
                     MySqlCommand cmd = new MySqlCommand(query, DBConnector.conn);
                     cmd.ExecuteNonQuery();

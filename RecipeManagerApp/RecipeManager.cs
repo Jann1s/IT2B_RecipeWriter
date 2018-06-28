@@ -12,6 +12,7 @@ namespace RecipeManagerApp
     {
         public static RecipeManager instance { get; set; }
         public int lastShoppingID { get; set; }
+        public int lastRecipeID { get; set; }
 
         private User currentUser;
         private List<Units> units;
