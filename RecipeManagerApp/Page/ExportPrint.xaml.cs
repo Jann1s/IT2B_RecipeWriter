@@ -119,7 +119,13 @@ namespace RecipeManagerApp.Page
 
         private void Exportbtn_ClickAsync(object sender, RoutedEventArgs e)
         {
-            pdfp.ExportAsync(RecipeManager.instance.GetCurrentUser().recipes[index], controller.recipeList);
+            if (fromRecipePage)
+            {
+                pdfp.ExportAsync(RecipeManager.instance.GetCurrentUser().recipes[index], controller.recipeList);
+            } else if (!fromRecipePage)
+            {
+                pdfp.exportShoppingListAsync(RecipeManager.instance.GetCurrentUser().shoppingLists[index], controller.shoppingList);
+            }
         }
     }
 }

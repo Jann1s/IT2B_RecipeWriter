@@ -78,6 +78,70 @@ namespace RecipeManagerApp.Helper
 
         }
 
+        public async void exportShoppingListAsync(ShoppingList sl, ObservableCollection<Recipe>recipes)
+        {
+            //Create a new PDF document.
+
+            PdfDocument document = new PdfDocument();
+
+            //Add a page to the document.
+
+            PdfPage page = document.Pages.Add();
+
+            //Create PDF graphics for the page.
+
+            PdfGraphics graphics = page.Graphics;
+
+            //Set the standard font.
+
+            PdfFont font = new PdfStandardFont(PdfFontFamily.Helvetica, 20);
+
+            //Draw the text.
+
+            graphics.DrawString("Shopping List", font, PdfBrushes.Black, 0, 0);
+
+            graphics.DrawString(sl.id.ToString(), font, PdfBrushes.Black, 0, 20);
+
+            graphics.DrawString(sl.date.ToLongDateString(), font, PdfBrushes.Black, 0, 40);
+
+            int counter = 60;
+            foreach (Recipe r in recipes)
+            {
+                graphics.DrawString(r.title, font, PdfBrushes.Black, 0, counter);
+                graphics.DrawString("Ingredients:", font, PdfBrushes.Black, 0, counter + 20);
+                foreach (Ingredient i in r.ingredients)
+                {
+
+                    graphics.DrawString(i.Name, font, PdfBrushes.Black, 0, counter+40);
+
+                    graphics.DrawString(i.Amount.ToString(), font, PdfBrushes.Black, 7+(i.Name.Length * 10), counter+40);
+
+                    graphics.DrawString(i.Unit.Unit.ToString(), font, PdfBrushes.Black, (i.Amount.ToString().Length * 20) + 50, counter+40);
+
+                    counter += 50;
+                }
+                counter += 50;
+            }
+
+            //Save the document.
+
+            MemoryStream stream = new MemoryStream();
+
+            await document.SaveAsync(stream);
+
+            //Close the documents
+
+            document.Close(true);
+
+            //Save the stream as PDF document file in local machine
+
+            Save(stream, "Result.pdf");
+
+            //Close the document.
+
+            document.Close(true);
+        }
+
         async void Save(Stream stream, string filename)
         {
 
