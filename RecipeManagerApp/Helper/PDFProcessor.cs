@@ -57,7 +57,7 @@ namespace RecipeManagerApp.Helper
 
                 graphics.DrawString("_______________________________________________________________________", font, PdfBrushes.Black, 0, counter+5);
 
-                counter += 25;
+                counter += 30;
             }
 
             //Save the document.
@@ -109,7 +109,7 @@ namespace RecipeManagerApp.Helper
             int counter = 60;
             foreach (Recipe r in recipes)
             {
-                graphics.DrawString(r.title, font, PdfBrushes.Black, 0, counter);
+                graphics.DrawString("Recipe: " + r.title, font, PdfBrushes.Black, 0, counter);
                 graphics.DrawString("Ingredients:", font, PdfBrushes.Black, 0, counter + 20);
                 foreach (Ingredient i in r.ingredients)
                 {
@@ -118,7 +118,7 @@ namespace RecipeManagerApp.Helper
 
                     graphics.DrawString(i.Amount.ToString(), font, PdfBrushes.Black, 7+(i.Name.Length * 10), counter+40);
 
-                    graphics.DrawString(i.Unit.Unit.ToString(), font, PdfBrushes.Black, (i.Amount.ToString().Length * 20) + 50, counter+40);
+                    graphics.DrawString(i.Unit.Unit.ToString(), font, PdfBrushes.Black, (i.Amount.ToString().Length * 20) + 60, counter+40);
 
                     counter += 50;
                 }
