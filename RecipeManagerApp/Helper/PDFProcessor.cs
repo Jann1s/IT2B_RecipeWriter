@@ -51,9 +51,11 @@ namespace RecipeManagerApp.Helper
             {
                 graphics.DrawString(i.Name, font, PdfBrushes.Black, 0, counter);
 
-                graphics.DrawString(i.Amount.ToString(), font, PdfBrushes.Black, (i.Name.Length * 10) + 5, counter);
-                
-                graphics.DrawString(i.Unit.Unit.ToString(), font, PdfBrushes.Black,(i.Name.Length * 10) + (i.Amount.ToString().Length * 2) + 25 , counter);
+                graphics.DrawString(i.Amount.ToString(), font, PdfBrushes.Black, (i.Name.Length * 10) + 10, counter);
+               
+                graphics.DrawString(i.Unit.Unit.ToString(), font, PdfBrushes.Black,(i.Name.Length * 10) + (i.Amount.ToString().Length * 2) + 35 , counter);
+
+                graphics.DrawString("_______________________________________________________________________", font, PdfBrushes.Black, 0, counter+5);
 
                 counter += 25;
             }
