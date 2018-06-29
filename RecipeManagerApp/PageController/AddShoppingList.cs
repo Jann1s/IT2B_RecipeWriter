@@ -18,11 +18,16 @@ namespace RecipeManagerApp.PageController
 
         public AddShoppingList()
         {
+            //init lists and collection
             recipe = new ObservableCollection<Helper.Recipe>(recipeManager.GetCurrentUser().recipes);
             addedRecipes = new ObservableCollection<Helper.Recipe>();
             tempShoppingList = new Helper.ShoppingList(recipeManager.GetCurrentUser().shoppingLists.Count);
         }
 
+        /// <summary>
+        /// Add Recipe to the temporary shoppinglist
+        /// </summary>
+        /// <param name="index">index of recipe</param>
         public void Add(int index)
         {
             if (index >= 0 && index < recipe.Count)
@@ -34,6 +39,10 @@ namespace RecipeManagerApp.PageController
             }
         }
 
+        /// <summary>
+        /// Save / Add the temporary shoppinglist to the users shoppinglist (in App and insert into database)
+        /// </summary>
+        /// <returns>true = added; false = input incorrect</returns>
         public bool Save()
         {
             if (tempShoppingList.recipes.Count > 0)
@@ -68,6 +77,10 @@ namespace RecipeManagerApp.PageController
             }
         }
 
+        /// <summary>
+        /// Delete the recipe from the temporary shoppinglist
+        /// </summary>
+        /// <param name="index">Index of the recipe</param>
         public void Delete(int index)
         {
             if (index >= 0 && index < addedRecipes.Count)
@@ -77,23 +90,16 @@ namespace RecipeManagerApp.PageController
             }
         }
 
+        /// <summary>
+        /// Set the temporary shoppinglist to an existing shoppinglist.
+        /// Will only be used for the edit page.
+        /// </summary>
+        /// <param name="index">Index of ShoppingList</param>
         public void SetRecipes(int index)
         {
             this.index = index;
             tempShoppingList = recipeManager.GetCurrentUser().shoppingLists[index];
             addedRecipes = new ObservableCollection<Helper.Recipe>(tempShoppingList.recipes);
         }
-
-        /*
-        public void Back()
-        {
-
-        }
-
-        public void Options()
-        {
-
-        }
-        */
     }
 }

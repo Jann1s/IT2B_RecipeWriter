@@ -16,15 +16,22 @@ namespace RecipeManagerApp.PageController
 
         public ExportPrint()
         {
-            //shoppingList = new ObservableCollection<Helper.ShoppingList>(recipeManager.GetCurrentUser().shoppingLists);
-            //recipeList = new ObservableCollection<Helper.Recipe>(recipeManager.GetCurrentUser().recipes);
+
         }
 
+        /// <summary>
+        /// set the listbox with recipes
+        /// </summary>
+        /// <param name="index">index of shoppinglist</param>
         public void FillRecipe(int index)
         {
             shoppingList = new ObservableCollection<Helper.Recipe>(recipeManager.GetCurrentUser().shoppingLists[index].recipes);
         }
 
+        /// <summary>
+        /// set the listbox with ingredients
+        /// </summary>
+        /// <param name="index">index of recipe</param>
         public void FillIngredients(int index)
         {
             recipeList = new ObservableCollection<Helper.Ingredient>(recipeManager.GetCurrentUser().recipes[index].ingredients);
