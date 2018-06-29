@@ -28,6 +28,9 @@ namespace RecipeManagerApp
         /// </summary>
         public App()
         {
+            //Register Syncfusion license
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjczNkAzMTM2MmUzMjJlMzBhMHI1TkpzazF1bitPM1Bwb0hRUkJrTnZOWVFYM0h5emV3VFpXREFna0NVPQ==");
+
             this.InitializeComponent();
             this.Suspending += OnSuspending;
         }
