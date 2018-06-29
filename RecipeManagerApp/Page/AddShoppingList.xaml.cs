@@ -30,8 +30,6 @@ namespace RecipeManagerApp.Page
 
             //init listbox
             listBox_recipeList.ItemsSource = controller.recipe;
-
-            listBox_addedList.ItemsSource = controller.addedRecipes;
         }
 
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
@@ -88,6 +86,32 @@ namespace RecipeManagerApp.Page
             };
 
             ContentDialogResult result = await inputErrorDialog.ShowAsync();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            String origin = String.Empty;
+            int index = -1;
+
+            base.OnNavigatedTo(e);
+            if (e.Parameter != null)
+            {
+                origin = ((String[])e.Parameter)[0];
+                index = int.Parse(((String[])e.Parameter)[1]);
+            }
+
+            if (origin == "Edit")
+            {
+                controller.edit = true;
+                controller.SetRecipes(index);
+            }
+            else
+            {
+                controller.edit = false;
+            }
+
+            //init listbox
+            listBox_addedList.ItemsSource = controller.addedRecipes;
         }
     }
 }

@@ -26,6 +26,7 @@ namespace RecipeManagerApp.PageController
         {
             if (index >= 0 && index < recipe.Count)
             {
+                RecipeDAO.DeleteRecipe(recipe[index]);
                 recipe.RemoveAt(index);
                 recipeManager.GetCurrentUser().RemoveRecipe(index);
             }

@@ -22,6 +22,7 @@ namespace RecipeManagerApp.PageController
         {
             if (index >= 0 && index < shoppingList.Count)
             {
+                Helper.ShoppingListDAO.DeleteShoppingList(shoppingList[index]);
                 shoppingList.RemoveAt(index);
                 recipeManager.GetCurrentUser().RemoveShoppingList(index);
             }

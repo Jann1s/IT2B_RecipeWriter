@@ -12,7 +12,9 @@ namespace RecipeManagerApp.PageController
         private RecipeManager recipeManager = RecipeManager.instance;
         private Helper.ShoppingList tempShoppingList;
         public ObservableCollection<Helper.Recipe> recipe { get; }
-        public ObservableCollection<Helper.Recipe> addedRecipes { get; }
+        public ObservableCollection<Helper.Recipe> addedRecipes { get; set; }
+        public bool edit { get; set; }
+        private int index = -1;
 
         public AddShoppingList()
         {
@@ -36,15 +38,27 @@ namespace RecipeManagerApp.PageController
         {
             if (tempShoppingList.recipes.Count > 0)
             {
-                
-                int result = Helper.ShoppingListDAO.AddShoppinglistAsync(tempShoppingList);
-
-                if (result >= 0)
+                if (edit)
                 {
-                    tempShoppingList.id = result;
+                    Helper.ShoppingListDAO.DeleteShoppingList(recipeManager.GetCurrentUser().shoppingLists[index]);
+                    recipeManager.GetCurrentUser().shoppingLists.RemoveAt(index);
+                    recipeManager.GetCurrentUser().shoppingLists.Insert(index, tempShoppingList);
+
+                    Helper.ShoppingListDAO.AddShoppinglistAsync(tempShoppingList, tempShoppingList.id);
+                }
+                else
+                {
+                    int result = Helper.ShoppingListDAO.AddShoppinglistAsync(tempShoppingList);
+
+                    if (result >= 0)
+                    {
+                        tempShoppingList.id = result;
+                    }
+
+                    recipeManager.GetCurrentUser().AddShoppingList(tempShoppingList);
                 }
 
-                recipeManager.GetCurrentUser().AddShoppingList(tempShoppingList);
+                
 
                 return true;
             }
@@ -61,6 +75,13 @@ namespace RecipeManagerApp.PageController
                 tempShoppingList.RemoveRecipe(addedRecipes[index]);
                 addedRecipes.RemoveAt(index);
             }
+        }
+
+        public void SetRecipes(int index)
+        {
+            this.index = index;
+            tempShoppingList = recipeManager.GetCurrentUser().shoppingLists[index];
+            addedRecipes = new ObservableCollection<Helper.Recipe>(tempShoppingList.recipes);
         }
 
         /*

@@ -11,12 +11,18 @@ namespace RecipeManagerApp.Helper
     class ShoppingListDAO
     {
 
-        public static int AddShoppinglistAsync(ShoppingList sl)
+        public static int AddShoppinglistAsync(ShoppingList sl, int id = -1)
         {
             int usedId = 0;
             bool added = false;
             Dictionary<int, int> recipeList = new Dictionary<int, int>();
 
+            int useIndex = RecipeManager.instance.lastShoppingID;
+
+            if (id > -1)
+            {
+                useIndex = id;
+            }
 
             for (int i = 0; i < sl.recipes.Count; i++)
             {
@@ -40,7 +46,7 @@ namespace RecipeManagerApp.Helper
             {
                 if (item.Value > 0)
                 {
-                    string query = @"INSERT INTO shoppinglist VALUES (" + RecipeManager.instance.lastShoppingID + ", 'NOW()', " + item.Key + ", " + RecipeManager.instance.GetCurrentUser().id + ", " + item.Value + ")";
+                    string query = @"INSERT INTO shoppinglist VALUES (" + useIndex + ", 'NOW()', " + item.Key + ", " + RecipeManager.instance.GetCurrentUser().id + ", " + item.Value + ")";
                     DBConnector.initAsync();
                     MySqlCommand cmd = new MySqlCommand(query, DBConnector.conn);
                     cmd.ExecuteNonQuery();
@@ -156,8 +162,21 @@ namespace RecipeManagerApp.Helper
                 RecipeManager.instance.lastShoppingID = (int)readerMax["SINDEX"] + 1;
             }
 
+            DBConnector.conn.Close();
+
             return sl;
         }
 
+        public static void DeleteShoppingList(ShoppingList shoppingList)
+        {
+            String query = @"DELETE FROM shoppinglist WHERE idshoppinglist=" + shoppingList.id;
+
+            DBConnector.initAsync();
+
+            MySqlCommand cmd = new MySqlCommand(query, DBConnector.conn);
+            cmd.ExecuteNonQuery();
+
+            DBConnector.conn.Close();
+        }
     }
 }

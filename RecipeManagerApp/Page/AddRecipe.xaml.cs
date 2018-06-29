@@ -34,9 +34,6 @@ namespace RecipeManagerApp.Page
             //init combobox
             comboBox_Unit.ItemsSource = controller.units;
             comboBox_Unit.DisplayMemberPath = "Name";
-
-            //init listbox
-            listBox_Ingredients.ItemsSource = controller.ingredients;
         }
 
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
@@ -128,6 +125,34 @@ namespace RecipeManagerApp.Page
             {
                 //OutputTextBlock.Text = "Operation cancelled.";
             }
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            String origin = String.Empty;
+            int index = -1;
+
+            base.OnNavigatedTo(e);
+            if (e.Parameter != null)
+            {
+                origin = ((String[])e.Parameter)[0];
+                index = int.Parse(((String[])e.Parameter)[1]);
+            }
+
+            if (origin == "Edit")
+            {
+                controller.edit = true;
+                textBox_name.Text = RecipeManager.instance.GetCurrentUser().recipes[index].title;
+                textBox_description.Text = RecipeManager.instance.GetCurrentUser().recipes[index].description;
+                controller.SetIngredients(index);
+            }
+            else
+            {
+                controller.edit = false;
+            }
+
+            //init listbox
+            listBox_Ingredients.ItemsSource = controller.ingredients;
         }
     }
 }
