@@ -237,23 +237,18 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="IronPdf">
-      <Version>4.4.9</Version>
-    </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.1.5</Version>
     </PackageReference>
     <PackageReference Include="MySqlConnector">
       <Version>0.42.1</Version>
     </PackageReference>
+    <PackageReference Include="Syncfusion.Pdf.UWP">
+      <Version>16.2.0.41</Version>
+    </PackageReference>
     <PackageReference Include="System.Net.Http">
       <Version>4.3.3</Version>
     </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <SDKReference Include="Syncfusion Controls for UWP XAML, Version=16.2.0.41">
-      <Name>Syncfusion Controls for UWP XAML</Name>
-    </SDKReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
