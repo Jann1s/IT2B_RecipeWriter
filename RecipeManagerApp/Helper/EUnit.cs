@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace RecipeManagerApp.Helper
 {
+    /**
+     * Units enum for the ingredient amount
+     * */
     public enum EUnit
     {
         Milligramm,

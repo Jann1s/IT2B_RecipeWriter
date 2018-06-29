@@ -18,11 +18,13 @@ namespace RecipeManagerApp.Helper
             recipes = new List<Recipe>();
         }
 
+        //add a recipe to the shopping list
         public void AddRecipe(Recipe recipe)
         {
             recipes.Add(recipe);
         }
 
+        //remove recipe from the shopping list
         public void RemoveRecipe(Recipe recipe)
         {
             recipes.Remove(recipe);

@@ -8,6 +8,12 @@ namespace RecipeManagerApp.Helper
 {
     public class Units
     {
+        /**
+         * Units class
+         * Name - name of the unit
+         * Short - short name of the unit - e.g KG for kilogram
+         * unit - eunnit object
+         * */
         public Units(String name, String Short, EUnit unit)
         {
             this.Name = Name;

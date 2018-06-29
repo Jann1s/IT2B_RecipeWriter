@@ -24,11 +24,13 @@ namespace RecipeManagerApp.Helper
             this.username = username;
         }
 
+        //add shopping lsit to user
         public void AddShoppingList(ShoppingList shoppingList)
         {
             shoppingLists.Add(shoppingList);
         }
 
+        //remove shopping list from user
         public void RemoveShoppingList(int index)
         {
             shoppingLists.RemoveAt(index);
@@ -57,11 +59,13 @@ namespace RecipeManagerApp.Helper
             }
         }
 
+        //add recipe to user
         public void AddRecipe(Recipe recipe)
         {
             recipes.Add(recipe);
         }
 
+        //remove recipe from user
         public void RemoveRecipe(int index)
         {
             recipes.RemoveAt(index);

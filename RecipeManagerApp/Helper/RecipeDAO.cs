@@ -12,6 +12,9 @@ namespace RecipeManagerApp.Helper
     public class RecipeDAO
     {
 
+        /**
+         * Add recipe to the database
+         * */
         public static int AddRecipeAsync(Recipe r, int index = -1)
         {
             int useIndex = RecipeManager.instance.lastRecipeID;
@@ -21,12 +24,14 @@ namespace RecipeManagerApp.Helper
                 useIndex = index;
             }
 
+            //form query
             int usedId = -1;
             String query = @"INSERT INTO recipes VALUES (" + useIndex + ", '" + MySqlHelper.EscapeString(r.title) + "', '" + MySqlHelper.EscapeString(r.description) + "' , " + RecipeManager.instance.GetCurrentUser().id + ");";
             DBConnector.initAsync();
             MySqlCommand cmd = new MySqlCommand(query, DBConnector.conn);
             cmd.ExecuteNonQuery();
 
+            //add ingredients
             IngredientDAO.AddIngredient((int)cmd.LastInsertedId , r);
 
             DBConnector.conn.Close();
@@ -36,13 +41,18 @@ namespace RecipeManagerApp.Helper
             return usedId;
         }
 
+        /**
+         * Get a list of all recipes by given user id
+         * */
         public static List<Recipe> GetAll(int userid)
         {
             List<Recipe> r = new List<Recipe>();
+            //form query
             String query = @"SELECT * FROM recipes WHERE users_id = " + userid;
             DBConnector.initAsync();
             MySqlCommand cmd = new MySqlCommand(query, DBConnector.conn);
             MySqlDataReader reader = cmd.ExecuteReader();
+            //add results to the collection
             while (reader.Read())
             {
                 r.Add(new Recipe(reader["description"] + "", reader["title"] + ""));
@@ -70,8 +80,12 @@ namespace RecipeManagerApp.Helper
             return r;
         }
 
+        /**
+         * Delete given recipe from the database
+         * */
         public static void DeleteRecipe(Recipe recipe)
         {
+            //form query
             String queryIngredients = @"DELETE FROM ingredients WHERE Recipes_idRecipes=" + recipe.id;
             String query = @"DELETE FROM recipes WHERE idRecipes=" + recipe.id;
 

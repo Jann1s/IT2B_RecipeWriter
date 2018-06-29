@@ -9,7 +9,12 @@ namespace RecipeManagerApp.Helper
 {
     class UserDAO
     {
-
+        /**
+         * Add new user
+         * @Param username - username
+         * @Param lastname - lastname of user
+         * @Param password - password of user
+         * */
         public static bool addUser(string username, string lastname, string password)
         {
             string query = @"INSERT INTO users VALUES (NULL, '" + username + "', '" + password + "', '" + lastname + "');";
@@ -20,6 +25,9 @@ namespace RecipeManagerApp.Helper
             return true;
         }
 
+        /**
+         * get user by username and pass
+         * */
         public static User getUser(string username, string password)
         {
             User user = null;

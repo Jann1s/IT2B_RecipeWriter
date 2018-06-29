@@ -19,6 +19,12 @@ namespace RecipeManagerApp.Helper
 
         }
 
+        /**
+         * This method will export the selected recipe and its ingredients
+         * into a PDF file asynchronously
+         * @Param Recipe r - The recipe that will be exported
+         * @Param ingredients - the collection of ingredients that the recipe has
+         * */
         public async void ExportAsync(Recipe r, ObservableCollection<Ingredient> ingredients)
         {
 
@@ -45,6 +51,9 @@ namespace RecipeManagerApp.Helper
             graphics.DrawString(r.title, font, PdfBrushes.Black, 0, 20);
 
             graphics.DrawString(r.description, font, PdfBrushes.Black, 0, 40);
+
+            //calculate draw positions with a counter and create formulas
+            //so that some parts wont be overwritten
 
             int counter = 75;
             foreach (Ingredient i in ingredients)
@@ -105,6 +114,9 @@ namespace RecipeManagerApp.Helper
             graphics.DrawString(sl.id.ToString(), font, PdfBrushes.Black, 0, 20);
 
             graphics.DrawString(sl.date.ToLongDateString(), font, PdfBrushes.Black, 0, 40);
+
+            //calculate draw positions with a counter and create formulas
+            //so that some parts wont be overwritten
 
             int counter = 60;
             foreach (Recipe r in recipes)

@@ -12,10 +12,14 @@ namespace RecipeManagerApp.Helper
     class IngredientDAO
     {
 
+        /**
+         * Add recipe to the database
+         * */
         public static bool AddIngredient(int id, Recipe r)
         {
             foreach (Ingredient i in r.ingredients)
                 {
+                    //form query
                     String query = @"INSERT INTO ingredients VALUES (NULL, '" + MySqlHelper.EscapeString(i.Name) + "', " + i.Amount + " , '" + i.Unit.Name + "' , " + id + ");";
                     DBConnector.initAsync();
                     MySqlCommand cmd = new MySqlCommand(query, DBConnector.conn);
@@ -26,13 +30,18 @@ namespace RecipeManagerApp.Helper
             return true;
         }
 
+        /**
+         * Get all ingredients of a recipe with given id
+         * */
         public static ObservableCollection<Ingredient> GetAll(int recipeid)
         {
+            //form query
             ObservableCollection<Ingredient> r = new ObservableCollection<Ingredient>();
             String query = @"SELECT * FROM ingredients WHERE recipes_idrecipes = " + recipeid;
             DBConnector.initAsync();
             MySqlCommand cmd = new MySqlCommand(query, DBConnector.conn);
             MySqlDataReader reader = cmd.ExecuteReader();
+            //fix ingredients units and add them to the collection
             while (reader.Read())
             {
                 Ingredient i = new Ingredient();

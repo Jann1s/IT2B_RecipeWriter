@@ -11,12 +11,16 @@ namespace RecipeManagerApp.Helper
     class ShoppingListDAO
     {
 
+        /**
+         * Add shopping list to given user id
+         * */
         public static int AddShoppinglistAsync(ShoppingList sl, int id = -1)
         {
             int usedId = 0;
             bool added = false;
             Dictionary<int, int> recipeList = new Dictionary<int, int>();
 
+            //get last shopping id
             int useIndex = RecipeManager.instance.lastShoppingID;
 
             if (id > -1)
@@ -46,6 +50,7 @@ namespace RecipeManagerApp.Helper
             {
                 if (item.Value > 0)
                 {
+                    //form query
                     string query = @"INSERT INTO shoppinglist VALUES (" + useIndex + ", 'NOW()', " + item.Key + ", " + RecipeManager.instance.GetCurrentUser().id + ", " + item.Value + ")";
                     DBConnector.initAsync();
                     MySqlCommand cmd = new MySqlCommand(query, DBConnector.conn);
@@ -83,9 +88,13 @@ namespace RecipeManagerApp.Helper
 
         }
 
+        /**
+         * Get all shopping lists by user id
+         * */
         public static List<ShoppingList> GetAll(int userid)
         {
             List<ShoppingList> sl = new List<ShoppingList>();
+            //form query
             String query = @"SELECT * FROM shoppinglist WHERE user_id = '" + userid + "'";
             DBConnector.initAsync();
             MySqlCommand cmd = new MySqlCommand(query, DBConnector.conn);
@@ -93,8 +102,10 @@ namespace RecipeManagerApp.Helper
 
             //sl.Add(new ShoppingList(((int)reader["idshoppinglist"])))
 
+            //add shopping lists to collection
             while (reader.Read())
             {
+                //assign shopping list id and recipes id
                 int sId = (int)reader["idshoppinglist"];
                 int rId = (int)reader["recipe_id"];
                 int amount = (int)reader["amount"];
@@ -152,6 +163,7 @@ namespace RecipeManagerApp.Helper
 
             DBConnector.conn.Close();
 
+            //get last shopping list index and assign it
             String queryMax = @"SELECT MAX(idshoppinglist) AS SINDEX FROM shoppinglist";
             DBConnector.initAsync();
             MySqlCommand cmdMax = new MySqlCommand(queryMax, DBConnector.conn);
@@ -167,6 +179,9 @@ namespace RecipeManagerApp.Helper
             return sl;
         }
 
+        /**
+         * Delete shopping list
+         * */
         public static void DeleteShoppingList(ShoppingList shoppingList)
         {
             String query = @"DELETE FROM shoppinglist WHERE idshoppinglist=" + shoppingList.id;
