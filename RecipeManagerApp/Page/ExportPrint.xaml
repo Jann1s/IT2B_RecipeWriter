@@ -140,7 +140,7 @@
 
                 <StackPanel x:Name="buttonsPanel"  VerticalAlignment="Bottom" Margin="0 0 0 50" Padding="20" HorizontalAlignment="Center" Orientation="Horizontal">
                     <Button x:Name="btn_print" Content="Print" Foreground="White" Background="Green" MinWidth="100" Margin="24" MinHeight="50" />
-                    <Button x:Name="btn_export" Content="Export" Foreground="White" Background="Green" MinWidth="100" MinHeight="50" />
+                    <Button x:Name="btn_export" Content="Export" Foreground="White" Background="Green" MinWidth="100" MinHeight="50" Click="Exportbtn_ClickAsync" />
                 </StackPanel>
 
 

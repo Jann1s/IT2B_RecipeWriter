@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RecipeManagerApp.Helper;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,6 +26,10 @@ namespace RecipeManagerApp.Page
     public sealed partial class ExportPrint //: Page
     {
         PageController.ExportPrint controller = new PageController.ExportPrint();
+        PDFProcessor pdfp;
+        String origin;
+        int index;
+        bool fromRecipePage;
 
         /*
         private PrintManager printMan;
@@ -34,7 +39,7 @@ namespace RecipeManagerApp.Page
         public ExportPrint()
         {
             this.InitializeComponent();
-
+            pdfp = new PDFProcessor();
             //init listbox
             /*
             if (origin == "Recipe")
@@ -51,8 +56,8 @@ namespace RecipeManagerApp.Page
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            String origin = String.Empty;
-            int index = -1;
+            origin = String.Empty;
+            index = -1;
 
             base.OnNavigatedTo(e);
             if (e.Parameter != null)
@@ -63,12 +68,14 @@ namespace RecipeManagerApp.Page
 
             if (origin == "Recipe")
             {
+                fromRecipePage = true;
                 controller.FillIngredients(index);
                 listBox_ingredientList.ItemsSource = controller.recipeList;
                 listBox_ingredientList.Visibility = Visibility.Visible;
             }
             else if (origin == "Shopping")
             {
+                fromRecipePage = false;
                 controller.FillRecipe(index);
                 listBox_recipeList.ItemsSource = controller.shoppingList;
                 listBox_recipeList.Visibility = Visibility.Visible;
@@ -108,6 +115,11 @@ namespace RecipeManagerApp.Page
         private void homeBtn_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(WelcomeScreen));
+        }
+
+        private void Exportbtn_ClickAsync(object sender, RoutedEventArgs e)
+        {
+            pdfp.ExportAsync(RecipeManager.instance.GetCurrentUser().recipes[index], controller.recipeList);
         }
     }
 }

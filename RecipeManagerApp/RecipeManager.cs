@@ -42,8 +42,8 @@ namespace RecipeManagerApp
             currentUser.AddRecipe(recipe2);
             */
 
-            PDFProcessor pdf = new PDFProcessor();
-            pdf.Export();
+            //PDFProcessor pdf = new PDFProcessor();
+            //pdf.ExportAsync();
         }
 
         public bool Login(String username, String password)
