@@ -24,10 +24,19 @@ namespace RecipeManagerApp.PageController
         
         public AddRecipe()
         {
+            //init list & collection
             units = recipeManager.GetUnits();
             ingredients = new ObservableCollection<Ingredient>();
         }
 
+        /// <summary>
+        /// This will check if the input of the controls are correct. After this it will determine if the user
+        /// edit an existing Recipe or is creating a new one and will add / "update" (delete and add) it to
+        /// the specified database.
+        /// </summary>
+        /// <param name="name">Name / Title of the recipe</param>
+        /// <param name="description">Description of the recipe</param>
+        /// <returns>true = added the recipe to the database; false = input incorrect</returns>
         public bool AddDB(string name, string description)
         {
             if (!String.IsNullOrEmpty(name) && !String.IsNullOrEmpty(description) && ingredients.Count > 0)
@@ -66,6 +75,13 @@ namespace RecipeManagerApp.PageController
             } 
         }
         
+        /// <summary>
+        /// Adds ingredients to the recipe
+        /// </summary>
+        /// <param name="name">Name of the ingredient</param>
+        /// <param name="sAmount">Amount of the ingredient</param>
+        /// <param name="index">index of the used unit</param>
+        /// <returns>true = added ingridient; false = input incorrect</returns>
         public bool AddIngredient(string name, string sAmount, int index)
         {
             float amount = -1;
@@ -88,6 +104,10 @@ namespace RecipeManagerApp.PageController
             
         }
 
+        /// <summary>
+        /// Deletes the specified ingredient
+        /// </summary>
+        /// <param name="index">Index of the ingredient</param>
         public void DeleteIngredient(int index)
         {
             if (index >= 0 && index < ingredients.Count)
@@ -96,27 +116,15 @@ namespace RecipeManagerApp.PageController
             }
         }
 
+        /// <summary>
+        /// This will add all existing ingredients to the temporary recipe.
+        /// Only used for editing page.
+        /// </summary>
+        /// <param name="index">index of the recipe that will be edit</param>
         public void SetIngredients(int index)
         {
             this.index = index;
             ingredients = recipeManager.GetCurrentUser().recipes[index].ingredients;
         }
-
-        /*
-        public void Back()
-        {
-
-        }
-        
-        public void ShoppingList()
-        {
-
-        }
-
-        public void Options()
-        {
-
-        }
-        */
     }
 }

@@ -19,9 +19,14 @@ namespace RecipeManagerApp.PageController
 
         public RecipeList()
         {
+            //init collection for listbox
             recipe = new ObservableCollection<Helper.Recipe>(recipeManager.GetCurrentUser().recipes);
         }
         
+        /// <summary>
+        /// Delete the selected recipe from User list & Database
+        /// </summary>
+        /// <param name="index">index of recipe</param>
         public void Delete(int index)
         {
             if (index >= 0 && index < recipe.Count)
@@ -31,22 +36,5 @@ namespace RecipeManagerApp.PageController
                 recipeManager.GetCurrentUser().RemoveRecipe(index);
             }
         }
-
-        /*
-        public void Add()
-        {
-
-        }
-
-        public void ShoppingList()
-        {
-
-        }
-
-        public void Options()
-        {
-
-        }
-        */
     }
 }

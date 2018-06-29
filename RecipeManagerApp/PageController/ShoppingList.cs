@@ -18,6 +18,10 @@ namespace RecipeManagerApp.PageController
             shoppingList = new ObservableCollection<Helper.ShoppingList>(recipeManager.GetCurrentUser().shoppingLists);
         }
 
+        /// <summary>
+        /// Delete the selected shoppinglist from User list & Database
+        /// </summary>
+        /// <param name="index">index of shoppinglist</param>
         public void Delete(int index)
         {
             if (index >= 0 && index < shoppingList.Count)
@@ -27,37 +31,5 @@ namespace RecipeManagerApp.PageController
                 recipeManager.GetCurrentUser().RemoveShoppingList(index);
             }
         }
-
-        /*
-        public void Add()
-        {
-
-        }
-
-        public void Back()
-        {
-
-        }
-
-        public void Recipes()
-        {
-
-        }
-
-        public void Options()
-        {
-
-        }
-
-        public void Print()
-        {
-
-        }
-
-        public void ExportPDF()
-        {
-
-        }
-        */
     }
 }
